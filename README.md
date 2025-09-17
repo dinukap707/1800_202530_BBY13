@@ -59,9 +59,9 @@ elmo-hikes/
 
 
 ## Contributors
-- **Jorja Knaus** - hi!
-
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- Jorja Knaus - hi!
+- Devan - BCIT CST Student with a passion for gaming. Visual studio sucks. Loves solving Rubik's Cubes in over a minute.
+- Dinuka P - YOOOO, i like coding, playing the drums, and riding my motorcycle.
 
 ---
 
