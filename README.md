@@ -59,6 +59,7 @@ elmo-hikes/
 
 
 ## Contributors
+- Jorja Knaus - hi!
 - Devan - BCIT CST Student with a passion for gaming. Visual studio sucks. Loves solving Rubik's Cubes in over a minute.
 - Dinuka P - YOOOO, i like coding, playing the drums, and riding my motorcycle.
 
