@@ -9,6 +9,16 @@ nav p{
     text-align: center;
 }
 
+@media screen and (min-width: 430px){
+    .image{
+        width: 400px;
+        height: auto;
+        display: block;
+        margin: auto;
+        
+    }
+}
+
 .footer{
     font-weight: bold;
 }
