@@ -1,1 +1,6 @@
-
+nav p{
+    font-weight: bold;
+    font-size:large;
+    background-color: blueviolet;
+    text-align: center;
+}
