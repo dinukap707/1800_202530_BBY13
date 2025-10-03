@@ -1,14 +1,15 @@
-*{
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+* {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-nav p{
-    font-weight: bold;
-    font-size:large;
-    background-color: blueviolet;
-    text-align: center;
+nav p {
+  font-weight: bold;
+  font-size: large;
+  background-color: blueviolet;
+  text-align: center;
 }
 
+<<<<<<< HEAD
 @media screen and (min-width: 430px){
     .image{
         width: 400px;
@@ -22,3 +23,28 @@ nav p{
 .footer{
     font-weight: bold;
 }
+=======
+.lpbutton {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.lp-btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.lp-btn:hover {
+  background-color: #0056b3; /* darker blue on hover */
+}
+
+.footer {
+  font-weight: bold;
+}
+>>>>>>> 5c9c9eef674a1567045511d7bc7997054828941b
