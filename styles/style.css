@@ -3,6 +3,10 @@ gridlayout{
   grid-template-columns:50% 50%;
 }
 
+body{
+  margin: 0%;
+}
+
 * {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
@@ -12,6 +16,8 @@ nav p {
   font-size: large;
   background-color: blueviolet;
   text-align: center;
+  margin: 0%;
+  padding: 10px;
 }
 
 
