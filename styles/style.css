@@ -1,6 +1,5 @@
 gridlayout{
   grid-template-rows:10% 50% 30% 10% ;
-  grid-template-columns:50% 50%;
 }
 
 body{
@@ -24,13 +23,11 @@ nav p {
 nav{
   display:grid;
   grid-row:1;
-  grid-column: 1/span 2;
-}
+]}
 
 header{
   display:grid;
   grid-row:2;
-  grid-column: 1/span 2;
 }
 
 
@@ -55,24 +52,9 @@ header{
   margin: 40px 0;
 }
 
-.lp-btn-left {
+.lp-btn {
   display:grid;
   grid-row:3;
-  grid-column: 1;
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  background-color: #007bff; /* Bootstrap primary blue */
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.lp-btn-right {
-  display: grid;
-  grid-row:3;
-  grid-column: 2;
   padding: 12px 30px;
   font-size: 1.1rem;
   background-color: #007bff; /* Bootstrap primary blue */
@@ -90,6 +72,5 @@ header{
 .footer {
   display:grid;
   grid-row: 4;
-  grid-column: 1 /span 2;
   font-weight: bold;
 }
