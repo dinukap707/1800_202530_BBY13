@@ -1,8 +1,8 @@
-gridlayout{
-  grid-template-rows:10% 50% 30% 10% ;
+gridlayout {
+  grid-template-rows: 10% 50% 30% 10%;
 }
 
-body{
+body {
   margin: 0%;
 }
 
@@ -19,45 +19,64 @@ nav p {
   padding: 10px;
 }
 
-
-nav{
-  display:grid;
-  grid-row:1;
+nav {
+  display: grid;
+  grid-row: 1;
 }
 
-header{
-  display:grid;
-  grid-row:2;
+header {
+  display: grid;
+  grid-row: 2;
 }
 
-
-@media screen and (min-width: 430px){
-    .image{
-        width: 400px;
-        height: auto;
-        display: block;
-        margin: auto;
-        
-    }
+@media screen and (min-width: 430px) {
+  .image {
+    width: 400px;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
 }
 
-.footer{
-    font-weight: bold;
+.footer {
+  font-weight: bold;
 }
 
+/* LOGIN SECTION CSS BELOW */
 .lpbutton {
-  display:grid;
-  grid-row:3;
+  display: grid;
+  grid-row: 3;
   text-align: center;
   margin: 40px 0;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.input-field {
+  width: 250px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
 .lp-btn {
-  display:grid;
-  grid-row:3;
+  width: 270px;
   padding: 12px 30px;
   font-size: 1.1rem;
-  background-color: #007bff; /* Bootstrap primary blue */
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -66,11 +85,13 @@ header{
 }
 
 .lp-btn:hover {
-  background-color: #0056b3; /* darker blue on hover */
+  background-color: #0056b3;
 }
 
+/* LOGIN SECTION FINISHED */
+
 .footer {
-  display:grid;
+  display: grid;
   grid-row: 4;
   font-weight: bold;
 }
