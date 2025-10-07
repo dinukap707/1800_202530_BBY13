@@ -90,8 +90,30 @@ header {
 
 /* LOGIN SECTION FINISHED */
 
+/* FOORTER SECTION CSS BELOW */
+
 .footer {
   display: grid;
   grid-row: 4;
   font-weight: bold;
 }
+
+.welcome-box {
+  display: inline-block;
+  background-color: #fff;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 15px auto;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba (0, 0, 0, 0.1);
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.welcome-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba (0, 0, 0, 0.15);
+}
+
+/* FOORTER SECTION FINISHED */
