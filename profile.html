@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Find-it</title>
     <meta name="comp1800 template" content="My 1800 App" />
 
@@ -14,22 +15,37 @@
     <!-- <link rel="stylesheet" href="./styles/style.css" /> -->
     <link rel="stylesheet" href="./styles/profileStyle.css" />
     <link rel="srcsheet" href="./src/main.js" />
-  </head>
-  <body>
+</head>
+
+<body>
     <nav>
-        <p>settings</p>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Settings</a>
+            </li>
+        </ul>
     </nav>
     <profileInfo>
-        <p>img</p>
-        <p>name</p>
-        <p>user</p>
+        <img src="./images/find_it.jpg" alt="Find-it" class="image" />
+        <p>Your name</p>
+        <p>User</p>
     </profileInfo>
     <contents>
-        <p>select box</p>
-        <p> game level</p>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio1">All notifications</label>
 
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">Some notifications</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio3">No notifications</label>
+        </div>
+        <div>
+            <p> game level</p>
+        </div>
     </contents>
-  </body>
+</body>
 
 
-  </html>
+</html>

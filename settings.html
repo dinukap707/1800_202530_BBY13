@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Find-it</title>
     <meta name="comp1800 template" content="My 1800 App" />
 
@@ -14,14 +15,20 @@
     <!-- <link rel="stylesheet" href="./styles/style.css" /> -->
     <link rel="stylesheet" href="./styles/profileStyle.css" />
     <link rel="srcsheet" href="./src/main.js" />
-  </head>
-  <body>
+</head>
+
+<body>
     <nav>
-        <p>back button</p>
-        <P>settings</P>
+        <button class="btn ">Back</button>
+        <P class="justify-content-center">Settings</P>
     </nav>
     <search>
-        <p>search</p>
+        <div class="container-fluid">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
     </search>
     <contents>
         <div>
@@ -35,10 +42,10 @@
         </div>
         <p>LOG OUT</p>
     </contents>
-  </body>
+</body>
 
 
 
 
 
-  </html>
+</html>
