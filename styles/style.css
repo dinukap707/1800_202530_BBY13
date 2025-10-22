@@ -1,5 +1,8 @@
 gridlayout {
+  display: grid;
   grid-template-rows: 10% 50% 30% 10%;
+  min-height: 100vh;
+
 }
 
 body {

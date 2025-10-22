@@ -1,0 +1,50 @@
+gridlayout {
+    display: grid;
+    grid-template-rows: 10% 50% 30% 10%;
+    min-height: 100vh;
+
+}
+
+/*Nav CSS*/
+nav {
+    display: grid;
+    grid-row: 1;
+    background-color: bisque;
+    align-content: right;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    list-style: none;
+    text-decoration: none;
+    height:100%;
+}
+
+.settingPhoto {
+    width: 20px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+/*Profile info*/
+section {
+    display: grid;
+    grid-row: 2;
+}
+
+.profilePhoto {
+    display: flex;
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: auto;
+    align-items: flex-start;
+}
+
+/*Display profile contents*/
+content {
+    display: grid;
+    grid-row: 3;
+}

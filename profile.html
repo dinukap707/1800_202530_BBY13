@@ -14,22 +14,22 @@
     <!-- Link to styles of your own -->
     <!-- <link rel="stylesheet" href="./styles/style.css" /> -->
     <link rel="stylesheet" href="./styles/profileStyle.css" />
-    <link rel="srcsheet" href="./src/main.js" />
 </head>
 
 <body>
     <nav>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Settings</a>
+        <ul>
+            <li>
+                <button type="button" class="btn" onclick="window.location.href = 'settings.html'"><img src="./images/setting.png"
+                        alt="Settings" class="settingPhoto"></button>
             </li>
         </ul>
     </nav>
-    <profileInfo>
-        <img src="./images/find_it.jpg" alt="Find-it" class="image" />
+    <section>
+        <img src="./images/find_it.jpg" alt="Find-it" class="profilePhoto" />
         <p>Your name</p>
         <p>User</p>
-    </profileInfo>
+    </section>
     <contents>
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
@@ -45,6 +45,14 @@
             <p> game level</p>
         </div>
     </contents>
+    <footer>
+        <a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Freepik
+            -
+            Flaticon</a>
+    </footer>
+
+    <script type="module" src="./src/main.js"></script>
+
 </body>
 
 
