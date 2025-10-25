@@ -26,10 +26,35 @@
     <!-- Call To Action Section (Button)-->
     <section class="lpbutton">
       <form class="login-form">
-        <input type="text" placeholder="Username" class="input-field" />
-        <input type="password" placeholder="Password" class="input-field" />
-        <button class="lp-btn">LOGIN</button>
+        <input
+          id="email"
+          type="email"
+          placeholder="Email"
+          class="input-field"
+          required
+        />
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          class="input-field"
+          required
+        />
+        <button id="login-btn" class="lp-btn" type="submit">LOGIN</button>
+        <button id="signup-btn" class="lp-btn" type="button">
+          CREATE ACCOUNT
+        </button>
       </form>
+
+      <p id="msg" aria-live="polite"></p>
+      <button
+        id="signout-btn"
+        class="lp-btn"
+        type="button"
+        style="display: none"
+      >
+        SIGN OUT
+      </button>
     </section>
 
     <footer class="footer">
@@ -38,9 +63,8 @@
       </div>
     </footer>
 
-    <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+    <script type="module" src="/src/login.js"></script>
 
     <!-- Link to scripts of your own -->
     <!-- <script type="module" src="./src/main.js"></script> -->
