@@ -1,16 +1,17 @@
 gridlayout {
     display: grid;
-    grid-template-rows: 10% 50% 30% 10%;
+    grid-template-rows: 7% 50% 30% 13%;
+    grid-template-columns: auto;
     min-height: 100vh;
 
 }
 
 /*Nav CSS*/
 nav {
-    display: grid;
+    display: grid,flex;
     grid-row: 1;
+    justify-content: flex-end;
     background-color: bisque;
-    align-content: right;
     margin: 0;
     padding: 0;
 }
@@ -40,7 +41,7 @@ section {
     height: auto;
     display: block;
     margin: auto;
-    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 /*Display profile contents*/

@@ -2,53 +2,62 @@
 <html lang="en">
 
 <head>
-    <title>Find-it</title>
-    <meta name="comp1800 template" content="My 1800 App" />
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Other libraries go here -->
-
-    <!-- Link to styles of your own -->
-    <!-- <link rel="stylesheet" href="./styles/style.css" /> -->
-    <link rel="stylesheet" href="./styles/profileStyle.css" />
+    <title>Find-it - Settings</title>
+    <link rel="stylesheet" href="./styles/settingsStyle.css" />
 </head>
 
 <body>
-    <nav>
-        <button type="button" onclick="toProfilePage()">Back</button>
-        <P class="justify-content-center">Settings</P>
-    </nav>
-    <search>
-        <div class="container-fluid">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </search>
-    <contents>
-        <div>
-            <p>account settings</p>
-        </div>
-        <div>
-            <p>app settings</p>
-        </div>
-        <div>
-            <p>game settings</p>
-        </div>
-        <p>LOG OUT</p>
-    </contents>
+    <div id="app-container"> 
 
+        <nav id="settings-sidebar">
+            <div class="sidebar-header">
+                <button class="back-button" onclick="window.location.href = 'profile.html'">
+                    &larr; Back to Profile
+                </button>
+                <div class="settings-title">User Settings</div>
+                <hr class="divider">
+            </div>
+
+            <ul class="settings-menu">
+                <li><a href="#account" class="active">Account Settings</a></li>
+                <li><a href="#app">App Settings</a></li>
+                <li><a href="#game">Game Settings</a></li>
+            </ul>
+
+            <div class="logout-section">
+                <p>LOG OUT</p>
+            </div>
+        </nav>
+
+        <main id="content-area">
+            
+            <header class="content-header">
+                <h2>Account Settings</h2>
+                <search>
+                    <form role="search">
+                        <input type="search" placeholder="Search" aria-label="Search" />
+                        <button type="submit">Search</button>
+                    </form>
+                </search>
+            </header>
+
+            <contents>
+                <div class="settings-group" id="account">
+                    <h3>Account Settings</h3>
+                    <p>Details about your account can go here...</p>
+                </div>
+                <div class="settings-group" id="app">
+                    <h3>App Settings</h3>
+                    <p>Options related to the Find-it app appearance and behavior.</p>
+                </div>
+                <div class="settings-group" id="game">
+                    <h3>Game Settings</h3>
+                    <p>Configuration for game-specific features.</p>
+                </div>
+            </contents>
+        </main>
+    </div>
 
     <script type="module" src="./src/main.js"></script>
-
 </body>
-
-
-
-
-
 </html>
