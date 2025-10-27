@@ -5,59 +5,55 @@
     <link rel="stylesheet" href="./styles/settingsStyle.css" />
   </head>
 
-  <body>
-    <div id="app-container">
-      <nav id="settings-sidebar">
-        <div class="sidebar-header">
-          <button
-            class="back-button"
-            onclick="window.location.href = 'profile.html'"
-          >
-            &larr; Back to Profile
-          </button>
-          <div class="settings-title">User Settings</div>
-          <hr class="divider" />
-        </div>
 
-        <ul class="settings-menu">
-          <li><a href="#account" class="active">Account Settings</a></li>
-          <li><a href="#app">App Settings</a></li>
-          <li><a href="#game">Game Settings</a></li>
-        </ul>
+<body>
 
-        <div class="logout-section">
-          <p>LOG OUT</p>
-        </div>
-      </nav>
 
-      <main id="content-area">
-        <header class="content-header">
-          <h2>Account Settings</h2>
-          <search>
-            <form role="search">
-              <input type="search" placeholder="Search" aria-label="Search" />
-              <button type="submit">Search</button>
-            </form>
-          </search>
-        </header>
+    <nav>
+        <button class="back-button" onclick="window.location.href = 'profile.html'">
+            &larr;
+        </button>
+        <h2>User Settings</h2>
+    </nav>
+    <hr>
 
-        <contents>
-          <div class="settings-group" id="account">
+
+    <header>
+        <form>
+            <input type="search" placeholder="Search" />
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+
+    <content>
+        <div class="accountsetting">
             <h3>Account Settings</h3>
-            <p>Details about your account can go here...</p>
-          </div>
-          <div class="settings-group" id="app">
+            <div class="accountSettingsContent">
+                <button>
+                    <p>hi</p>
+                    <p>hi</p>
+                </button>
+            </div>
+        </div>
+        <div>
             <h3>App Settings</h3>
             <p>Options related to the Find-it app appearance and behavior.</p>
-          </div>
-          <div class="settings-group" id="game">
+        </div>
+        <div class="settings-group" id="game">
             <h3>Game Settings</h3>
             <p>Configuration for game-specific features.</p>
-          </div>
-        </contents>
-      </main>
-    </div>
+        </div>
+    </content>
 
+
+    <footer>
+        <button>LOG OUT</button>
+    </footer>
     <script type="module" src="./src/main.js"></script>
-  </body>
+</body>
+
+
 </html>
+
+
