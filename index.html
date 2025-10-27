@@ -1,36 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App">
+  <head>
+    <title>Find-it</title>
+    <meta name="comp1800 template" content="My 1800 App" />
 
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Other libraries go here -->
 
     <!-- Link to styles of your own -->
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="srcsheet" href="./src/main.js" />
+  </head>
 
-</head>
+  <body>
+    <nav>
+      <p>FIND IT AT BCIT</p>
+    </nav>
+    <header>
+      <img src="./images/find_it.jpg" alt="Find-it" class="image" />
+    </header>
 
-<body>
+    <!-- Call To Action Section (Button)-->
+    <section class="lpbutton">
+      <form class="login-form">
+        <input
+          id="email"
+          type="email"
+          placeholder="Email"
+          class="input-field"
+          required
+        />
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          class="input-field"
+          required
+        />
+        <button id="login-btn" class="lp-btn" type="submit">LOGIN</button>
+        <button id="signup-btn" class="lp-btn" type="button">
+          CREATE ACCOUNT
+        </button>
+      </form>
 
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
+      <p id="msg" aria-live="polite"></p>
+      <button
+        id="signout-btn"
+        class="lp-btn"
+        type="button"
+        style="display: none"
+      >
+        SIGN OUT
+      </button>
+    </section>
 
+    <footer class="footer">
+      <div class="welcome-box">
+        <p>Lost something?<strong>Find-It</strong> has you covered!</p>
+      </div>
+    </footer>
 
-    <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+    <script type="module" src="/src/login.js"></script>
 
     <!-- Link to scripts of your own -->
-    <!-- <script type="module" src="./src/main.js"></script> -->
-
-</body>
-
+    <script type="module" src="./src/main.js"></script>
+  </body>
 </html>

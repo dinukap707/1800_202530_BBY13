@@ -1,1 +1,121 @@
+gridlayout {
+  display: grid;
+  grid-template-rows: 10% 50% 30% 10%;
+  min-height: 100vh;
+}
 
+body {
+  margin: 0%;
+}
+
+* {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+nav p {
+  font-weight: bold;
+  font-size: large;
+  background-color: blueviolet;
+  text-align: center;
+  margin: 0%;
+  padding: 10px;
+}
+
+nav {
+  display: grid;
+  grid-row: 1;
+}
+
+header {
+  display: grid;
+  grid-row: 2;
+}
+
+@media screen and (min-width: 430px) {
+  .image {
+    width: 400px;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+}
+
+.footer {
+  font-weight: bold;
+}
+
+/* LOGIN SECTION CSS BELOW */
+.lpbutton {
+  display: grid;
+  grid-row: 3;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.input-field {
+  width: 250px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.lp-btn {
+  width: 270px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.lp-btn:hover {
+  background-color: #0056b3;
+}
+
+/* LOGIN SECTION FINISHED */
+
+/* FOORTER SECTION CSS BELOW */
+
+.footer {
+  display: grid;
+  grid-row: 4;
+  font-weight: bold;
+}
+
+.welcome-box {
+  display: inline-block;
+  background-color: #fff;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 15px auto;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba (0, 0, 0, 0.1);
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.welcome-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba (0, 0, 0, 0.15);
+}
+
+/* FOORTER SECTION FINISHED */

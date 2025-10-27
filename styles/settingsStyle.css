@@ -1,0 +1,81 @@
+gridlayout {
+    display: grid;
+    grid-template-rows: 10% 1fr;
+}
+
+
+/*Nav design*/
+nav {
+    display: flex;
+    /* justify-content: space-around; */
+    margin: 0;
+    padding: 0;
+}
+
+
+nav>h2 {
+    display: flex, grid;
+    grid-row: 1;
+    justify-content: center;
+    font-size: bold;
+    text-align: center;
+    align-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+nav>button {
+    display: flex;
+    justify-content: flex-start;
+    max-height: 20px;
+    max-width: 100px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 0;
+    margin: 10px;
+    padding: auto;
+}
+
+
+
+
+/*Search design*/
+form {
+    display: flex;
+    justify-content: center;
+}
+
+
+form input {
+    border-radius: 5px;
+    height: 30px;
+    width: 400px;
+}
+
+
+/*Content design*/
+content>div {
+    border: solid;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+}
+
+
+content>button>p:nth-of-type(2n) {
+    color: aqua;
+}
+
+
+
+
+/*Account settings design*/
+
+
+
+
+/*App settings design*/
+
+
+/*Game settings design*/
