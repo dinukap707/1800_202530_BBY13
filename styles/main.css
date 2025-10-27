@@ -25,13 +25,7 @@ body {
   height: 44px;
   padding: 6px;
   border-radius: 10px;
-}
-
-.filter-btn img {
-  width: 28px;
-  height: 28px;
-  display: block;
-  pointer-events: none;
+  transform: translateX(8px);
 }
 
 .search-container {
