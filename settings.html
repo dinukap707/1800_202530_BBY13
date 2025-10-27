@@ -13,7 +13,7 @@
         <button class="back-button" onclick="window.location.href = 'profile.html'">
             &larr;
         </button>
-        <h2>User Settings</h2>
+        <p>User Settings</p>
     </nav>
     <hr>
 
@@ -31,14 +31,43 @@
             <h3>Account Settings</h3>
             <div class="accountSettingsContent">
                 <button>
-                    <p>hi</p>
-                    <p>hi</p>
+                    <p>Account</p>
+                    <span>></span>
+                </button>
+                <button>
+                    <p>Content/Social</p>
+                    <span>></span>
+                </button>
+                <button>
+                    <p>Data/Privicy</p>
+                    <span>></span>
                 </button>
             </div>
         </div>
         <div>
             <h3>App Settings</h3>
-            <p>Options related to the Find-it app appearance and behavior.</p>
+            <div class="appSettingsContent">
+                <button>
+                    <p>Appearance</p>
+                    <span>></span>
+                </button>
+                <button>
+                    <p>Accesability</p>
+                    <span>></span>
+                </button>
+                <button>
+                    <p>Language</p>
+                    <span>></span>
+                </button>
+                <button>
+                    <p>Notifications</p>
+                    <span>></span>
+                </button>
+                <button>
+                    <p>Attribution</p>
+                    <span>></span>
+                </button>
+            </div>
         </div>
         <div class="settings-group" id="game">
             <h3>Game Settings</h3>
@@ -48,7 +77,7 @@
 
 
     <footer>
-        <button>LOG OUT</button>
+        <button onclick="window.location.href = 'index.html'">LOG OUT</button>
     </footer>
     <script type="module" src="./src/main.js"></script>
 </body>

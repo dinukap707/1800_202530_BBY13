@@ -3,39 +3,45 @@ gridlayout {
     grid-template-rows: 10% 1fr;
 }
 
+body {
+    background-color: lightgray;
+}
 
 /*Nav design*/
 nav {
-    display: flex;
+    align-items: flex-start;
+    /* display: flex; */
+    flex-wrap: wrap;
     /* justify-content: space-around; */
     margin: 0;
     padding: 0;
 }
-
-
-nav>h2 {
-    display: flex, grid;
-    grid-row: 1;
-    justify-content: center;
-    font-size: bold;
-    text-align: center;
-    align-content: center;
-    margin: 0;
-    padding: 0;
-}
-
 
 nav>button {
     display: flex;
     justify-content: flex-start;
     max-height: 20px;
     max-width: 100px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
     border: 0;
     margin: 10px;
-    padding: auto;
+    padding: 0;
+    background-color: lightgray;
+
 }
+
+nav>p {
+    display: flex;
+    justify-content: center;
+    font-size: bold;
+    margin: 0;
+    padding: 0;
+    font-size: xx-large;
+}
+
+
+
 
 
 
@@ -44,13 +50,14 @@ nav>button {
 form {
     display: flex;
     justify-content: center;
+    margin: 40px;
 }
 
 
 form input {
     border-radius: 5px;
     height: 30px;
-    width: 400px;
+    width: 60%;
 }
 
 
@@ -60,14 +67,41 @@ content>div {
     border-radius: 10px;
     margin: 20px;
     padding: 10px;
+    justify-content: center;
 }
 
-
-content>button>p:nth-of-type(2n) {
-    color: aqua;
+content>div h3 {
+    font-size: 30px;
 }
 
+content>div div button {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 1%;
+    min-width: 97%;
+    justify-content: center;
+    border-radius: 8px;
+}
 
+content button p {
+    display: flex;
+    justify-content: flex-start;
+    color: black;
+    order: 2;
+    flex: 1 1 70%;
+    margin: auto;
+    font-size: 15px;
+}
+
+content button span {
+    display: flex;
+    justify-content: flex-end;
+    order: 2;
+    flex: 0 0 auto;
+    max-width: 20%;
+    margin: auto;
+}
 
 
 /*Account settings design*/
