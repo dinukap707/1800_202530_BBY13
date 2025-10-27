@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find-It Home Page</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <!-- Top bar -->
+    <header class="top-bar">
+      <div class="logo">
+        <img src="/images/find_it.jpg" alt="Logo" />
+      </div>
+      <div class="search-container">
+        <input type="text" placeholder="Search..." id="search-bar" />
+      </div>
+      <button id="filter-btn" class="icon-btn filter-btn" aria-label="Filter">
+        <img src="/images/filter.png" alt="Filter" />
+      </button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="item-list" id="item-list">
+      <!-- Placeholder cards for lost items -->
+      <div class="item-card">
+        <div class="item-image">Image</div>
+        <div class="item-info">
+          <p class="item-desc"><strong>Description:</strong> Placeholder</p>
+          <p class="item-time"><strong>Time:</strong> 2h ago</p>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-image">Image</div>
+        <div class="item-info">
+          <p class="item-desc"><strong>Description:</strong> Placeholder</p>
+          <p class="item-time"><strong>Time:</strong> 4h ago</p>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-image">Image</div>
+        <div class="item-info">
+          <p class="item-desc"><strong>Description:</strong> Placeholder</p>
+          <p class="item-time"><strong>Time:</strong> 1h ago</p>
+        </div>
+      </div>
+
+      <div class="item-card">
+        <div class="item-image">Image</div>
+        <div class="item-info">
+          <p class="item-desc"><strong>Description:</strong> Placeholder</p>
+          <p class="item-time"><strong>Time:</strong> 6h ago</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom bar -->
+    <footer>
+      <button id="add-btn" class="floating-btn">
+        <span>+</span>
+      </button>
+    </footer>
+  </body>
+</html>

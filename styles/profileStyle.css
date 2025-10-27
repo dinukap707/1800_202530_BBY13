@@ -1,87 +1,86 @@
 gridlayout {
-    display: grid;
-    grid-template-rows: 7% 50% 30% 13%;
-    grid-template-columns: auto;
-    min-height: 100vh;
-
+  display: grid;
+  grid-template-rows: 7% 50% 30% 13%;
+  grid-template-columns: auto;
+  min-height: 100vh;
 }
 
-body{
-    background-color: lightgray;
+body {
+  background-color: lightgray;
 }
 
 /*Nav CSS*/
 nav {
-    display: grid;
-    grid-row: 1;
-    background-color: lightyellow;
-    margin: 0;
-    padding: 10px;
+  display: grid;
+  grid-row: 1;
+  background-color: lightyellow;
+  margin: 0;
+  padding: 10px;
 }
 
 nav ul {
-    display: flex;
-    justify-content: flex-end;
-    list-style: none;
-    text-decoration: none;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  text-decoration: none;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .settingPhoto {
-    width: 20px;
-    height: auto;
-    display: block,flex;
-    margin: 0;
-    padding: 0;
-    justify-content: flex-end;
+  width: 20px;
+  height: auto;
+  display: block, flex;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
 }
 
 /*Profile info*/
 section {
-    display: grid;
-    grid-row: 2;
-    margin: 30px;
-    padding: 0;
+  display: grid;
+  grid-row: 2;
+  margin: 30px;
+  padding: 0;
 }
 
 .profilePhoto {
-    display: flex;
-    width: 100px;
-    height: auto;
-    display: block;
-    margin: 0;
-    padding: 0;
-    justify-content: flex-start;
+  display: flex;
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-start;
 }
 
 /*Display profile contents*/
 content {
-    display: grid;
-    grid-row: 3;
-    margin: 0;
-    padding: 0;
+  display: grid;
+  grid-row: 3;
+  margin: 0;
+  padding: 0;
 }
 
-form{
-    margin:20px;
-    padding: 20px;
-    border: solid;
-    border-radius: 10px;
+form {
+  margin: 20px;
+  padding: 20px;
+  border: solid;
+  border-radius: 10px;
 }
 
-content div{
-    margin: 20px;
-    padding: 20px;
-    border: solid;
-    border-radius: 10px;
+content div {
+  margin: 20px;
+  padding: 20px;
+  border: solid;
+  border-radius: 10px;
 }
 
 /*Design for footer*/
-footer{
-    display: grid;
-    grid-row: 4;
-    margin: 0;
-    padding: 0;
+footer {
+  display: grid;
+  grid-row: 4;
+  margin: 0;
+  padding: 0;
 }

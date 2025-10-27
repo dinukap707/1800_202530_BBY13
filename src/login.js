@@ -15,14 +15,13 @@ const signupBtn = document.getElementById("signup-btn");
 const signoutBtn = document.getElementById("signout-btn");
 const msg = document.getElementById("msg");
 
-// Sign in (submit)
+// Sign in
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
     await signInWithEmailAndPassword(auth, emailEl.value, passwordEl.value);
     msg.textContent = "Signed in!";
-    // Optional: redirect after login
-    // window.location.href = "/app.html";
+    window.location.href = "/main.html";
   } catch (err) {
     msg.textContent = err.message;
   }
@@ -33,8 +32,7 @@ signupBtn.addEventListener("click", async () => {
   try {
     await createUserWithEmailAndPassword(auth, emailEl.value, passwordEl.value);
     msg.textContent = "Account created & signed in!";
-    // Optional: redirect
-    // window.location.href = "/app.html";
+    window.location.href = "/main.html";
   } catch (err) {
     msg.textContent = err.message;
   }

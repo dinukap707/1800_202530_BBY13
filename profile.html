@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Find-it</title>
     <meta name="comp1800 template" content="My 1800 App" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="./styles/profileStyle.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <nav>
-        <ul>
-            <li>
-                <button type="button" class="btn" onclick="window.location.href = 'settings.html'"><img src="./images/setting.png"
-                        alt="Settings" class="settingPhoto"></button>
-            </li>
-        </ul>
+      <ul>
+        <li>
+          <button
+            type="button"
+            class="btn"
+            onclick="window.location.href = 'settings.html'"
+          >
+            <img
+              src="./images/setting.png"
+              alt="Settings"
+              class="settingPhoto"
+            />
+          </button>
+        </li>
+      </ul>
     </nav>
     <section>
-        <img src="./images/find_it.png" alt="Find-it" class="profilePhoto" />
-        <h3>Your name</h3>
-        <p>User</p>
+      <img src="./images/find_it.png" alt="Find-it" class="profilePhoto" />
+      <h3>Your name</h3>
+      <p>User</p>
     </section>
     <content>
-        <form>
-            <h3>Notificatioins</h3>
-            <input type="radio" name="notifications">
-            <label for="all">All notifications</label>
+      <form>
+        <h3>Notifications</h3>
+        <input type="radio" name="notifications" />
+        <label for="all">All notifications</label>
 
-            <input type="radio" name="notifications">
-            <label for="some">Some notifications</label>
+        <input type="radio" name="notifications" />
+        <label for="some">Some notifications</label>
 
-            <input type="radio" name="notifications" checked>
-            <label for="no">No notifications</label>
-        </form>
-        <div>
-            <h3>Game level</h3>
-        </div>
+        <input type="radio" name="notifications" checked />
+        <label for="no">No notifications</label>
+      </form>
+      <div>
+        <h3>Game level</h3>
+      </div>
     </content>
     <footer>
-        <a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Freepik
-            -
-            Flaticon</a>
+      <a
+        href="https://www.flaticon.com/free-icons/settings"
+        title="settings icons"
+        >Settings icons created by Freepik - Flaticon</a
+      >
     </footer>
 
     <script type="module" src="./src/main.js"></script>
-
-</body>
-
-
+  </body>
 </html>
