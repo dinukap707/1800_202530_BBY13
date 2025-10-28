@@ -24,6 +24,17 @@
       </button>
     </header>
 
+    <!-- Filter popup -->
+    <div id="filter-popup" class="filter-popup hidden">
+      <h3>Filter Options</h3>
+      <ul>
+        <li><button data-filter="recent">Most Recent</button></li>
+        <li><button data-filter="oldest">Oldest First</button></li>
+        <li><button data-filter="az">A - Z</button></li>
+        <li><button data-filter="za">Z - A</button></li>
+      </ul>
+    </div>
+
     <!-- Main Content Area -->
     <main class="item-list" id="item-list">
       <!-- Placeholder cards for lost items -->
@@ -66,5 +77,6 @@
         <span>+</span>
       </button>
     </footer>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
