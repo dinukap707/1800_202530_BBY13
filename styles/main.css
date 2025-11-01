@@ -98,10 +98,13 @@ body {
   height: 24px;
 }
 
-.item-list {
+.file-upload-container {
   flex: 1;
   overflow-y: auto;
-  padding: 15px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .item-card {
@@ -141,6 +144,8 @@ footer {
   width: 50px;
   height: 50px;
   font-size: 30px;
-  line-height: 50px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

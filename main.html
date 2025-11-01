@@ -36,46 +36,16 @@
     </div>
 
     <!-- Main Content Area -->
-    <main class="item-list" id="item-list">
-      <!-- Placeholder cards for lost items -->
-      <div class="item-card">
-        <div class="item-image">Image</div>
-        <div class="item-info">
-          <p class="item-desc"><strong>Description:</strong> Placeholder</p>
-          <p class="item-time"><strong>Time:</strong> 2h ago</p>
-        </div>
-      </div>
+    <div class="file-upload-container" id="item-list">
+      <input type="file" name="fileInput" accept="image/*" multiple id="fileInput"  style="display: none;" multiple>
+        <label for="fileInput" class="floating-btn">+</label>
+      </input>
 
-      <div class="item-card">
-        <div class="item-image">Image</div>
-        <div class="item-info">
-          <p class="item-desc"><strong>Description:</strong> Placeholder</p>
-          <p class="item-time"><strong>Time:</strong> 4h ago</p>
-        </div>
-      </div>
-
-      <div class="item-card">
-        <div class="item-image">Image</div>
-        <div class="item-info">
-          <p class="item-desc"><strong>Description:</strong> Placeholder</p>
-          <p class="item-time"><strong>Time:</strong> 1h ago</p>
-        </div>
-      </div>
-
-      <div class="item-card">
-        <div class="item-image">Image</div>
-        <div class="item-info">
-          <p class="item-desc"><strong>Description:</strong> Placeholder</p>
-          <p class="item-time"><strong>Time:</strong> 6h ago</p>
-        </div>
-      </div>
-    </main>
+      <div id="uploadedFilesContainer"> </div>
+    </div>
 
     <!-- Bottom bar -->
     <footer>
-      <button id="add-btn" class="floating-btn">
-        <span>+</span>
-      </button>
     </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
