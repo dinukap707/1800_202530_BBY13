@@ -1,94 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Find-it</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <title>Find-it</title>
-  <meta name="comp1800 template" content="My 1800 App" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles/profileStyle.css" />
+    <link rel="stylesheet" href="./styles/stickyFooter.css" />
+  </head>
 
-  <link rel="stylesheet" href="./styles/profileStyle.css" />
-  <link rel="stylesheet" href="./styles/stickyFooter.css" />
+  <body>
+    <nav>
+      <img src="./images/find_it.png" alt="Find-it" class="findItPhoto" />
+    </nav>
+    <section>
+      <img src="./images/blackProfile.png" alt="Find-it" class="profilePhoto" />
+      <h3>Your name</h3>
+      <p>Username</p>
+      <button
+        type="button"
+        class="settingBtn"
+        onclick="window.location.href = 'settings.html'"
+      >
+        <img src="./images/setting.png" alt="Settings" class="settingPhoto" />
+        <p>Settings</p>
+      </button>
+    </section>
+    <content>
+      <div class="card">
+        <h2 class="title">Notifications</h2>
 
-</head>
+        <!-- Segmented Control Container (Uses simplified class) -->
+        <div class="segmented-control">
+          <!-- 1. Development Option -->
+          <input
+            type="radio"
+            id="env_dev"
+            name="environment"
+            value="development"
+            class="radio-input"
+          />
+          <label for="env_dev" class="button-segment"> All </label>
 
-<body>
-  <nav>
-    <img src="./images/find_it.png" alt="Find-it" class="findItPhoto" />
-  </nav>
-  <section>
-    <img src="./images/blackProfile.png" alt="Find-it" class="profilePhoto" />
-    <h3>Your name</h3>
-    <p>Username</p>
-    <button type="button" class="settingBtn" onclick="window.location.href = 'settings.html'">
-      <img src="./images/setting.png" alt="Settings" class="settingPhoto" /><p>Settings</p>
-    </button>
-  </section>
-  <content>
-    <div class="card">
-      <h2 class="title">Notifications</h2>
+          <!-- 2. Staging Option -->
+          <input
+            type="radio"
+            id="env_stage"
+            name="environment"
+            value="staging"
+            class="radio-input"
+          />
+          <label for="env_stage" class="button-segment"> Some </label>
 
-      <!-- Segmented Control Container (Uses simplified class) -->
-      <div class="segmented-control">
-
-        <!-- 1. Development Option -->
-        <input type="radio" id="env_dev" name="environment" value="development" class="radio-input" />
-        <label for="env_dev" class="button-segment">
-          All
-        </label>
-
-        <!-- 2. Staging Option -->
-        <input type="radio" id="env_stage" name="environment" value="staging" class="radio-input" />
-        <label for="env_stage" class="button-segment">
-          Some
-        </label>
-
-        <!-- 3. Production Option -->
-        <input type="radio" id="env_prod" name="environment" value="production" class="radio-input" checked />
-        <label for="env_prod" class="button-segment">
-          None
-        </label>
-
+          <!-- 3. Production Option -->
+          <input
+            type="radio"
+            id="env_prod"
+            name="environment"
+            value="production"
+            class="radio-input"
+            checked
+          />
+          <label for="env_prod" class="button-segment"> None </label>
+        </div>
       </div>
-    </div>
 
-    <script>
-      const controlContainer = document.querySelector('.segmented-control');
-      const selectionMessage = document.getElementById('selectionMessage');
+      <script>
+        const controlContainer = document.querySelector(".segmented-control");
+        const selectionMessage = document.getElementById("selectionMessage");
 
-      function updateSelectionMessage(value) {
-        selectionMessage.innerHTML = `Selected: <span class="highlight">${value.charAt(0).toUpperCase() + value.slice(1)}</span>`;
-      }
-
-      controlContainer.addEventListener('change', (event) => {
-        if (event.target.name === 'environment') {
-          updateSelectionMessage(event.target.value);
+        function updateSelectionMessage(value) {
+          selectionMessage.innerHTML = `Selected: <span class="highlight">${
+            value.charAt(0).toUpperCase() + value.slice(1)
+          }</span>`;
         }
-      });
 
-      window.onload = () => {
-        const checkedRadio = document.querySelector('input[name="environment"]:checked');
-        if (checkedRadio) {
-          updateSelectionMessage(checkedRadio.value);
-        }
-      };
-    </script>
-    <div class="card">
-      <h3>Game level</h3>
-    </div>
-  </content>
-  <footer>
-    <button type="button" onclick="window.location.href = 'main.html'"><img id="homeImg" src="./images/yellowHome.png"
-        alt="Home" /></button>
-    <button type="button" onclick="window.location.href = 'settings.html'"><img id="plusImg"
-        src="./images/yellowPlus.png" alt="Home" /></button>
-    <button type="button" onclick="window.location.href = 'settings.html'"><img id="messageImg"
-        src="./images/yellowMessages.png" alt="Home" /></button>
-    <button type="button" onclick="window.location.href = 'profile.html'"><img id="userImg"
-        src="./images/yellowUser.png" alt="Home" /></button>
-  </footer>
+        controlContainer.addEventListener("change", (event) => {
+          if (event.target.name === "environment") {
+            updateSelectionMessage(event.target.value);
+          }
+        });
 
-  <script type="module" src="./src/main.js"></script>
-</body>
+        window.onload = () => {
+          const checkedRadio = document.querySelector(
+            'input[name="environment"]:checked'
+          );
+          if (checkedRadio) {
+            updateSelectionMessage(checkedRadio.value);
+          }
+        };
+      </script>
+      <div class="card">
+        <h3>Game level</h3>
+      </div>
+    </content>
+    <footer>
+      <button type="button" onclick="window.location.href = 'main.html'">
+        <img id="homeImg" src="./images/yellowHome.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'settings.html'">
+        <img id="plusImg" src="./images/yellowPlus.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'settings.html'">
+        <img id="messageImg" src="./images/yellowMessages.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'profile.html'">
+        <img id="userImg" src="./images/yellowUser.png" alt="Home" />
+      </button>
+    </footer>
 
+    <script type="module" src="./src/main.js"></script>
+  </body>
 </html>
