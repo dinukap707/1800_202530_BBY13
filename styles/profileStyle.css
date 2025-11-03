@@ -1,3 +1,9 @@
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
 gridlayout {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
@@ -11,7 +17,7 @@ body {
   background-color: #fff000;
   margin: 0;
   padding: 0;
-  font-family: 'Archivo Narrow', Arial, Helvetica, sans-serif;
+  font-family: "Archivo Narrow", Arial, Helvetica, sans-serif;
 }
 
 /*Nav CSS*/
@@ -93,9 +99,8 @@ section button p {
             min-height: 100vh;
             background-color: #f3f4f6; /* Light gray background */
 
-
 .card {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -103,7 +108,8 @@ section button p {
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .title {
@@ -157,7 +163,7 @@ section button p {
   background-color: #f3f4f6;
 }
 
-.radio-input:checked+.button-segment {
+.radio-input:checked + .button-segment {
   background-color: #8736aa;
   /* Primary Indigo */
   color: #ffffff;
@@ -165,10 +171,9 @@ section button p {
 }
 
 /* Keep the selected background consistent on hover */
-.radio-input:checked+.button-segment:hover {
+.radio-input:checked + .button-segment:hover {
   background-color: #8736aa;
 }
-
 
 /*Design for footer*/
 /* footer {

@@ -10,15 +10,17 @@
     <!-- Top bar -->
     <header class="top-bar">
       <button
-        onclick="window.location.href='profile.html'"
         class="icon-btn logo-btn"
         aria-label="Logo"
+        onclick="window.location.href='profile.html'"
       >
         <img src="/images/find_it.png" alt="Logo" />
       </button>
+
       <div class="search-container">
         <input type="text" placeholder="Search..." id="search-bar" />
       </div>
+
       <button id="filter-btn" class="icon-btn filter-btn" aria-label="Filter">
         <img src="/images/filter.png" alt="Filter" />
       </button>
@@ -36,16 +38,35 @@
     </div>
 
     <!-- Main Content Area -->
-    <div class="file-upload-container" id="item-list">
-      <input type="file" name="fileInput" accept="image/*" multiple id="fileInput"  style="display: none;" multiple>
-        <label for="fileInput" class="floating-btn">+</label>
-      </input>
-
-      <div id="uploadedFilesContainer"> </div>
-    </div>
 
     <!-- Bottom bar -->
     <footer>
+      <button type="button" onclick="window.location.href = 'main.html'">
+        <img id="homeImg" src="./images/yellowHome.png" alt="Home" />
+      </button>
+      <button type="button" class="plus-btn">
+        <div id="upload-section">
+          <!-- reuse your existing upload input + label -->
+          <input
+            type="file"
+            name="fileInput"
+            accept="image/*"
+            multiple
+            id="fileInput"
+            style="display: none"
+            multiple
+          />
+          <label for="fileInput" class="floating-btn">
+            <img src="./images/yellowPlus.png" alt="Add" />
+          </label>
+        </div>
+      </button>
+      <button type="button" onclick="window.location.href = 'settings.html'">
+        <img id="messageImg" src="./images/yellowMessages.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'profile.html'">
+        <img id="userImg" src="./images/yellowUser.png" alt="Home" />
+      </button>
     </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
