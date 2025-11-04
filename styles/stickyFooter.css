@@ -10,14 +10,19 @@ footer {
     display: flex;
 }
 
-footer>button {
+footer button {
     background-color: #000000;
     border: none;
+    border-radius: 100%;
     padding: 0;
     margin: 0;
 }
 
-footer>button>img{
+footer button img{
     height: auto;
     width: 65%;
+}
+
+footer button:hover{
+    background-color: #800080;
 }
