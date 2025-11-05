@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create Account – Find-it</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Same CSS as login page -->
+    <link rel="stylesheet" href="./styles/signup.css" />
+  </head>
+
+  <body>
+    <header>
+      <img src="./images/find_it.jpg" alt="Find-it" class="image" />
+    </header>
+
+    <section class="lpbutton">
+      <form class="signup-form">
+        <input
+          id="fullName"
+          type="text"
+          placeholder="Full Name"
+          class="input-field"
+          required
+        />
+        <input
+          id="username"
+          type="text"
+          placeholder="Username"
+          class="input-field"
+          required
+        />
+        <input
+          id="email"
+          type="email"
+          placeholder="Email"
+          class="input-field"
+          required
+        />
+        <input
+          id="phone"
+          type="tel"
+          placeholder="Phone Number"
+          class="input-field"
+        />
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          class="input-field"
+          required
+        />
+
+        <button id="create-account-btn" class="lp-btn" type="submit">
+          CREATE ACCOUNT
+        </button>
+        <button
+          type="button"
+          class="lp-btn"
+          onclick="window.location.href='index.html'"
+        >
+          BACK TO LOGIN
+        </button>
+      </form>
+
+      <p id="signup-msg" aria-live="polite"></p>
+    </section>
+
+    <footer class="footer">
+      <div class="welcome-box">
+        <p>Lost something?<strong>Find-It</strong> has you covered!</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/signup.js"></script>
+  </body>
+</html>

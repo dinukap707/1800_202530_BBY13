@@ -7,7 +7,7 @@ import {
   signOut,
 } from "firebase/auth";
 
-// --- DOM references ---
+// DOM References
 const form = document.querySelector(".login-form");
 const emailEl = document.getElementById("email");
 const passwordEl = document.getElementById("password");
@@ -16,13 +16,11 @@ const signupBtn = document.getElementById("signup-btn");
 const signoutBtn = document.getElementById("signout-btn");
 const msg = document.getElementById("msg");
 
-// --- Helpers ---
+// Helpers
 function setBusy(busy) {
-  if (!loginBtn || !signupBtn) return;
+  if (!loginBtn) return;
   loginBtn.disabled = busy;
-  signupBtn.disabled = busy;
   loginBtn.textContent = busy ? "Logging in…" : "LOGIN";
-  signupBtn.textContent = busy ? "Creating…" : "CREATE ACCOUNT";
 }
 
 function prettyError(err) {
@@ -38,8 +36,7 @@ function prettyError(err) {
   return map[err?.code] || err?.message || "Something went wrong.";
 }
 
-// --- Auth state ---
-// Simply updates status text; no auto redirect
+// Authentication State
 onAuthStateChanged(auth, (user) => {
   if (user) {
     if (signoutBtn) signoutBtn.style.display = "inline-block";
@@ -50,7 +47,7 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// --- Sign in ---
+// Sign In
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
   setBusy(true);
@@ -63,7 +60,7 @@ form?.addEventListener("submit", async (e) => {
 
     await signInWithEmailAndPassword(auth, email, pass);
     if (msg) msg.textContent = "Signed in!";
-    // ✅ redirect only after a successful login button click
+    // go to main after successful login
     window.location.href = "/main.html";
   } catch (err) {
     if (msg) msg.textContent = prettyError(err);
@@ -72,32 +69,13 @@ form?.addEventListener("submit", async (e) => {
   }
 });
 
-// --- Create account ---
-signupBtn?.addEventListener("click", async () => {
-  setBusy(true);
-  try {
-    const email = (emailEl?.value || "").trim();
-    const pass = passwordEl?.value || "";
-
-    if (!email) throw { code: "auth/missing-email" };
-    if (!pass) throw { code: "auth/missing-password" };
-
-    await createUserWithEmailAndPassword(auth, email, pass);
-    if (msg) msg.textContent = "Account created & signed in!";
-    // ✅ redirect to main after creating account
-    window.location.href = "/main.html";
-  } catch (err) {
-    if (msg) msg.textContent = prettyError(err);
-  } finally {
-    setBusy(false);
-  }
+// Create Account (Sprint 2 added to go to new page here)
+signupBtn?.addEventListener("click", () => {
+  window.location.href = "/signup.html";
 });
 
-// --- Sign out ---
-// This is used on your settings page: it signs out and returns to login.
+// Sign Out
 signoutBtn?.addEventListener("click", async () => {
   await signOut(auth);
   if (msg) msg.textContent = "Signed out";
-  // return to login screen
-  window.location.href = "/index.html";
 });
