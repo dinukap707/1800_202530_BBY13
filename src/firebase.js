@@ -5,6 +5,7 @@ import {
   setPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 // ⬇️ Replace with your config from Firebase Console
 const firebaseConfig = {
@@ -17,7 +18,8 @@ const firebaseConfig = {
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
-// Keep users signed in across reloads (change to session if you prefer)
-await setPersistence(auth, browserLocalPersistence);
+setPersistence(auth, browserLocalPersistence);
 
-export { app, auth };
+const db = getFirestore(app);
+
+export { app, auth, db };

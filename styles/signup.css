@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --yellow: #fff000;
+  --purple: #8a00ff;
+  --black: #000;
+  --ink: #111;
+  --line: #cfcfcf;
+  --radius: 10px;
+
+  --top-gap: clamp(50px, 14vh, 130px);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Archivo Narrow", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+  background: #fff000;
+  color: var(--ink);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  display: grid;
+  place-items: center;
+  padding-top: var(--top-gap);
+}
+
+header .image {
+  width: 140px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+}
+
+.lpbutton {
+  display: grid;
+  justify-items: center;
+  padding: 16px 16px 0;
+}
+
+.signup-form {
+  width: min(380px, 92vw);
+  display: grid;
+  gap: 12px;
+  background: #ffffff;
+  padding: 20px 20px 22px;
+  border-radius: 16px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+}
+
+.signup-form h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.signup-form .subtitle {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+.input-field {
+  height: 40px;
+  width: 100%;
+  border: 2px solid #000;
+  border-radius: var(--radius);
+  background: #fff;
+  color: #000;
+  padding: 0 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: #444;
+}
+
+.input-row {
+  display: grid;
+  gap: 8px;
+}
+
+.lp-btn {
+  height: 42px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border: 0;
+  cursor: pointer;
+}
+
+#create-account-btn.lp-btn {
+  background: var(--purple);
+  color: #fff;
+}
+
+.back-btn {
+  background: #ffffff;
+  color: #000;
+  border: 2px solid #000;
+}
+
+.actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 380px) {
+  .actions-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+#signup-msg {
+  min-height: 18px;
+  font-size: 12px;
+  color: #111;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.footer {
+  display: grid;
+  place-items: center;
+  padding: 18px 0 24px;
+  background: transparent;
+  border: 0;
+}
+
+.footer .welcome-box {
+  font-size: 14px;
+  color: #111;
+}
+
+.footer .welcome-box strong {
+  font-weight: 700;
+}
