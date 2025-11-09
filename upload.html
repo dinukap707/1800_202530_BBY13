@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find-It Upload Page</title>
+    <script type="module" src="upload.js"></script>
+    <link rel="stylesheet" href="upload.css" />
+  </head>
+  <body>
+    <h1>New Post</h1>
+      <br />
+      <div class="box">
+        <button class="add-button">+</button>
+      </div>
+      <br/>
+    <div class="container">
+
+      <form>
+        <div class="form-group item">
+          <label for="exampleFormControlInput1">Item</label>
+          <br>
+          <input
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <br />
+        
+        <div class="form-group description">
+          <label for="exampleFormControlInput1">Description</label>
+          <br>
+          <input
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <br />
+
+        <div class="form-group hashtags">
+          <label for="exampleFormControlInput1">Hashtags</label>
+          <br>
+          <input
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <br />
+        <div class="form-group locations">
+          <label for="exampleFormControlInput1">Location</label>
+          <br>
+          <input
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <br />
+        <div class="clear form-group">
+        <button
+          type="button"
+          class="btn btn-lg btn-primary pull-right"
+          id="clearBtn"
+        >
+          Clear
+        </button>
+        </div>
+        <div class="submit form-group">
+        <button
+          type="button"
+          class="btn btn-lg btn-primary pull-right"
+          id="submitBtn"
+        >
+          Post
+        </button>
+    </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
