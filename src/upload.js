@@ -100,8 +100,6 @@ submitBtn.addEventListener('click', (e) => {
     // Save the updated array back to localStorage
     localStorage.setItem('posts', JSON.stringify(posts));
     
-    alert('Post created successfully!');
-    
     // Redirect to the feed page
     window.location.href = 'main.html';
 });
