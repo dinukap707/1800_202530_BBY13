@@ -172,3 +172,43 @@ main,
 .page {
   padding-bottom: 84px;
 }
+
+#uploadedFilesContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allows posts to wrap to the next line */
+    justify-content: center; /* Center the posts */
+    gap: 15px; /* Adds space between posts */
+    padding: 20px;
+    /* Ensures content is not hidden by the bottom nav bar */
+    padding-bottom: 100px; 
+}
+
+.post-card {
+    width: 180px; 
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.post-card img {
+    width: 100%;
+    height: 150px; 
+    object-fit: cover; /* Crops the image to fit */
+    display: block;
+}
+
+.post-card h3 {
+    margin: 10px 0 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.post-card p {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+}

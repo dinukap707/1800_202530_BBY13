@@ -33,7 +33,6 @@ filterPopup.querySelectorAll("button").forEach((btn) => {
   });
 });
 
-
 // THE STUFF BELOW IS STRICTLY FOR UPLOADING PHOTOS
 
 document.addEventListener('DOMContentLoaded', () => {
