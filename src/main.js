@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add the finished card to the page
         postsContainer.appendChild(postCard);
     });
+
+    localStorage.removeItem('posts');
 });
 
 /**
