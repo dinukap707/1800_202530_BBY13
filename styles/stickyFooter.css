@@ -1,28 +1,28 @@
 footer {
-    background-color: #000000;
-    height: 8%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    bottom: 0;
-    justify-content: space-around;
-    display: flex;
+  background-color: #000000;
+  height: 8%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  justify-content: space-around;
+  display: flex;
 }
 
 footer button {
-    background-color: #000000;
-    border: none;
-    border-radius: 100%;
-    padding: 0;
-    margin: 0;
+  background-color: #000000;
+  border: none;
+  border-radius: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-footer button img{
-    height: auto;
-    width: 65%;
+footer button img {
+  height: auto;
+  width: 65%;
 }
 
-footer button:hover{
-    background-color: #800080;
+footer button:hover {
+  background-color: #800080;
 }
