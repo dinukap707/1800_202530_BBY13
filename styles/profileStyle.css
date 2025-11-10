@@ -203,3 +203,87 @@ section button p {
 .floating-btn img {
   display: inline-flex;
 } */
+
+/* ===== Profile cards common tweaks ===== */
+content {
+  display: block;
+  padding: 0 0 90px; /* room above the fixed footer */
+}
+
+.card {
+  max-width: 380px; /* keep cards nicely narrow, like a phone */
+  margin: 1rem auto;
+}
+
+/* Simple row for "Active Quests" label + value */
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.card-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.card-value {
+  font-weight: 700;
+  color: #8736aa; /* same purple as your segmented control */
+}
+
+/* Purple primary buttons (View Active Quests / View Progress) */
+.primary-btn {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.4rem;
+  border: none;
+  background-color: #8736aa;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.primary-btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* ===== Quest Level pill toggle ===== */
+.level-card {
+  margin-top: 0.5rem;
+}
+
+.level-toggle {
+  display: flex;
+  gap: 4px;
+  margin: 0.6rem 0 0.9rem;
+}
+
+.level-pill {
+  flex: 1;
+  padding: 0.4rem 0.3rem;
+  border-radius: 0;
+  border: none;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Active level (purple, like the mock) */
+.level-pill--active {
+  background-color: #8736aa;
+}
+
+/* Optional hover effect */
+.level-pill:hover {
+  filter: brightness(1.1);
+}
