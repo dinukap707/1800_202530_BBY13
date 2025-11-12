@@ -5,7 +5,6 @@ import {
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
-const userNameElement = document.getElementById('userName');
 const displayName = document.getElementById('realName');
 
 // Use an observer to get the current user's UID when the auth state changes
@@ -21,7 +20,6 @@ onAuthStateChanged(auth, (user) => {
     } else {
         // User is signed out
         console.log("No user is signed in.");
-        userNameElement.textContent = "Username";
         displayName.textContent = "Your Name";
         // You might want to redirect them to a login page here
     }
@@ -38,22 +36,18 @@ async function fetchUserData(userId) {
         if (docSnap.exists()) {
             const userData = docSnap.data();
             const fullName = userData.fullName;
-            const userName = userData.username;
 
             console.log("User data from Firestore:", userData);
             // Update the HTML element
-            userNameElement.textContent = `${userName}`;
             displayName.textContent = `${fullName}`;
 
 
         } else {
             console.log("No user data found in Firestore for UID:", userId);
-            userNameElement.textContent = "Username";
             displayName.textContent = "Your Name";
         }
     } catch (error) {
         console.error("Error fetching user data:", error);
-        userNameElement.textContent = "Username";
         displayName.textContent = "Your Name";
     }
 }

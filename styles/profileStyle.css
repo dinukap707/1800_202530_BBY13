@@ -91,15 +91,6 @@ section button p {
   padding: 0;
 }
 
-/*Display profile contents*/
-/* body {
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f3f4f6; /* Light gray background */
-
 .card {
   font-family: "Inter", sans-serif;
   justify-content: center;
@@ -176,33 +167,6 @@ section button p {
   background-color: #8736aa;
 }
 
-/*Design for footer*/
-/* footer {
-  display: grid;
-  grid-row: 4;
-  margin: 0;
-  padding: 0;
-  background-color: #000000;
-}
-
-.floating-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: black;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 30px;
-  line-height: 50px;
-  cursor: pointer;
-}
-
-.floating-btn img {
-  display: inline-flex;
-} */
 
 /* ===== Profile cards common tweaks ===== */
 content {
@@ -287,3 +251,20 @@ content {
 .level-pill:hover {
   filter: brightness(1.1);
 }
+
+/*SIGN OUT BUTTON*/
+
+.Sobutton{
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+#SObutton{
+  background-color: #000000;
+  color: #fff000;
+  width: 80%;
+  height: auto;
+  align-items: center;
+}
+
