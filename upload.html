@@ -15,13 +15,14 @@
       <br/>
     <div class="container">
 
-      <form>
+      <form id="new-post-form">
         <div class="form-group item">
           <label for="exampleFormControlInput1">Item</label>
           <br>
           <input
             type="text"
             class="form-control"
+            id="item" required
           />
         </div>
         <br />
@@ -32,6 +33,7 @@
           <input
             type="text"
             class="form-control"
+            id="description"
           />
         </div>
         <br />
@@ -42,6 +44,7 @@
           <input
             type="text"
             class="form-control"
+            id="hashtags"
           />
         </div>
         <br />
@@ -51,6 +54,7 @@
           <input
             type="text"
             class="form-control"
+            id="location" required
           />
         </div>
         <br />
@@ -76,5 +80,6 @@
       </form>
     </div>
    <script type="module" src="/src/upload.js"></script>
+   <script type="module" src="/src/locationData.js"></script>
   </body>
 </html>

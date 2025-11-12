@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Map – Find-It</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Mapbox GL CSS -->
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/stickyFooter.css" />
+    <style>
+      /* Fill the screen but leave room for your fixed footer */
+      #map {
+        position: fixed;
+        inset: 0 0 84px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <!-- Same footer, but with a Map icon -->
+    <footer>
+      <button type="button" onclick="window.location.href='main.html'">
+        <img src="./images/yellowHome.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href='upload.html'">
+        <img src="./images/yellowPlus.png" alt="New Post" />
+      </button>
+      <button type="button" onclick="window.location.href='map.html'">
+        <img src="./images/yellowMap.png" alt="Map" />
+      </button>
+      <button type="button" onclick="window.location.href='profile.html'">
+        <img src="./images/yellowUser.png" alt="Profile" />
+      </button>
+    </footer>
+
+    <script type="module" src="/src/map.js"></script>
+  </body>
+</html>
