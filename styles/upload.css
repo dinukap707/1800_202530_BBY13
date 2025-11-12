@@ -21,8 +21,16 @@ body {
 
 h1{
     margin: 5%;
-    grid-column: 1 / span 2;
-    grid-row: 1 / span 1;
+    position: absolute;
+    justify-self: center;
+    
+}
+
+.back-button{
+    background-color: #fff000;
+    border: none;
+    position: absolute;
+    padding: 3%;
 }
 
 .box{
