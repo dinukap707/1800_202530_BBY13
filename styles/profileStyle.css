@@ -192,6 +192,13 @@ content {
   font-size: 0.95rem;
 }
 
+.card-label-quest{
+  margin-top: 0;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
 .card-value {
   font-weight: 700;
   color: #8736aa; /* same purple as your segmented control */
@@ -220,6 +227,7 @@ content {
 /* ===== Quest Level pill toggle ===== */
 .level-card {
   margin-top: 0.5rem;
+  margin-bottom: 0;
 }
 
 .level-toggle {
@@ -255,16 +263,19 @@ content {
 /*SIGN OUT BUTTON*/
 
 .Sobutton{
-  align-items: center;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
 
 #SObutton{
+  text-align: center;
   background-color: #000000;
   color: #fff000;
   width: 80%;
   height: auto;
+  font-size: 30px;
   align-items: center;
+  margin-top: 0;
 }
 
