@@ -1,0 +1,124 @@
+html {
+  max-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  max-height: 100%;
+  max-width: 100%;
+  background-color: #fff000;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+  font-family: "Archivo Narrow", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+}
+
+/*Nav CSS*/
+nav {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  grid-template-rows: auto;
+  width: 100%;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.findItPhoto {
+  display: grid;
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  padding: 0;
+  justify-self: center;
+  align-self: center;
+  height: auto;
+  width: 90%;
+}
+
+.profilePhoto {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1 /span 3;
+  width: 50%;
+  height: auto;
+  display: block;
+  justify-self: center;
+  align-self: center;
+  padding: 0;
+  margin-top: 40px;
+}
+
+#title,
+#realName,
+#levelTitle,
+#level {
+  grid-column: 1;
+  width: 100%;
+  text-align: left;
+  padding: 0 10px;
+  padding-left: 40px;
+  margin: 0;
+}
+
+#title {
+  font-weight: 1200;
+  font-size: 40px;
+}
+
+#levelTitle {
+  display: grid;
+  grid-column: 1;
+}
+
+/*CARD TO HOLD ACTIVE QUESTS*/
+content {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding-left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  width: 80%;
+  height: auto;
+  margin: 10px 0;
+  text-align: left;
+  background-color: #f3f4f6;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card h4 {
+  font-weight: 900;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+#numOfCon {
+  display: grid;
+  margin: 0;
+  grid-template-columns: 75% 25%;
+}
+
+#numOfCon span {
+  display: grid;
+  grid-column: 2;
+  color: #800080;
+  font-size: 20px;
+}
+
+#numOfCon p {
+  display: grid;
+  grid-column: 1;
+  padding-left: 8px;
+  margin: 2px;
+  font-size: 18px;
+}

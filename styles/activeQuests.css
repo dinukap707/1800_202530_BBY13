@@ -4,13 +4,6 @@ body {
   overflow-x: hidden;
 }
 
-gridlayout {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: auto;
-  min-height: 100vh;
-}
-
 body {
   height: 100%;
   width: 100%;
@@ -22,105 +15,62 @@ body {
 }
 
 /*Nav CSS*/
-nav {
-  display: flex;
-  justify-content: flex-end;
-  width: 49%;
-}
-
 .findItPhoto {
   margin: 0;
   padding: 0;
   height: auto;
-  width: 100%;
-}
-
-/*Profile info*/
-section {
-  display: grid;
-  grid-row: 1;
-  /* display: flex; */
-  /* justify-content: flex-start; */
-  margin-left: 1rem;
-  padding: 0;
-  width: 49%;
+  width: 60%;
+  float: right;
 }
 
 .profilePhoto {
-  display: flex;
-  width: 70%;
+  margin-left: 30px;
+  margin-top: 70px;
+  width: 25%;
   height: auto;
-  /* display: block; */
+  display: block;
   padding: 0;
-  justify-content: flex-start;
+  float: left;
+  margin-bottom: 20px;
 }
 
-section h3 {
-  margin-left: 0;
-  margin-bottom: 0;
-}
-
-section p {
-  margin: 0;
+#title,#realName{
   margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 40px;
+  font-size: 21px;
+  float: left;
+  text-align: left;
 }
 
-section button {
+#title{
+  font-weight: 1200;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+/*CARD TO HOLD ACTIVE QUESTS*/
+content{
   display: flex;
-  background-color: #fff000;
-  padding: 0;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  width: 30%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding-left: 0;
+  width: 100%;
   height: auto;
-  border: none;
 }
-
-.settingPhoto {
-  display: flex;
-  height: auto;
-  width: 20%;
-  justify-content: flex-start;
-  margin-right: 5px;
-  padding: 0;
-}
-
-section button p {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: auto;
-  margin-bottom: auto;
-  padding: 0;
-}
-
 .card {
-  font-family: "Inter", sans-serif;
+  width: 80%;
+  height: auto;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #f3f4f6;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0.5rem;
+  margin: 0;
   border-radius: 1rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.title {
-  font-size: 20PX;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.card button{
-  align-items: center;
-  border: none;
-  background-color: #800080;
-  color: #ffffff;
-  width: 90%;
-  font-size: 20px;
-  padding: 2%;
 }
 

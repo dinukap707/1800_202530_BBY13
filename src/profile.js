@@ -7,6 +7,8 @@ import { doc, getDoc } from "firebase/firestore";
 
 const userNameElement = document.getElementById('userName');
 const displayName = document.getElementById('realName');
+const activeQuests = document.getElementById('active-quests-count');
+
 
 // Use an observer to get the current user's UID when the auth state changes
 onAuthStateChanged(auth, (user) => {
@@ -23,6 +25,7 @@ onAuthStateChanged(auth, (user) => {
         console.log("No user is signed in.");
         userNameElement.textContent = "Username";
         displayName.textContent = "Your Name";
+        activeQuests.textContent = "0";
         // You might want to redirect them to a login page here
     }
 });
@@ -39,21 +42,25 @@ async function fetchUserData(userId) {
             const userData = docSnap.data();
             const fullName = userData.fullName;
             const userName = userData.username;
+            const points = userData.points;
 
             console.log("User data from Firestore:", userData);
             // Update the HTML element
             userNameElement.textContent = `${userName}`;
             displayName.textContent = `${fullName}`;
+            activeQuests.textContent = `${points}`;
 
 
         } else {
             console.log("No user data found in Firestore for UID:", userId);
             userNameElement.textContent = "Username";
             displayName.textContent = "Your Name";
+            activeQuests.textContent = "0";
         }
     } catch (error) {
         console.error("Error fetching user data:", error);
         userNameElement.textContent = "Username";
         displayName.textContent = "Your Name";
+        activeQuests.textContent = "0";
     }
 }

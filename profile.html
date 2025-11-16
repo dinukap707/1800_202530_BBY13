@@ -29,7 +29,7 @@
         class="settingBtn"
         onclick="window.location.href = 'settings.html'"
       >
-        <img src="./images/setting.png" alt="Settings" class="settingPhoto" />
+        <img src="./images/blackSettings.png" alt="Settings" class="settingPhoto" />
         <p>Settings</p>
       </button>
     </section>
@@ -39,17 +39,17 @@
         <div class="card-row">
           <span class="card-label">Active Quests</span>
           <!-- placeholder count for now, we can hook this to Firestore later -->
-          <span class="card-value" id="active-quests-count">2</span>
+          <span class="card-value" id="active-quests-count"></span>
         </div>
 
-        <button class="primary-btn" id="view-quests-btn">
+        <button onclick="window.location.href = 'activeQuests.html'" class="primary-btn" id="view-quests-btn">
           VIEW ACTIVE QUESTS
         </button>
       </div>
 
       <!-- Quest Level card -->
       <div class="card level-card">
-        <p class="card-label">Quest Level</p>
+        <p class="card-label-quest">Quest Level</p>
 
         <div class="level-toggle">
           <button class="level-pill" data-level="rookie">ROOKIE</button>
@@ -59,14 +59,14 @@
           <button class="level-pill" data-level="ace">ACE</button>
         </div>
 
-        <button class="primary-btn" id="view-progress-btn">
+        <button onclick="window.location.href = 'questeProgress.html'" class="primary-btn" id="view-progress-btn">
           VIEW PROGRESS
         </button>
       </div>
     </content>
 
     <div class="Sobutton">
-      <button id="SObutton">Sign Out</button>
+      <button id="SObutton" onclick="window.location.href = 'index.html'">Sign Out</button>
     </div>
 
     <footer>
