@@ -1,8 +1,8 @@
-# Elmo Hikes
+# Find it
 
 
 ## Overview
-Elmo Hikes is a client-side JavaScript web application that helps users discover and explore hiking trails. The app displays a curated list of hike trails, each with details such as name, location, difficulty, and an image. Users can browse the list and mark their favorite trails for easy access later.
+Find it is a client-side JavaScript web application that helps BCIT staff and students find and post lost items. The app displays a curated list of lost items, each with details such as name, location, discription, and an image. Users can browse the list of items and filter them through hashtags.
 
 Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user favorites.
 
@@ -11,10 +11,10 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 
 ## Features
 
-- Browse a list of curated hiking trails with images and details
-- Mark and unmark trails as favorites
-- View a personalized list of favorite hikes
-- Responsive design for desktop and mobile
+- Post a lost item.
+- View posted lost items.
+- Contact other users through email.
+- Points gained for using the app reaching different levels.
 
 ---
 
