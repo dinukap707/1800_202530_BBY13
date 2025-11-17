@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Find-it</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./styles/profileView.css" />
+    <link rel="stylesheet" href="./styles/stickyFooter.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/profile.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <img src="./images/find_it.png" alt="Find-it" class="findItPhoto" />
+    </nav>
+    <section>
+      <img src="./images/blackProfile.png" alt="Find-it" class="profilePhoto" />
+      <h3 id="realName"></h3>
+      <p id="userName"></p>
+      <p id="email">email</p>
+    </section>
+    <content>
+
+      <!-- Quest Level card -->
+      <div class="card level-card">
+        <p class="card-label-quest">Quest Level</p>
+
+        <div class="level-toggle">
+          <button class="level-pill" data-level="rookie">ROOKIE</button>
+          <button class="level-pill level-pill--active" data-level="scout">
+            SCOUT
+          </button>
+          <button class="level-pill" data-level="ace">ACE</button>
+        </div>
+      </div>
+    </content>
+
+
+    <footer>
+      <button type="button" onclick="window.location.href = 'main.html'">
+        <img id="homeImg" src="./images/yellowHome.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'upload.html'">
+        <img id="plusImg" src="./images/yellowPlus.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href='map.html'">
+        <img src="./images/yellowMap.png" alt="Map" />
+      <button type="button" onclick="window.location.href = 'profile.html'">
+        <img id="userImg" src="./images/yellowUser.png" alt="Home" />
+      </button>
+    </footer>
+  </body>
+</html>

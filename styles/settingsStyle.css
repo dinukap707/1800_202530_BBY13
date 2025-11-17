@@ -21,26 +21,24 @@ body {
 
 /*Nav design*/
 nav {
-    display: flex;
-    justify-content: space-around;
     align-items: center;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
 
 nav>button {
-    text-align: left;
-    font-size: 100px;
-    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 1.7%;
     border: 0;
-    margin: 10px;
+    margin: auto;
     padding: 0;
     background-color: #fff000;
-
 }
 
 nav>p {
-    flex-grow: 1;
+    position: relative;
     text-align: center;
     font-size: bold;
     margin: 0;
