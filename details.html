@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find-It Home Page</title>
+    <link rel="stylesheet" href="/styles/details.css" />
+    <link rel="stylesheet" href="./styles/stickyFooter.css" />
+  </head>
+  <body>
+    <!-- Top bar -->
+    <button class="back-button" onclick="window.location.href = 'main.html'"> 
+      <img src="/images/blackArrow.png" alt="back button" class="back-button-img">
+    </button>
+    <h2 class="header">Post Details</h2>
+    <!-- Main Content Area -->
+    <div id="postDetailsContainer" class="page">
+    </div>
+    <!-- Bottom bar -->
+    <footer>
+      <button type="button" onclick="window.location.href = 'main.html'">
+        <img id="homeImg" src="./images/yellowHome.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'upload.html'">
+        
+          <label for="fileInput" class="floating-btn">
+            <img src="./images/yellowPlus.png" alt="Add" />
+          </label>
+        </div>
+      </button>
+      <button type="button" onclick="window.location.href='map.html'">
+  <img src="./images/yellowMap.png" alt="Map" />
+</button>
+      <button type="button" onclick="window.location.href = 'profile.html'">
+        <img id="userImg" src="./images/yellowUser.png" alt="Home" />
+      </button>
+    </footer>
+    <script type="module" src="/src/details.js"></script>
+  </body>
+</html>
