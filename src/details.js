@@ -122,11 +122,8 @@ function timeAgo(date) {
 
 // /src/details.js (or wherever your post loading logic is)
 
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+// import { doc, getDoc, getFirestore } from "firebase/firestore";
 // Assume you've initialized Firebase/Firestore correctly
-
-const db = getFirestore();
-
 // Helper to get the post ID from the URL (as used in previous response)
 function getPostIdFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
