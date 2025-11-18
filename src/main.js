@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     postsContainer.innerHTML = ''; 
 
     // Loop through each post and create the HTML for it
-    posts.forEach(post => {
+    posts.forEach((post, index) => {
         // Create the main card element
         const postCard = document.createElement('div');
         // You MUST add styling for "post-card" in your test.css file
@@ -75,17 +75,31 @@ document.addEventListener('DOMContentLoaded', () => {
         // 3. Create the time text
         const postTime = document.createElement('p');
         postTime.textContent = `Posted ${timeAgo(new Date(post.time))}`;
+
+        // 4. Create the new button 🚀
+        const detailsButton = document.createElement('button');
+        detailsButton.textContent = 'View Details'; 
+        detailsButton.className = 'details-button'; 
+
+        detailsButton.onclick = function() {
+          window.location.href = `details.html?postId=${index}`;
+        };
+
+        const footerDiv = document.createElement('div');
+        footerDiv.className = 'post-footer';
+        footerDiv.appendChild(postTime);
+        footerDiv.appendChild(detailsButton);
         
         // Add all new elements to the card
         postCard.appendChild(imageElement);
         postCard.appendChild(itemName);
-        postCard.appendChild(postTime);
+        postCard.appendChild(footerDiv);
         
         // Add the finished card to the page
         postsContainer.appendChild(postCard);
     });
 
-    localStorage.removeItem('posts');
+//localStorage.removeItem('posts');
 });
 
 /**
