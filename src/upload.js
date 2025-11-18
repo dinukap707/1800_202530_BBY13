@@ -5,6 +5,7 @@ import { awardForNewPost } from "./userStats.js";
 
 // Since this is a module, we can safely query for elements
 // Get all the necessary elements from upload.html
+
 const uploadBox = document.querySelector(".box");
 const addButton = document.querySelector(".add-button");
 const itemInput = document.querySelector(".form-group.item input");
@@ -93,7 +94,7 @@ submitBtn.addEventListener("click", async (e) => {
     description: descriptionInput.value,
     hashtags: hashtagsInput.value,
     location: locationInput.value,
-    time: new Date().toISOString(), // Store the current time
+    time: new Date().toISOString(),
   };
 
   // Retrieve existing posts from localStorage, or create an empty array
