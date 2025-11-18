@@ -1,66 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Find-it</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <title>Find-it</title>
-  <meta name="comp1800 template" content="My 1800 App" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles/questProgress.css" />
+    <link rel="stylesheet" href="./styles/stickyFooter.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="./styles/questProgress.css" />
-  <link rel="stylesheet" href="./styles/stickyFooter.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600&display=swap" rel="stylesheet" />
+    <script type="module" src="./src/activeQuests.js"></script>
+  </head>
 
-  <script type="module" src="./src/activeQuests.js"></script>
-
-</head>
-
-<body>
-  <nav>
-    <img src="./images/find_it.png" alt="Find-it" class="findItPhoto" />  
-    <img src="./images/blackProfile.png" alt="Find-it" class="profilePhoto" />
-    <h3 id="realName"></h3>
-    <h3 id="title">Progress</h3>
-    <p id="levelTitle">Level:<span id="level">god</span></p>
+  <body>
+    <nav>
+      <img src="./images/find_it.png" alt="Find-it" class="findItPhoto" />
+      <img src="./images/blackProfile.png" alt="Find-it" class="profilePhoto" />
+      <h3 id="realName"></h3>
+      <h3 id="title">Progress</h3>
+      <p id="levelTitle">Level:<span id="level">god</span></p>
     </nav>
-  <content>
-    <div class="card" id="numOfCon">
+    <content>
+      <div class="card" id="progress-card">
+        <div id="progress-bar-outer">
+          <div id="progress-bar-inner"></div>
+        </div>
+        <p><span id="progress-points">0</span>/100</p>
+      </div>
+
+      <div class="card" id="numOfCon">
         <h4>Number of contribution:</h4>
+
         <p>Quests Published</p>
-        <span>0</span>
+        <span id="qp-count">0</span>
+
         <p>Contacts Made</p>
-        <span>0</span>
+        <span id="contacts-count">0</span>
+
         <p>My Items Found</p>
-        <span>0</span>
+        <span id="myitems-count">0</span>
+
         <p>Quests Completed</p>
-        <span>0</span>
-        <div>
-
-        </div>  
-    </div>
-    <div class="card">
+        <span id="qc-count">0</span>
+      </div>
+      <div class="card">
         <h4>Completed quests:</h4>
+      </div>
+    </content>
 
-    </div>
-  </content>
-
-  <footer>
-    <button type="button" onclick="window.location.href = 'main.html'">
-      <img id="homeImg" src="./images/yellowHome.png" alt="Home" />
-    </button>
-    <button type="button" onclick="window.location.href = 'settings.html'">
-      <img id="plusImg" src="./images/yellowPlus.png" alt="Home" />
-    </button>
-    <button type="button" onclick="window.location.href = 'direct_messages.html'">
-      <img id="messageImg" src="./images/yellowMap.png" alt="Home" />
-    </button>
-    <button type="button" onclick="window.location.href = 'profile.html'">
-      <img id="userImg" src="./images/yellowUser.png" alt="Home" />
-    </button>
-  </footer>
-
-
-</body>
-
+    <footer>
+      <button type="button" onclick="window.location.href = 'main.html'">
+        <img id="homeImg" src="./images/yellowHome.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'settings.html'">
+        <img id="plusImg" src="./images/yellowPlus.png" alt="Home" />
+      </button>
+      <button
+        type="button"
+        onclick="window.location.href = 'direct_messages.html'"
+      >
+        <img id="messageImg" src="./images/yellowMap.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'profile.html'">
+        <img id="userImg" src="./images/yellowUser.png" alt="Home" />
+      </button>
+    </footer>
+  </body>
 </html>
