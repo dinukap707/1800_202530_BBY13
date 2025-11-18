@@ -64,3 +64,52 @@ function timeAgo(date) {
     
     return Math.floor(seconds) + " seconds ago";
 }
+
+
+// /src/details.js (or wherever your post loading logic is)
+
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+// Assume you've initialized Firebase/Firestore correctly
+
+const db = getFirestore();
+
+// Helper to get the post ID from the URL (as used in previous response)
+function getPostIdFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('postId');
+}
+
+async function loadPostDetailsAndSetupProfileLink() {
+  const postId = getPostIdFromUrl();
+  if (!postId) return; // Exit if no post ID is found
+
+  try {
+    const postRef = doc(db, "posts", postId);
+    const postSnap = await getDoc(postRef);
+
+    if (postSnap.exists()) {
+      const postData = postSnap.data();
+      const authorUid = postData.userId; // Get the UID of the author
+
+      // --- CRITICAL STEP ---
+      // 1. Get the Profile button element
+      const profileButton = document.getElementById('profile-btn');
+
+      // 2. Update the button's action to redirect to profileView.html 
+      //    and pass the author's UID as a query parameter (uid)
+      profileButton.onclick = () => {
+        window.location.href = `profileView.html?uid=${userId}`;
+      };
+
+      // (Continue with displaying post content here...)
+      // Example: document.getElementById('postDetailsContainer').innerHTML = ... 
+      
+    } else {
+      console.log("Post not found.");
+    }
+  } catch (error) {
+    console.error("Error loading post details:", error);
+  }
+}
+
+loadPostDetailsAndSetupProfileLink();
