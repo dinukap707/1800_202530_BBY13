@@ -43,7 +43,7 @@ nav {
   border: none;
 }
 
-#backArrow{
+#backArrow {
   margin: 20px;
   width: 20%;
 }
@@ -51,7 +51,7 @@ nav {
 .profilePhoto {
   display: grid;
   grid-column: 1;
-  grid-row: 1 /span 3;
+  grid-row: 1 / span 3;
   width: 50%;
   height: auto;
   display: block;
@@ -71,13 +71,13 @@ nav {
   margin: 0;
 }
 
-#title{
+#title {
   font-size: 30px;
   font-weight: 600px;
 }
 
 /*CARD TO HOLD ACTIVE QUESTS*/
-content{
+content {
   display: flex;
   text-align: center;
   align-items: center;
@@ -100,4 +100,3 @@ content{
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
-

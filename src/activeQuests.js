@@ -1,58 +1,44 @@
-// main.js (updated)
+// activeQuests.js – ONLY for Active Quests page
 import { db, auth } from "./firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
-const displayName = document.getElementById("realName");
+const realNameEl = document.getElementById("realName");
+const itemsLostEl = document.getElementById("items-lost-count");
+const itemsFoundEl = document.getElementById("items-found-count");
 
+function safeSetText(el, value) {
+  if (el) el.textContent = String(value);
+}
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    fetchUserData(user.uid);
-  } else {
-    console.log("No user is signed in.");
-    displayName.textContent = "Your Name";
-    updateLevelUI("rookie");
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    safeSetText(realNameEl, "Your Name");
+    safeSetText(itemsLostEl, 0);
+    safeSetText(itemsFoundEl, 0);
+    return;
   }
-});
-
-// Use an observer to get the current user's UID when the auth state changes
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in
-    const uid = user.uid;
-    console.log("Current user UID:", uid);
-
-    // Now call a function to fetch their specific data using the UID
-    fetchUserData(uid);
-  } else {
-    // User is signed out
-    console.log("No user is signed in.");
-    displayName.textContent = "Your Name";
-    // You might want to redirect them to a login page here
-  }
-});
-
-// Function to fetch data from Firestore using the user's UID
-async function fetchUserData(userId) {
-  // Use the provided userId (the UID) as the document ID
-  const docRef = doc(db, "users", userId);
 
   try {
-    const docSnap = await getDoc(docRef);
+    const userRef = doc(db, "users", user.uid);
+    const snap = await getDoc(userRef);
 
-    if (docSnap.exists()) {
-      const userData = docSnap.data();
-      const fullName = userData.fullName;
-
-      displayName.textContent = fullName;
-
-    } else {
-      console.log("No user data found in Firestore for UID:", userId);
-      displayName.textContent = "Your Name";
+    if (!snap.exists()) {
+      safeSetText(realNameEl, "Your Name");
+      safeSetText(itemsLostEl, 0);
+      safeSetText(itemsFoundEl, 0);
+      return;
     }
-  } catch (error) {
-    console.error("Error fetching user data:", error);
-    displayName.textContent = "Your Name";
+
+    const data = snap.data();
+
+    safeSetText(realNameEl, data.fullName || "Your Name");
+    safeSetText(itemsLostEl, data.questsPublished ?? 0); // items I lost (posted)
+    safeSetText(itemsFoundEl, data.myItemsFound ?? 0); // items I found
+  } catch (err) {
+    console.error("Error loading Active Quests data:", err);
+    safeSetText(realNameEl, "Your Name");
+    safeSetText(itemsLostEl, 0);
+    safeSetText(itemsFoundEl, 0);
   }
-}
+});

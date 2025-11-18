@@ -20,15 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  if (posts.length > postIndex && postIndex >= 0) {
-    const post = posts[postIndex];
-
-    // START OF MISSING HTML INJECTION CODE
-    container.innerHTML = `
+  // START OF MISSING HTML INJECTION CODE
+  container.innerHTML = `
         <div class="detailed-post-card">
             <img src="${post.image}" alt="${post.item}" class="detailed-image">
             <div class="detailed-content">
-                <h1>${post.item}</h1>
+                   <h1>${post.item || "Untitled Item"}</h1>
                 <p class="posted-time">Posted ${timeAgo(
                   new Date(post.time)
                 )}</p>
@@ -42,19 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h3>Hashtags</h3>
                 <p>${post.hashtags || "None"}</p>
 
-                <button id="contactBtn" class="contact-button">Contact</button>
             </div>
         </div>
     `;
-    // END OF MISSING HTML INJECTION CODE
-  } else {
-    container.innerHTML = "<h2>Post Not Found</h2>";
-  }
-});
+  // END OF MISSING HTML INJECTION CODE
 
-// Contact Helper
-document.getElementById("contactBtn").addEventListener("click", () => {
-  handleContact(post);
+  // THIS SHOULD CONNECT THE CONTACT BTN FROM DETAILS.HTML
+  const contactBtn = document.getElementById("contact-btn");
+  if (contactBtn) {
+    contactBtn.addEventListener("click", () => handleContact(post));
+  }
 });
 
 /*
@@ -69,17 +63,17 @@ async function handleContact(post) {
   }
 
   const finderUid = user.uid;
-  const ownerUid = post.ownerUid; // From upload.js
+  const ownerUid = post.ownerUid; // PULLS FROM UPLOAD.JS
 
   try {
-    // Finder gets the rewards
+    // THIS ADDS TO THE FINDERS SCORE
     await updateDoc(doc(db, "users", finderUid), {
       points: increment(1),
       contactsMade: increment(1),
       activeQuests: increment(1),
     });
 
-    // Owner gets active quest (only if not same user)
+    // OWNER ACTIVATES QUEST ON THEIR PAGE
     if (ownerUid && ownerUid !== finderUid) {
       await updateDoc(doc(db, "users", ownerUid), {
         activeQuests: increment(1),
@@ -87,12 +81,9 @@ async function handleContact(post) {
     }
 
     alert("Contact started! Quest added to your profile.");
-
-    // OPTIONAL: redirect to your DM page
-    window.location.href = "direct_messages.html";
   } catch (error) {
-    console.error("Failed to start quest:", error);
-    alert("Error updating quest data.");
+    console.error("Error updating Firestore:", error);
+    alert("Failed to start quest.");
   }
 }
 
@@ -119,15 +110,15 @@ function timeAgo(date) {
   return Math.floor(seconds) + " seconds ago";
 }
 
-
+//THIS STUFF BELOW WAS FROM SPRINT 4, JORJA ADDED PART, NOT NEEDED BUT MIGHT NEED AFTER POSTS GET IMPLENTED ON LIVE SERVER
 // /src/details.js (or wherever your post loading logic is)
 
 // import { doc, getDoc, getFirestore } from "firebase/firestore";
 // Assume you've initialized Firebase/Firestore correctly
 // Helper to get the post ID from the URL (as used in previous response)
-function getPostIdFromUrl() {
+/** function getPostIdFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get('postId');
+  return urlParams.get("postId");
 }
 
 async function loadPostDetailsAndSetupProfileLink() {
@@ -144,17 +135,16 @@ async function loadPostDetailsAndSetupProfileLink() {
 
       // --- CRITICAL STEP ---
       // 1. Get the Profile button element
-      const profileButton = document.getElementById('profile-btn');
+      const profileButton = document.getElementById("profile-btn");
 
-      // 2. Update the button's action to redirect to profileView.html 
+      // 2. Update the button's action to redirect to profileView.html
       //    and pass the author's UID as a query parameter (uid)
       profileButton.onclick = () => {
         window.location.href = `profileView.html?uid=${userId}`;
       };
 
       // (Continue with displaying post content here...)
-      // Example: document.getElementById('postDetailsContainer').innerHTML = ... 
-      
+      // Example: document.getElementById('postDetailsContainer').innerHTML = ...
     } else {
       console.log("Post not found.");
     }
@@ -163,4 +153,4 @@ async function loadPostDetailsAndSetupProfileLink() {
   }
 }
 
-loadPostDetailsAndSetupProfileLink();
+loadPostDetailsAndSetupProfileLink(); */

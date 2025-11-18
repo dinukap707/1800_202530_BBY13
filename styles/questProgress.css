@@ -44,7 +44,7 @@ nav {
   border: none;
 }
 
-#backArrow{
+#backArrow {
   margin: 20px;
   width: 20%;
 }
@@ -52,7 +52,7 @@ nav {
 .profilePhoto {
   display: grid;
   grid-column: 1;
-  grid-row: 1 /span 3;
+  grid-row: 1 / span 3;
   width: 50%;
   height: auto;
   display: block;
@@ -80,15 +80,15 @@ nav {
 }
 
 #levelTitle {
-  display: grid,inline;
+  display: grid, inline;
   grid-column: 1;
   /* font-weight: 600;
   font-size: 30px;
   color: #800080; */
 }
 
-#level{
-    font-weight: 600;
+#level {
+  font-weight: 600;
   font-size: 30px;
   color: #800080;
 }
