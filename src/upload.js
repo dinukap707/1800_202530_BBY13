@@ -88,12 +88,17 @@ submitBtn.addEventListener("click", async (e) => {
   }
 
   // Create an object to store all the post data
+  const user = auth.currentUser;
+
   const postData = {
+    id: crypto.randomUUID(), // unique ID is assigned
+    ownerUid: user ? user.uid : null,
+
     image: uploadedImageBase64,
-    item: itemInput.value,
-    description: descriptionInput.value,
-    hashtags: hashtagsInput.value,
-    location: locationInput.value,
+    item: itemInput.value.trim(),
+    description: descriptionInput.value.trim(),
+    hashtags: hashtagsInput.value.trim(),
+    location: locationInput.value.trim(),
     time: new Date().toISOString(),
   };
 

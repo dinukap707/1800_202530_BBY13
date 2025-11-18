@@ -76,8 +76,7 @@ async function fetchUserData(userId) {
       userNameElement.textContent = userName;
       displayName.textContent = fullName;
 
-      // option A: show active quests as published - completed
-      const activeCount = Math.max(0, questsPublished - questsCompleted);
+      const activeCount = userData.activeQuests || 0;
       activeQuests.textContent = activeCount.toString();
 
       const levelKey = getLevelFromPoints(points);

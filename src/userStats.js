@@ -13,15 +13,20 @@ export async function ensureUserStats(user) {
   const snap = await getDoc(userRef);
 
   if (!snap.exists()) {
-    await setDoc(userRef, {
-      fullName: user.displayName || "",
-      username: user.email?.split("@")[0] || "",
-      points: 0,
-      questsPublished: 0,
-      contactsMade: 0,
-      myItemsFound: 0,
-      questsCompleted: 0,
-    });
+    await setDoc(
+      userRef,
+      {
+        fullName: user.displayName || "",
+        username: user.email?.split("@")[0] || "",
+        points: 0,
+        questsPublished: 0,
+        contactsMade: 0,
+        myItemsFound: 0,
+        questsCompleted: 0,
+        activeQuests: 0,
+      },
+      { merge: true }
+    );
   }
 }
 

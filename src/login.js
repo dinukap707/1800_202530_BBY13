@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+import { ensureUserStats } from "./userStats.js";
 
 // DOM References
 const form = document.querySelector(".login-form");
@@ -78,4 +79,11 @@ signupBtn?.addEventListener("click", () => {
 signoutBtn?.addEventListener("click", async () => {
   await signOut(auth);
   if (msg) msg.textContent = "Signed out";
+});
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    await ensureUserStats(user);
+    // then load pages etc.
+  }
 });
