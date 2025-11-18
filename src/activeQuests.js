@@ -4,31 +4,17 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
 const displayName = document.getElementById("realName");
-const levelSpan = document.getElementById("level");
-const qpSpan = document.getElementById("qp-count");
-const contactsSpan = document.getElementById("contacts-count");
-const myItemsSpan = document.getElementById("myitems-count");
-const qcSpan = document.getElementById("qc-count");
-const progressPointsSpan = document.getElementById("progress-points");
-const progressBarInner = document.getElementById("progress-bar-inner");
 
-function getLevelFromPoints(points) {
-  if (points >= 100) return "SCOUT"; // tweak this range later if needed
-  if (points >= 50) return "SCOUT";
-  return "ROOKIE";
-}
 
-// Map points to 0–100 bar
-function updateProgressBar(points) {
-  if (!progressBarInner || !progressPointsSpan) return;
-
-  const maxForBar = 100;
-  const clamped = Math.min(points, maxForBar);
-  const percent = (clamped / maxForBar) * 100;
-
-  progressBarInner.style.width = `${percent}%`;
-  progressPointsSpan.textContent = clamped.toString();
-}
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    fetchUserData(user.uid);
+  } else {
+    console.log("No user is signed in.");
+    displayName.textContent = "Your Name";
+    updateLevelUI("rookie");
+  }
+});
 
 // Use an observer to get the current user's UID when the auth state changes
 onAuthStateChanged(auth, (user) => {
@@ -43,12 +29,7 @@ onAuthStateChanged(auth, (user) => {
     // User is signed out
     console.log("No user is signed in.");
     displayName.textContent = "Your Name";
-    levelSpan.textContent = "ROOKIE";
-    qpSpan.textContent = "0";
-    contactsSpan.textContent = "0";
-    myItemsSpan.textContent = "0";
-    qcSpan.textContent = "0";
-    updateProgressBar(0);
+    // You might want to redirect them to a login page here
   }
 });
 
@@ -61,34 +42,17 @@ async function fetchUserData(userId) {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      const data = docSnap.data();
-      const fullName = data.fullName || "Your Name";
-      const points = data.points || 0;
+      const userData = docSnap.data();
+      const fullName = userData.fullName;
 
       displayName.textContent = fullName;
 
-      const level = getLevelFromPoints(points);
-      levelSpan.textContent = level;
-
-      qpSpan.textContent = (data.questsPublished || 0).toString();
-      contactsSpan.textContent = (data.contactsMade || 0).toString();
-      myItemsSpan.textContent = (data.myItemsFound || 0).toString();
-      qcSpan.textContent = (data.questsCompleted || 0).toString();
-
-      updateProgressBar(points);
     } else {
+      console.log("No user data found in Firestore for UID:", userId);
       displayName.textContent = "Your Name";
-      levelSpan.textContent = "ROOKIE";
-      qpSpan.textContent = "0";
-      contactsSpan.textContent = "0";
-      myItemsSpan.textContent = "0";
-      qcSpan.textContent = "0";
-      updateProgressBar(0);
     }
-  } catch (err) {
-    console.error("Error loading quest progress:", err);
+  } catch (error) {
+    console.error("Error fetching user data:", error);
     displayName.textContent = "Your Name";
-    levelSpan.textContent = "ROOKIE";
-    updateProgressBar(0);
   }
 }
