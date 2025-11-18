@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     postsContainer.innerHTML = ''; 
 
     // Loop through each post and create the HTML for it
-    posts.forEach(post => {
+    posts.forEach((post, index) => {
         // Create the main card element
         const postCard = document.createElement('div');
         // You MUST add styling for "post-card" in your test.css file
