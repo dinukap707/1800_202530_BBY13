@@ -1,3 +1,11 @@
+// --- Code for upload.js ---
+
+import { auth } from "./firebase.js";
+import { awardForNewPost } from "./userStats.js";
+
+// Since this is a module, we can safely query for elements
+// Get all the necessary elements from upload.html
+
 const uploadBox = document.querySelector(".box");
 const addButton = document.querySelector(".add-button");
 const itemInput = document.querySelector(".form-group.item input");
@@ -70,7 +78,7 @@ clearBtn.addEventListener("click", (e) => {
 });
 
 // 5. Add click listener for the 'Post' button
-submitBtn.addEventListener("click", (e) => {
+submitBtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
   // Check if an image has been uploaded
@@ -80,13 +88,18 @@ submitBtn.addEventListener("click", (e) => {
   }
 
   // Create an object to store all the post data
+  const user = auth.currentUser;
+
   const postData = {
+    id: crypto.randomUUID(), // unique ID is assigned
+    ownerUid: user ? user.uid : null,
+
     image: uploadedImageBase64,
-    item: itemInput.value,
-    description: descriptionInput.value,
-    hashtags: hashtagsInput.value,
-    location: locationInput.value,
-    time: new Date().toISOString(), 
+    item: itemInput.value.trim(),
+    description: descriptionInput.value.trim(),
+    hashtags: hashtagsInput.value.trim(),
+    location: locationInput.value.trim(),
+    time: new Date().toISOString(),
   };
 
   // Retrieve existing posts from localStorage, or create an empty array
@@ -98,13 +111,18 @@ submitBtn.addEventListener("click", (e) => {
   // Save the updated array back to localStorage
   localStorage.setItem("posts", JSON.stringify(posts));
 
-  const GO_TIMEOUT_MS = 3000; // optional safety net
-
-  let redirected = false;
-  function go() {
-    if (!redirected) {
-      redirected = true;
-      window.location.href = "main.html";
+  try {
+    const user = auth.currentUser;
+    if (user) {
+      // +1 point & +1 questsPublished
+      await awardForNewPost(user.uid);
     }
+  } catch (err) {
+    console.error("Error updating user stats for new post:", err);
   }
+
+  // redirect back to main
+  go();
+  // safety net: in case something blocks, force redirect
+  setTimeout(go, GO_TIMEOUT_MS);
 });

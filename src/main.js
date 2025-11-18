@@ -1,5 +1,3 @@
-
-
 const filterBtn = document.getElementById("filter-btn");
 const filterPopup = document.getElementById("filter-popup");
 
@@ -35,72 +33,75 @@ filterPopup.querySelectorAll("button").forEach((btn) => {
 
 // THE STUFF BELOW IS STRICTLY FOR UPLOADING PHOTOS
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Find the container where posts should go
-    const postsContainer = document.getElementById('uploadedFilesContainer');
-    
-    if (!postsContainer) {
-        console.error('Error: Could not find #uploadedFilesContainer on the page.');
-        return; 
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  // Find the container where posts should go
+  const postsContainer = document.getElementById("uploadedFilesContainer");
 
-    // Get all posts from localStorage
-    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+  if (!postsContainer) {
+    console.error("Error: Could not find #uploadedFilesContainer on the page.");
+    return;
+  }
 
-    // Check if there are any posts
-    if (posts.length === 0) {
-        postsContainer.innerHTML = '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
-        return;
-    }
+  // Get all posts from localStorage
+  const posts = JSON.parse(localStorage.getItem("posts")) || [];
 
-    // Clear the container
-    postsContainer.innerHTML = ''; 
+  // Check if there are any posts
+  if (posts.length === 0) {
+    postsContainer.innerHTML =
+      '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
+    return;
+  }
 
-    // Loop through each post and create the HTML for it
-    posts.forEach((post, index) => {
-        // Create the main card element
-        const postCard = document.createElement('div');
-        // You MUST add styling for "post-card" in your test.css file
-        postCard.className = 'post-card'; 
+  // Clear the container
+  postsContainer.innerHTML = "";
 
-        // 1. Create the image
-        const imageElement = document.createElement('img');
-        imageElement.src = post.image; // This is the Base64 image data
-        imageElement.alt = post.item;
-        
-        // 2. Create the item name
-        const itemName = document.createElement('h3');
-        itemName.textContent = post.item || 'Untitled Item';
-        
-        // 3. Create the time text
-        const postTime = document.createElement('p');
-        postTime.textContent = `Posted ${timeAgo(new Date(post.time))}`;
-        
-        // 4. Create the new button 🚀
-        const detailsButton = document.createElement('button');
-        detailsButton.textContent = 'View Details'; 
-        detailsButton.className = 'details-button'; 
+  // Loop through each post and create the HTML for it
+  posts.forEach((post, index) => {
+    // Create the main card element
+    const postCard = document.createElement("div");
+    // You MUST add styling for "post-card" in your test.css file
+    postCard.className = "post-card";
 
-        detailsButton.onclick = function() {
-          window.location.href = `details.html?postId=${index}`;
-        };
+    // Assigns Post ID to recall for points
+    postCard.dataset.postId = post.id;
 
-        const footerDiv = document.createElement('div');
-        footerDiv.className = 'post-footer';
-        footerDiv.appendChild(postTime);
-        footerDiv.appendChild(detailsButton);
-        
-        // Add all new elements to the card
-        postCard.appendChild(imageElement);
-        postCard.appendChild(itemName);
-        postCard.appendChild(footerDiv);
+    // 1. Create the image
+    const imageElement = document.createElement("img");
+    imageElement.src = post.image; // This is the Base64 image data
+    imageElement.alt = post.item;
 
-        
-        // Add the finished card to the page
-        postsContainer.appendChild(postCard);
-    });
+    // 2. Create the item name
+    const itemName = document.createElement("h3");
+    itemName.textContent = post.item || "Untitled Item";
 
-    //localStorage.removeItem('posts');
+    // 3. Create the time text
+    const postTime = document.createElement("p");
+    postTime.textContent = `Posted ${timeAgo(new Date(post.time))}`;
+
+    // 4. Create the new button 🚀
+    const detailsButton = document.createElement("button");
+    detailsButton.textContent = "View Details";
+    detailsButton.className = "details-button";
+
+    detailsButton.onclick = function () {
+      window.location.href = `details.html?postId=${post.id}`;
+    };
+
+    const footerDiv = document.createElement("div");
+    footerDiv.className = "post-footer";
+    footerDiv.appendChild(postTime);
+    footerDiv.appendChild(detailsButton);
+
+    // Add all new elements to the card
+    postCard.appendChild(imageElement);
+    postCard.appendChild(itemName);
+    postCard.appendChild(footerDiv);
+
+    // Add the finished card to the page
+    postsContainer.appendChild(postCard);
+  });
+
+  //localStorage.removeItem('posts');
 });
 
 /**
@@ -108,22 +109,22 @@ document.addEventListener('DOMContentLoaded', () => {
  * e.g., "5 minutes ago"
  */
 function timeAgo(date) {
-    const seconds = Math.floor((new Date() - date) / 1000);
-    let interval = seconds / 31536000;
-    if (interval > 1) return Math.floor(interval) + " years ago";
-    
-    interval = seconds / 2592000;
-    if (interval > 1) return Math.floor(interval) + " months ago";
-    
-    interval = seconds / 86400;
-    if (interval > 1) return Math.floor(interval) + " days ago";
-    
-    interval = seconds / 3600;
-    if (interval > 1) return Math.floor(interval) + " hours ago";
-    
-    interval = seconds / 60;
-    if (interval > 1) return Math.floor(interval) + " minutes ago";
-    
-    return Math.floor(seconds) + " seconds ago";
+  const seconds = Math.floor((new Date() - date) / 1000);
+  let interval = seconds / 31536000;
+  if (interval > 1) return Math.floor(interval) + " years ago";
+
+  interval = seconds / 2592000;
+  if (interval > 1) return Math.floor(interval) + " months ago";
+
+  interval = seconds / 86400;
+  if (interval > 1) return Math.floor(interval) + " days ago";
+
+  interval = seconds / 3600;
+  if (interval > 1) return Math.floor(interval) + " hours ago";
+
+  interval = seconds / 60;
+  if (interval > 1) return Math.floor(interval) + " minutes ago";
+
+  return Math.floor(seconds) + " seconds ago";
 }
 // THE STUFF ABOVE IS STRICTLY FOR UPLOADING PHOTOS
