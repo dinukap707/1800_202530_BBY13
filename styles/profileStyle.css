@@ -21,18 +21,25 @@ body {
     Arial, sans-serif;
 }
 
+
+
+
+
 /*Nav CSS*/
 nav {
   display: flex;
   justify-content: flex-end;
 }
-
 .findItPhoto {
   margin: 0;
   padding: 0;
   height: auto;
   width: 60%;
 }
+
+
+
+
 
 /*Profile info*/
 section {
@@ -42,7 +49,6 @@ section {
   padding: 0;
   width: 100%;
 }
-
 .profilePhoto {
   display: flex;
   width: 15%;
@@ -51,17 +57,14 @@ section {
   padding: 0;
   justify-content: flex-start;
 }
-
 section h3 {
   margin-left: 0;
   margin-bottom: 0;
 }
-
 section p {
   margin: 0;
   margin-top: 0;
 }
-
 section button {
   display: flex;
   background-color: #fff000;
@@ -72,7 +75,6 @@ section button {
   height: auto;
   border: none;
 }
-
 .settingPhoto {
   display: flex;
   height: auto;
@@ -81,22 +83,25 @@ section button {
   margin-right: 5px;
   padding: 0;
 }
-
 section button p {
   display: flex;
   justify-content: flex-start;
   margin-top: auto;
   margin-bottom: auto;
-  /* margin-left: 1px; */
   padding: 0;
 }
 
+
+
+
+
+/*CONTENT DESIGN*/
 .card {
-  font-family: "Inter", sans-serif;
   justify-content: center;
   align-items: center;
-  text-align: center;
   background-color: #f3f4f6;
+  width: 85%;
+  height: auto;
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
@@ -104,15 +109,16 @@ section button p {
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+
+
+
+
+
 .title {
   font-size: 1rem;
-  /* text-2xl */
   font-weight: 600;
-  /* font-semibold */
   color: #1f2937;
-  /* text-gray-800 */
   margin-bottom: 1.5rem;
-  /* mb-6 */
   text-align: center;
 }
 
@@ -186,23 +192,65 @@ content {
   align-items: center;
   margin-bottom: 0.75rem;
 }
-
 .card-label {
   font-weight: 600;
   font-size: 0.95rem;
 }
-
 .card-label-quest{
   margin-top: 0;
   text-align: left;
   font-weight: 600;
   font-size: 1rem;
 }
-
 .card-value {
   font-weight: 700;
   color: #8736aa; /* same purple as your segmented control */
 }
+
+
+
+
+/*NUMBER OF CONRIBUTIONS*/
+.contentNOC{
+ display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding-left: 0;
+  width: 100%;
+  height: auto;
+}
+.card h4 {
+  font-weight: 900;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+#numOfCon {
+  display: grid;
+  text-align: left;
+  margin: 0;
+  grid-template-columns: 75% 25%;
+}
+#numOfCon span {
+  display: grid;
+  grid-column: 2;
+  color: #800080;
+  font-size: 20px;
+}
+#numOfCon p {
+  display: grid;
+  grid-column: 1;
+  padding-left: 8px;
+  margin: 2px;
+  font-size: 18px;
+}
+
+
+
+
+
 
 /* Purple primary buttons (View Active Quests / View Progress) */
 .primary-btn {
@@ -218,24 +266,23 @@ content {
   cursor: pointer;
   transition: transform 0.15s ease, filter 0.15s ease;
 }
-
 .primary-btn:hover {
   filter: brightness(1.05);
   transform: translateY(-1px);
 }
+
+
 
 /* ===== Quest Level pill toggle ===== */
 .level-card {
   margin-top: 0.5rem;
   margin-bottom: 0;
 }
-
 .level-toggle {
   display: flex;
   gap: 4px;
   margin: 0.6rem 0 0.9rem;
 }
-
 .level-pill {
   flex: 1;
   padding: 0.4rem 0.3rem;
@@ -249,25 +296,24 @@ content {
   letter-spacing: 0.03em;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
-
 /* Active level (purple, like the mock) */
 .level-pill--active {
   background-color: #8736aa;
 }
-
 /* Optional hover effect */
 .level-pill:hover {
   filter: brightness(1.1);
 }
 
-/*SIGN OUT BUTTON*/
 
+
+
+/*SIGN OUT BUTTON*/
 .Sobutton{
   text-align: center;
   margin: 0;
   padding: 0;
 }
-
 #SObutton{
   text-align: center;
   background-color: #000000;

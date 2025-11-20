@@ -1,13 +1,29 @@
 import { db, auth } from './firebase.js';
-import {
-    onAuthStateChanged,
-} from "firebase/auth";
+import { onAuthStateChanged,} from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
-// --- Initialize Firebase Services ---
-// (Ensure your app is initialized globally or imported here)
-// const db = getFirestore();
-// const auth = getAuth(); // Only needed if you rely on auth for current user's profile
+
+const realNameEl = document.getElementById('realName');
+const userNameEl = document.getElementById('userName');
+const emailEl = document.getElementById('email');
+const levelPills = document.querySelectorAll(".level-pill");
+
+function getLevelFromPoints(points) {
+  if (points >= 100) return "ace";
+  if (points >= 50) return "scout";
+  return "rookie";
+}
+
+function updateLevelUI(levelKey) {
+  levelPills.forEach((pill) => {
+    const pillLevel = pill.dataset.level; // "rookie" | "scout" | "ace"
+    if (pillLevel === levelKey) {
+      pill.classList.add("level-pill--active");
+    } else {
+      pill.classList.remove("level-pill--active");
+    }
+  });
+}
 
 // --- Helper: Get UID from URL ---
 function getUidFromUrl() {
@@ -22,9 +38,12 @@ async function fetchAndDisplayProfile(uid) {
     const userSnap = await getDoc(userRef);
 
     // Get references to elements once, ensuring they exist
-    const realNameEl = document.getElementById('realName');
-    const userNameEl = document.getElementById('userName');
-    const emailEl = document.getElementById('email');
+    
+    const points = userRef.points || 0;
+    const levelKey = getLevelFromPoints(points);
+      updateLevelUI(levelKey);
+
+
 
     if (userSnap.exists()) {
       const userData = userSnap.data();

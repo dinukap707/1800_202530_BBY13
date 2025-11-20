@@ -1,86 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Find-it</title>
-    <meta name="comp1800 template" content="My 1800 App" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="./styles/profileStyle.css" />
-    <link rel="stylesheet" href="./styles/stickyFooter.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script type="module" src="/src/profile.js"></script>
-  </head>
+<head>
+  <title>Find-it</title>
+  <meta name="comp1800 template" content="My 1800 App" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <body>
-    <nav>
-      <img src="./images/find_it.png" alt="Find-it" class="findItPhoto" />
-    </nav>
-    <section>
-      <img src="./images/blackProfile.png" alt="Find-it" class="profilePhoto" />
-      <h3 id="realName"></h3>
-      <p id="userName"></p>
-      <button
-        type="button"
-        class="settingBtn"
-        onclick="window.location.href = 'settings.html'"
-      >
-        <img src="./images/blackSettings.png" alt="Settings" class="settingPhoto" />
-        <p>Settings</p>
-      </button>
-    </section>
-    <content>
-      <!-- Active Quests Card -->
-      <div class="card quest-card">
-        <div class="card-row">
-          <span class="card-label">Active Quests</span>
-          <!-- placeholder count for now, we can hook this to Firestore later -->
-          <span class="card-value" id="active-quests-count"></span>
-        </div>
+  <link rel="stylesheet" href="./styles/profileStyle.css" />
+  <link rel="stylesheet" href="./styles/stickyFooter.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600&display=swap" rel="stylesheet" />
+  <script type="module" src="/src/profile.js"></script>
+</head>
 
-        <button onclick="window.location.href = 'activeQuests.html'" class="primary-btn" id="view-quests-btn">
-          VIEW ACTIVE QUESTS
+<body>
+  <nav>
+    <img src="./images/find_it.png" alt="Find-it" class="findItPhoto" />
+  </nav>
+  <section>
+    <img src="./images/blackProfile.png" alt="Find-it" class="profilePhoto" />
+    <h3 id="realName"></h3>
+    <p id="userName"></p>
+    <button type="button" class="settingBtn" onclick="window.location.href = 'settings.html'">
+      <img src="./images/blackSettings.png" alt="Settings" class="settingPhoto" />
+      <p>Settings</p>
+    </button>
+  </section>
+  <content>
+
+    <!-- LEVEL TELLER -->
+    <div class="card level-card">
+      <div class="level-toggle">
+        <button class="level-pill" data-level="rookie">ROOKIE</button>
+        <button class="level-pill level-pill--active" data-level="scout">
+          SCOUT
         </button>
+        <button class="level-pill" data-level="ace">ACE</button>
       </div>
-
-      <!-- Quest Level card -->
-      <div class="card level-card">
-        <p class="card-label-quest">Quest Level</p>
-
-        <div class="level-toggle">
-          <button class="level-pill" data-level="rookie">ROOKIE</button>
-          <button class="level-pill level-pill--active" data-level="scout">
-            SCOUT
-          </button>
-          <button class="level-pill" data-level="ace">ACE</button>
-        </div>
-
-        <button onclick="window.location.href = 'questeProgress.html'" class="primary-btn" id="view-progress-btn">
-          VIEW PROGRESS
-        </button>
-      </div>
-    </content>
-
-    <div class="Sobutton">
-      <button id="SObutton" onclick="window.location.href = 'index.html'">Sign Out</button>
     </div>
 
-    <footer>
-      <button type="button" onclick="window.location.href = 'main.html'">
-        <img id="homeImg" src="./images/yellowHome.png" alt="Home" />
+    <!-- LEVEL FILLER BAR -->
+    <div class="card" id="progress-card">
+      <div id="progress-bar-outer">
+        <div id="progress-bar-inner"></div>
+      </div>
+      <p><span id="progress-points">0</span>/100</p>
+    </div>
+
+    <!-- NUM OF CONTACTS -->
+    <div class="contentNOC">
+      <div class="card" id="numOfCon">
+        <h4>Number of contribution:</h4>
+        <p>Quests Published</p>
+        <span id="qp-count">0</span>
+        <p>Contacts Made</p>
+        <span id="contacts-count">0</span>
+        <p>My Items Found</p>
+        <span id="myitems-count">0</span>
+        <p>Quests Completed</p>
+        <span id="qc-count">0</span>
+      </div>
+    </div>
+
+    <!--Quests CardS -->
+    <!-- ACTIVE -->
+    <div class="card quest-card">
+      <div class="card-row">
+        <span class="card-label">Active Quests</span>
+        <span class="card-value" id="active-quests-count"></span>
+      </div>
+      <button onclick="window.location.href = 'activeQuests.html'" class="primary-btn" id="view-quests-btn">
+        VIEW ACTIVE QUESTS
       </button>
-      <button type="button" onclick="window.location.href = 'upload.html'">
-        <img id="plusImg" src="./images/yellowPlus.png" alt="Home" />
+      <!-- COMPLETED -->
+      <div class="card-row">
+        <span class="card-label">Completed Quests</span>
+        <span class="card-value" id="active-quests-count"></span>
+      </div>
+      <button onclick="window.location.href = 'completedQuests.html'" class="primary-btn" id="view-progress-btn">
+        VIEW COMPLETED QUESTS
       </button>
-      <button type="button" onclick="window.location.href='map.html'">
-        <img src="./images/yellowMap.png" alt="Map" />
+    </div>
+
+  </content>
+
+  <div class="Sobutton">
+    <button id="SObutton" onclick="window.location.href = 'index.html'">Sign Out</button>
+  </div>
+
+  <footer>
+    <button type="button" onclick="window.location.href = 'main.html'">
+      <img id="homeImg" src="./images/yellowHome.png" alt="Home" />
+    </button>
+    <button type="button" onclick="window.location.href = 'upload.html'">
+      <img id="plusImg" src="./images/yellowPlus.png" alt="Home" />
+    </button>
+    <button type="button" onclick="window.location.href='map.html'">
+      <img src="./images/yellowMap.png" alt="Map" />
       <button type="button" onclick="window.location.href = 'profile.html'">
         <img id="userImg" src="./images/yellowUser.png" alt="Home" />
       </button>
-    </footer>
-  </body>
+  </footer>
+</body>
+
 </html>

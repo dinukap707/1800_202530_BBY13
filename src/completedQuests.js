@@ -1,0 +1,110 @@
+// questProgress.js
+import { db, auth } from "./firebase.js";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+
+// Elements on the Completed Quest page
+const displayName = document.getElementById("realName");
+const levelSpan = document.getElementById("level");
+const qpSpan = document.getElementById("qp-count");
+const contactsSpan = document.getElementById("contacts-count");
+const myItemsSpan = document.getElementById("myitems-count");
+const qcSpan = document.getElementById("qc-count");
+const progressPointsSpan = document.getElementById("progress-points");
+const progressBarInner = document.getElementById("progress-bar-inner");
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Find the container where posts should go
+  const postsContainer = document.getElementById("uploadedFilesContainer");
+
+  if (!postsContainer) {
+    console.error("Error: Could not find #uploadedFilesContainer on the page.");
+    return;
+  }
+
+  // Get all posts from localStorage
+  const posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+  // Check if there are any posts
+  if (posts.length === 0) {
+    postsContainer.innerHTML =
+      '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
+    return;
+  }
+
+  // Clear the container
+  postsContainer.innerHTML = "";
+
+  // Loop through each post and create the HTML for it
+  posts.forEach((post, index) => {
+    // Create the main card element
+    const postCard = document.createElement("div");
+    // You MUST add styling for "post-card" in your test.css file
+    postCard.className = "post-card";
+
+    // Assigns Post ID to recall for points
+    postCard.dataset.postId = post.id;
+
+    // 1. Create the image
+    const imageElement = document.createElement("img");
+    imageElement.src = post.image; // This is the Base64 image data
+    imageElement.alt = post.item;
+
+    // 2. Create the item name
+    const itemName = document.createElement("h3");
+    itemName.textContent = post.item || "Untitled Item";
+
+    // 3. Create the time text
+    const postTime = document.createElement("p");
+    postTime.textContent = `Posted ${timeAgo(new Date(post.time))}`;
+
+    // 4. Create the new button 🚀
+    const detailsButton = document.createElement("button");
+    detailsButton.textContent = "View Details";
+    detailsButton.className = "details-button";
+
+    detailsButton.onclick = function () {
+      window.location.href = `details.html?postId=${post.id}`;
+    };
+
+    const footerDiv = document.createElement("div");
+    footerDiv.className = "post-footer";
+    footerDiv.appendChild(postTime);
+    footerDiv.appendChild(detailsButton);
+
+    // Add all new elements to the card
+    postCard.appendChild(imageElement);
+    postCard.appendChild(itemName);
+    postCard.appendChild(footerDiv);
+
+    // Add the finished card to the page
+    postsContainer.appendChild(postCard);
+  });
+
+  //localStorage.removeItem('posts');
+});
+
+
+/**
+ * Helper function to calculate "time ago"
+ * e.g., "5 minutes ago"
+ */
+function timeAgo(date) {
+  const seconds = Math.floor((new Date() - date) / 1000);
+  let interval = seconds / 31536000;
+  if (interval > 1) return Math.floor(interval) + " years ago";
+
+  interval = seconds / 2592000;
+  if (interval > 1) return Math.floor(interval) + " months ago";
+
+  interval = seconds / 86400;
+  if (interval > 1) return Math.floor(interval) + " days ago";
+
+  interval = seconds / 3600;
+  if (interval > 1) return Math.floor(interval) + " hours ago";
+
+  interval = seconds / 60;
+  if (interval > 1) return Math.floor(interval) + " minutes ago";
+
+  return Math.floor(seconds) + " seconds ago";
+}
