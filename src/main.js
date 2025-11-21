@@ -1,3 +1,7 @@
+import { auth, db, collection, query, onSnapshot, orderBy, getDocs } from "./firebase.js"; 
+
+const POSTS_COLLECTION = "posts";
+
 const filterBtn = document.getElementById("filter-btn");
 const filterPopup = document.getElementById("filter-popup");
 
@@ -33,7 +37,7 @@ filterPopup.querySelectorAll("button").forEach((btn) => {
 
 // THE STUFF BELOW IS STRICTLY FOR UPLOADING PHOTOS
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // Find the container where posts should go
   const postsContainer = document.getElementById("uploadedFilesContainer");
 
@@ -42,15 +46,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Get all posts from localStorage
-  const posts = JSON.parse(localStorage.getItem("posts")) || [];
+  postsContainer.innerHTML = '<p style="text-align: center; color: #555;">Loading posts...</p>';
 
-  // Check if there are any posts
-  if (posts.length === 0) {
-    postsContainer.innerHTML =
-      '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
-    return;
-  }
+  try {
+      const postsQuery = query(
+        collection(db, POSTS_COLLECTION),
+        orderBy("timestamp", "desc")
+      );
+
+      onSnapshot(postsQuery, (snapshot) => {
+        const posts = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+
+      if (posts.length === 0) {
+          postsContainer.innerHTML = '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
+          return;
+      }
 
   // Clear the container
   postsContainer.innerHTML = "";
@@ -59,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
   posts.forEach((post, index) => {
     // Create the main card element
     const postCard = document.createElement("div");
-    // You MUST add styling for "post-card" in your test.css file
     postCard.className = "post-card";
 
     // Assigns Post ID to recall for points
@@ -67,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 1. Create the image
     const imageElement = document.createElement("img");
-    imageElement.src = post.image; // This is the Base64 image data
+    imageElement.src = post.imageBase64; // This is the Base64 image data
     imageElement.alt = post.item;
 
     // 2. Create the item name
@@ -76,7 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 3. Create the time text
     const postTime = document.createElement("p");
-    postTime.textContent = `Posted ${timeAgo(new Date(post.time))}`;
+    let displayDate = post.timestamp && typeof post.timestamp.toDate === 'function' ? post.timestamp.toDate() : new Date();
+    postTime.textContent = `Posted ${timeAgo(displayDate)}`;
 
     // 4. Create the new button 🚀
     const detailsButton = document.createElement("button");
@@ -100,8 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add the finished card to the page
     postsContainer.appendChild(postCard);
   });
-
-  //localStorage.removeItem('posts');
+});
+  } catch (error) {
+        console.error("Error loading posts from Firebase:", error);
+        postsContainer.innerHTML =
+            '<p style="text-align: center; color: red;">Error loading posts from the database.</p>';
+    }
 });
 
 /**

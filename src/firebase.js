@@ -5,7 +5,17 @@ import {
   setPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { 
+  getFirestore, 
+  FieldValue, 
+  serverTimestamp,
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  getDocs
+} from "firebase/firestore";
 
 // ⬇️ Replace with your config from Firebase Console
 const firebaseConfig = {
@@ -22,4 +32,4 @@ setPersistence(auth, browserLocalPersistence);
 
 const db = getFirestore(app);
 
-export { app, auth, db };
+export { app, auth, db, FieldValue, serverTimestamp, collection, addDoc, onSnapshot, query, orderBy, getDocs };
