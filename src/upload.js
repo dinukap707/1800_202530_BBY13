@@ -10,6 +10,7 @@ const POSTS_COLLECTION = "posts";
 
 const uploadBox = document.querySelector(".box");
 const addButton = document.querySelector(".add-button");
+const statusSelect = document.querySelector(".form-group.status select");
 const itemInput = document.querySelector(".form-group.item input");
 const descriptionInput = document.querySelector(".form-group.description input");
 const hashtagsInput = document.querySelector(".form-group.hashtags input");
@@ -109,6 +110,7 @@ clearBtn.addEventListener("click", (e) => {
 
   // Clear all text inputs
   itemInput.value = "";
+  statusSelect.value = "";
   descriptionInput.value = "";
   hashtagsInput.value = "";
   locationInput.value = "";
@@ -139,6 +141,13 @@ submitBtn.addEventListener("click", async (e) => {
         return;
     }
 
+    // Check if status is selected
+    if (!statusSelect.value) {
+        alert("Please select whether the item is Lost or Found.");
+        submitBtn.disabled = false;
+        return;
+    }
+
     submitBtn.disabled = true;
 
     try {
@@ -146,6 +155,7 @@ submitBtn.addEventListener("click", async (e) => {
         const postData = {
             ownerUid: user.uid,
             item: itemInput.value.trim(),
+            status: statusSelect.value,
             description: descriptionInput.value.trim(),
             hashtags: hashtagsInput.value.trim(),
             location: locationInput.value.trim(),

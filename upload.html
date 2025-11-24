@@ -19,6 +19,17 @@
     <div class="container">
 
       <form id="new-post-form">
+        <div class="form-group status">
+          <label for="status">Status</label>
+          <br>
+          <select class="form-control" id="status" required >
+          <option value="" disabled selected>Select Lost or Found</option>
+          <option value="Lost">Lost item</option>
+          <option value="Found">Found item</option>
+          </select>
+        </div>
+        <br />
+
         <div class="form-group item">
           <label>Item</label>
           <br>

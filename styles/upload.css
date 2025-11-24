@@ -77,24 +77,33 @@ h1{
     padding-right: 36%;
 }
 
-.item{
+.status {
     grid-column: 1 / span 2;
     grid-row: 1 / span 1;
 }
 
-.description{
+#status{
+    width: 300px;
+}
+
+.item{
     grid-column: 1 / span 2;
     grid-row: 2 / span 1;
 }
 
-.hashtags{
+.description{
     grid-column: 1 / span 2;
     grid-row: 3 / span 1;
 }
 
-.locations{
+.hashtags{
     grid-column: 1 / span 2;
     grid-row: 4 / span 1;
+}
+
+.locations{
+    grid-column: 1 / span 2;
+    grid-row: 5 / span 1;
 }
 
 label{
@@ -104,7 +113,7 @@ label{
 form{
     display: grid;
     grid-template-columns: 50vw 50vw;
-    grid-template-rows: 11vh 11vh 11vh 11vh 6vh;
+    grid-template-rows: 9vh 9vh 9vh 9vh 9vh 5vh;
 }
 
 .btn{
@@ -115,11 +124,11 @@ form{
 
 .clear{
     grid-column: 1 / span 1;
-    grid-row: 5 / span 1;
+    grid-row: 6 / span 1;
 
 }
 
 .submit{
     grid-column: 2 / span 1;
-    grid-row: 5 / span 1;
+    grid-row: 6 / span 1;
 }
