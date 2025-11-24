@@ -24,7 +24,7 @@ body {
   margin: 0;
   font-family: "Archivo Narrow", system-ui, -apple-system, Segoe UI, Roboto,
     Arial, sans-serif;
-  background: var(--yellow);
+  background: #fff000;
   color: var(--ink);
   display: grid;
   grid-template-rows: auto 1fr auto; /* header | main | footer */
@@ -38,10 +38,12 @@ header {
 }
 
 header .image {
-  width: 150px; /* try 160–180px if you want larger */
+  width: 300px; /* try 160–180px if you want larger */
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+  position: relative;
+  /*justify-self: left;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);*/
 }
 
 /* ===== Form area ===== */
