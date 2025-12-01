@@ -95,7 +95,7 @@ section button p {
 
 
 
-/*CONTENT DESIGN*/
+/*CONTENT DESIGN ALL OVER*/
 .card {
   justify-content: center;
   align-items: center;
@@ -109,11 +109,6 @@ section button p {
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-
-
-
-
-
 .title {
   font-size: 1rem;
   font-weight: 600;
@@ -122,6 +117,35 @@ section button p {
   text-align: center;
 }
 
+
+/*LEVEL FILLER BAR*/
+#progress-card{
+  align-items: center;
+  height: auto;
+}
+
+#progress-bar-outer{
+  background-color: #fff000;
+  border-radius: 10px;
+  align-items: center;
+  width: 95%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+#progress-bar-inner{
+  background-color: #800080;
+  border-radius: 10px;
+  align-items: center;
+  width: 95%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* 
 .segmented-control {
   display: inline-flex;
   border-radius: 0.75rem;
@@ -159,53 +183,17 @@ section button p {
 
 .button-segment:hover {
   background-color: #f3f4f6;
-}
+} */
 
-.radio-input:checked + .button-segment {
+/* .radio-input:checked + .button-segment {
   background-color: #8736aa;
-  /* Primary Indigo */
   color: #ffffff;
   z-index: 10;
 }
 
-/* Keep the selected background consistent on hover */
 .radio-input:checked + .button-segment:hover {
   background-color: #8736aa;
-}
-
-
-/* ===== Profile cards common tweaks ===== */
-content {
-  display: block;
-  padding: 0 0 90px; /* room above the fixed footer */
-}
-
-.card {
-  max-width: 380px; /* keep cards nicely narrow, like a phone */
-  margin: 1rem auto;
-}
-
-/* Simple row for "Active Quests" label + value */
-.card-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-.card-label {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-.card-label-quest{
-  margin-top: 0;
-  text-align: left;
-  font-weight: 600;
-  font-size: 1rem;
-}
-.card-value {
-  font-weight: 700;
-  color: #8736aa; /* same purple as your segmented control */
-}
+} */
 
 
 
@@ -249,10 +237,34 @@ content {
 
 
 
+/* ===== ACTIVE AND COMPLETED QUESTS BUTTONS ===== */
+content {
+  display: block;
+  padding: 0 0 90px; 
+}
 
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
 
+.card-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.card-label-quest{
+  margin-top: 0;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.card-value {
+  font-weight: 700;
+  color: #8736aa; 
+}
 
-/* Purple primary buttons (View Active Quests / View Progress) */
 .primary-btn {
   width: 100%;
   padding: 0.6rem 0.75rem;
@@ -274,7 +286,7 @@ content {
 
 
 /* ===== Quest Level pill toggle ===== */
-.level-card {
+/* .level-card {
   margin-top: 0.5rem;
   margin-bottom: 0;
 }
@@ -295,33 +307,12 @@ content {
   cursor: pointer;
   letter-spacing: 0.03em;
   transition: background-color 0.15s ease, color 0.15s ease;
-}
+} */
 /* Active level (purple, like the mock) */
-.level-pill--active {
+/* .level-pill--active {
   background-color: #8736aa;
-}
+} */
 /* Optional hover effect */
-.level-pill:hover {
+/* .level-pill:hover {
   filter: brightness(1.1);
-}
-
-
-
-
-/*SIGN OUT BUTTON*/
-.Sobutton{
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-#SObutton{
-  text-align: center;
-  background-color: #000000;
-  color: #fff000;
-  width: 80%;
-  height: auto;
-  font-size: 30px;
-  align-items: center;
-  margin-top: 0;
-}
-
+} */
