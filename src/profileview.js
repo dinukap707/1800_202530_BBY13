@@ -1,31 +1,28 @@
+// --- /src/profileview.js (Level Pills Removed) ---
 import { db, auth } from './firebase.js';
-import { onAuthStateChanged,} from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
-
+// --- Element Selectors ---
 const realNameEl = document.getElementById('realName');
 const userNameEl = document.getElementById('userName');
 const emailEl = document.getElementById('email');
-const levelPills = document.querySelectorAll(".level-pill");
 
-function getLevelFromPoints(points) {
-  if (points >= 100) return "ace";
-  if (points >= 50) return "scout";
-  return "rookie";
-}
+// Stats (Level pills and related functions have been removed)
+// NOTE: Ensure your profileview.html file is updated to remove the level-pill elements as well.
+const activeQuestsEl = document.getElementById("activeQuests");
+const qpCountEl = document.getElementById("qpCount");
+const contactsCountEl = document.getElementById("contactsCount");
+const qcCountEl = document.getElementById("qcCount");
 
-function updateLevelUI(levelKey) {
-  levelPills.forEach((pill) => {
-    const pillLevel = pill.dataset.level; // "rookie" | "scout" | "ace"
-    if (pillLevel === levelKey) {
-      pill.classList.add("level-pill--active");
-    } else {
-      pill.classList.remove("level-pill--active");
+// --- Helper Functions ---
+
+function updateElementText(element, text) {
+    if (element) {
+        element.textContent = text;
     }
-  });
 }
 
-// --- Helper: Get UID from URL ---
 function getUidFromUrl() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get('uid'); 
@@ -33,34 +30,42 @@ function getUidFromUrl() {
 
 // --- Function to fetch and display profile data ---
 async function fetchAndDisplayProfile(uid) {
+  console.log(`Attempting to fetch data for UID: ${uid}`); 
+
   try {
     const userRef = doc(db, "users", uid);
     const userSnap = await getDoc(userRef);
 
-    // Get references to elements once, ensuring they exist
-    
-    const points = userRef.points || 0;
-    const levelKey = getLevelFromPoints(points);
-      updateLevelUI(levelKey);
-
-
+    // Reset UI elements to defaults
+    updateElementText(realNameEl, "Loading Name...");
+    updateElementText(userNameEl, "@loading_username");
+    updateElementText(emailEl, "Loading Email...");
 
     if (userSnap.exists()) {
       const userData = userSnap.data();
+      console.log("Successfully retrieved user data:", userData);
 
-      // **If the error persists, it is one of these three lines below (a null check)**
-      if (realNameEl) realNameEl.textContent = userData.fullName || 'No Name Provided';
-      if (userNameEl) userNameEl.textContent = `@${userData.username || 'unknown'}`;
-      if (emailEl) emailEl.textContent = userData.email || 'N/A';
+      // Update general info
+      updateElementText(realNameEl, userData.fullName || 'No Name Provided');
+      updateElementText(userNameEl, `@${userData.username || 'unknown'}`);
+      updateElementText(emailEl, userData.email || 'N/A');
+      
+      // Update stats
+      // NOTE: Point and level logic is removed here.
+      updateElementText(activeQuestsEl, userData.activeQuests || 0);
+      updateElementText(qpCountEl, userData.questsPublished || 0);
+      updateElementText(contactsCountEl, userData.contactsMade || 0);
+      updateElementText(qcCountEl, userData.questsCompleted || 0);
       
     } else {
-      if (realNameEl) realNameEl.textContent = "User Profile Not Found";
-      if (userNameEl) userNameEl.textContent = "This user may have been deleted.";
-      if (emailEl) emailEl.textContent = "";
+      console.warn(`User data not found in Firestore for UID: ${uid}`);
+      updateElementText(realNameEl, "User Profile Not Found");
+      updateElementText(userNameEl, `User ID: ${uid} not found.`);
+      updateElementText(emailEl, "");
     }
   } catch (error) {
-    console.error("Error fetching user data:", error); // Logs to line ~51/61
-    // You might get here if the Firestore query fails
+    console.error("Error fetching user data:", error); 
+    updateElementText(realNameEl, "Error loading profile data.");
   }
 }
 
@@ -68,28 +73,19 @@ async function fetchAndDisplayProfile(uid) {
 function initProfileView() {
     const externalUid = getUidFromUrl();
 
-    // The logic below handles three cases:
-    // 1. External UID in URL (viewing another user's profile)
-    // 2. No external UID, but a user is logged in (viewing own profile)
-    // 3. Neither (Error or Logged Out)
-
     if (externalUid) {
-        // Case 1: Load the external user profile immediately
         fetchAndDisplayProfile(externalUid);
     } else {
-        // Case 2 & 3: Wait for auth state to determine the current user (if logged in)
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // Load the currently logged-in user's profile
                 fetchAndDisplayProfile(user.uid);
             } else {
-                // Handle case where no UID is available (not logged in and no external UID)
-                document.getElementById('realName').textContent = "Please log in to view a profile.";
+                updateElementText(realNameEl, "Authentication Required");
+                updateElementText(userNameEl, "Please log in to view this page.");
+                updateElementText(emailEl, "");
             }
         });
     }
 }
 
-// Ensure the HTML elements are ready before we try to access them
-// If you moved the script tag to the end of <body>, this is still a good safety check.
 document.addEventListener('DOMContentLoaded', initProfileView);
