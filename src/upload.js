@@ -1,7 +1,11 @@
 // --- Code for upload.js ---
 
-import { auth, db, serverTimestamp, collection, addDoc } from "./firebase.js";
+import mapboxgl from "mapbox-gl";
+import { auth, db } from "./firebase.js";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { awardForNewPost } from "./userStats.js";
+
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const POSTS_COLLECTION = "posts";
 
@@ -12,20 +16,104 @@ const uploadBox = document.querySelector(".box");
 const addButton = document.querySelector(".add-button");
 const statusSelect = document.querySelector(".form-group.status select");
 const itemInput = document.querySelector(".form-group.item input");
-const description = document.querySelector(".form-group.description textareanvm shou");
+const descriptionInput = document.querySelector(
+  ".form-group.description textarea"
+);
+
 const hashtagsInput = document.querySelector(".form-group.hashtags input");
 const locationInput = document.querySelector(".form-group.locations input");
 const clearBtn = document.getElementById("clearBtn");
 const submitBtn = document.getElementById("submitBtn");
 
-const MAX_IMAGE_WIDTH = 600; 
+const MAX_IMAGE_WIDTH = 600;
 const MAX_IMAGE_HEIGHT = 600;
+
+// This will set default location IDS on the map to help simplify placing items on the map
+const CAMPUS_LOCATIONS = {
+  NW1: {
+    lat: 49.251111,
+    lng: -122.988222,
+    label: "NW1 – BCIT Burnaby Campus",
+  },
+  SW2: {
+    lat: 49.250555,
+    lng: -122.989333,
+    label: "SW2 – BCIT Burnaby Campus",
+  },
+  SE12: {
+    lat: 49.249999,
+    lng: -122.987,
+    label: "SE12 – BCIT Burnaby Campus",
+  },
+  // add more codes here as needed
+};
+
+// This helps check and relay data to the map based on location data points
+async function geocodeLocation(rawInput) {
+  const query = (rawInput || "").trim();
+
+  if (!query) {
+    throw new Error("Missing location");
+  }
+
+  // 🔹 1. Campus short-code check
+  const key = query.toUpperCase();
+  const campusLoc = CAMPUS_LOCATIONS[key];
+
+  if (campusLoc) {
+    console.log("Using campus location for", key, campusLoc);
+    return {
+      lat: campusLoc.lat,
+      lng: campusLoc.lng,
+      place_name: campusLoc.label,
+      locationName: key,
+    };
+  }
+
+  console.log("Falling back to Mapbox geocoding for:", query);
+
+  // 🔹 2. Fallback to Mapbox forward geocoding
+  const url =
+    "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
+    encodeURIComponent(query) +
+    ".json?access_token=" +
+    mapboxgl.accessToken +
+    "&limit=1";
+
+  let resp;
+  try {
+    resp = await fetch(url);
+  } catch (networkErr) {
+    console.error("Network error calling Mapbox:", networkErr);
+    throw new Error("Unable to contact geocoding service");
+  }
+
+  if (!resp.ok) {
+    console.error("Mapbox HTTP error:", resp.status, await resp.text());
+    throw new Error("Geocoding service error");
+  }
+
+  const data = await resp.json();
+
+  if (!data.features || data.features.length === 0) {
+    throw new Error("Location not found");
+  }
+
+  const feature = data.features[0];
+
+  return {
+    lng: feature.center[0],
+    lat: feature.center[1],
+    place_name: feature.place_name,
+    locationName: query,
+  };
+}
 
 // This will store the image data as a Base64 string
 let uploadedImageBase64 = null;
 
 function go() {
-    window.location.href = "main.html";
+  window.location.href = "main.html";
 }
 
 // 1. Create a hidden file input element
@@ -37,33 +125,33 @@ document.body.appendChild(fileInput); // Add it to the page
 
 // Helper function to resize the image using a Canvas
 function resizeImage(img, maxWidth, maxHeight) {
-    let width = img.width;
-    let height = img.height;
+  let width = img.width;
+  let height = img.height;
 
-    if (width > height) {
-        if (width > maxWidth) {
-            height *= maxWidth / width;
-            width = maxWidth;
-        }
-    } else {
-        if (height > maxHeight) {
-            width *= maxHeight / height;
-            height = maxHeight;
-        }
+  if (width > height) {
+    if (width > maxWidth) {
+      height *= maxWidth / width;
+      width = maxWidth;
     }
+  } else {
+    if (height > maxHeight) {
+      width *= maxHeight / height;
+      height = maxHeight;
+    }
+  }
 
-    // Create a canvas element
-    const canvas = document.createElement("canvas");
-    canvas.width = width;
-    canvas.height = height;
+  // Create a canvas element
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
 
-    // Draw the resized image onto the canvas
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, width, height);
+  // Draw the resized image onto the canvas
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0, width, height);
 
-    // Get the Base64 data from the canvas (JPEG format, 70% quality)
-    // Using JPEG is usually smaller than PNG
-    return canvas.toDataURL("image/jpeg", 0.9);
+  // Get the Base64 data from the canvas (JPEG format, 70% quality)
+  // Using JPEG is usually smaller than PNG
+  return canvas.toDataURL("image/jpeg", 0.9);
 }
 
 // 2. Add click listener to the '+' button
@@ -85,17 +173,21 @@ fileInput.addEventListener("change", (event) => {
       // Create a temporary Image Object to handle resizing
       const img = new Image();
       img.onload = () => {
-          // Resize the image and get the small Base64 string
-          uploadedImageBase64 = resizeImage(img, MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT);
+        // Resize the image and get the small Base64 string
+        uploadedImageBase64 = resizeImage(
+          img,
+          MAX_IMAGE_WIDTH,
+          MAX_IMAGE_HEIGHT
+        );
 
-          // Display the new, small preview image
-          uploadBox.innerHTML = `<img src="${uploadedImageBase64}
+        // Display the new, small preview image
+        uploadBox.innerHTML = `<img src="${uploadedImageBase64}
           " alt="Image preview" style="width: 100%; height: 100%; object-fit: contain;">`;
 
-          // Make the new image clickable to change it
-          uploadBox.style.cursor = "pointer";
-          uploadBox.addEventListener("click", () => fileInput.click());
-      }
+        // Make the new image clickable to change it
+        uploadBox.style.cursor = "pointer";
+        uploadBox.addEventListener("click", () => fileInput.click());
+      };
       img.src = uploadedImageBase64;
     };
 
@@ -111,7 +203,7 @@ clearBtn.addEventListener("click", (e) => {
   // Clear all text inputs
   itemInput.value = "";
   statusSelect.value = "";
-  description.value = "";
+  descriptionInput.value = "";
   hashtagsInput.value = "";
   locationInput.value = "";
 
@@ -125,57 +217,92 @@ clearBtn.addEventListener("click", (e) => {
   fileInput.value = ""; // Important to clear the file input
 });
 
-// 5. Add click listener for the 'Post' button 
+// 5. Add click listener for the 'Post' button, updated this to use mapbox/preset data set I created
 submitBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const user = auth.currentUser;
-    if (!user) {
-        // Use a custom modal instead of alert() in production apps
-        alert("You must be logged in to create a post."); 
-        return;
-    }
-    
-    if (!uploadedImageBase64) {
-        alert("Please upload an image before posting.");
-        return;
-    }
+  const user = auth.currentUser;
+  if (!user) {
+    alert("You must be logged in to create a post.");
+    return;
+  }
 
-    // Check if status is selected
-    if (!statusSelect.value) {
-        alert("Please select whether the item is Lost or Found.");
-        submitBtn.disabled = false;
-        return;
-    }
+  if (!uploadedImageBase64) {
+    alert("Please upload an image before posting.");
+    return;
+  }
 
-    submitBtn.disabled = true;
+  if (!statusSelect) {
+    console.error("statusSelect element not found in upload.js");
+    alert("Internal error: status dropdown missing.");
+    return;
+  }
 
-    try {
-        // 1. Prepare post data using the small Base64 image
-        const postData = {
-            ownerUid: user.uid,
-            item: itemInput.value.trim(),
-            status: statusSelect.value,
-            description: description.value.trim(),
-            hashtags: hashtagsInput.value.trim(),
-            location: locationInput.value.trim(),
-            
-            // Store the small Base64 string directly in Firestore
-            imageBase64: uploadedImageBase64, 
-            
-            timestamp: serverTimestamp(), 
-        };
+  if (!statusSelect.value) {
+    alert("Please select whether the item is Lost or Found.");
+    submitBtn.disabled = false;
+    return;
+  }
 
-        // 2. Save the document to Firestore
-        await addDoc(collection(db, POSTS_COLLECTION), postData);
+  // Safely read all values
+  const itemValue = (itemInput?.value || "").trim();
+  const descriptionValue = (descriptionInput?.value || "").trim();
+  const hashtagsValue = (hashtagsInput?.value || "").trim();
+  const locationText = (locationInput?.value || "").trim();
 
-        // 3. Update user stats
-        await awardForNewPost(user.uid);
+  if (!itemValue) {
+    alert("Please enter an item name.");
+    return;
+  }
 
-        go();
+  if (!locationText) {
+    alert("Please enter a location (e.g., NW1, SW2, or an address).");
+    return;
+  }
 
-    } catch (error) {
-        console.error("Error creating post:", error);
-        submitBtn.disabled = false;
-    }
+  submitBtn.disabled = true;
+
+  try {
+    // 🔹 Get campus or Mapbox coordinates
+    const geo = await geocodeLocation(locationText);
+    console.log("Using geocoded location:", geo);
+
+    const postData = {
+      ownerUid: user.uid,
+      item: itemValue,
+      status: statusSelect.value,
+      description: descriptionValue, // FIXED
+      hashtags: hashtagsValue,
+
+      location: locationText,
+      locationName: geo.locationName,
+      geo: {
+        lat: geo.lat,
+        lng: geo.lng,
+        place_name: geo.place_name,
+      },
+
+      imageBase64: uploadedImageBase64,
+      createdAt: serverTimestamp(),
+
+      // JORJA LOOK HERE!! NEW FIELDS I ADDED TO PULL POSTS FOR STUFF
+      isActiveQuest: false,
+      isCompletedQuest: false,
+      helperUid: null,
+    };
+
+    // 🔹 Actually write to Firestore
+    const docRef = await addDoc(collection(db, POSTS_COLLECTION), postData);
+    console.log("Post saved to Firestore from upload.js with id:", docRef.id);
+
+    // 🔹 Update user stats, then go back to main
+    await awardForNewPost(user.uid);
+    go();
+  } catch (error) {
+    console.error("Error creating post in upload.js:", error);
+    alert(
+      "There was a problem with the location/post. Try a campus code like NW1 or a full address."
+    );
+    submitBtn.disabled = false;
+  }
 });

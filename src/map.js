@@ -5,12 +5,12 @@ import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 // Token from .env (Vite): VITE_MAPBOX_TOKEN=pk.xxx
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
-// Basic map
+// start map focused on BCIT
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/streets-v12",
-  center: [-123.1162, 49.2463], // Vancouver-ish default
-  zoom: 11,
+  center: [-123.00088, 49.25082], // e.g. NW1 coords
+  zoom: 15, // closer zoom for campus
 });
 
 async function loadPosts() {
@@ -25,7 +25,7 @@ async function loadPosts() {
     const p = docSnap.data();
     // Only show posts with coordinates (we saved these at upload time if token was set)
     if (p?.geo?.lat && p?.geo?.lng) {
-      // simple custom marker
+      // simple custom marker, sets basic elements for the stock map
       const el = document.createElement("div");
       el.style.width = "18px";
       el.style.height = "18px";

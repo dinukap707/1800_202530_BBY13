@@ -18,6 +18,31 @@ const signoutBtn = document.getElementById("signout-btn");
 const msg = document.getElementById("msg");
 
 // Helpers
+const showLoginToggle = document.getElementById("show-login-toggle");
+const FIRST_VISIT_KEY = "findit_login_seen";
+
+function setupInitialView(user) {
+  const hasVisitedBefore = localStorage.getItem(FIRST_VISIT_KEY) === "true";
+
+  // If user is already logged in or has visited before,
+  // show the full login form as normal.
+  if (user || hasVisitedBefore) {
+    if (showLoginToggle) showLoginToggle.style.display = "none";
+    return;
+  }
+
+  // First time here & not logged in:
+  // hide email/password/login, highlight create account.
+  if (emailEl) emailEl.style.display = "none";
+  if (passwordEl) passwordEl.style.display = "none";
+  if (loginBtn) loginBtn.style.display = "none";
+
+  if (showLoginToggle) showLoginToggle.style.display = "inline-block";
+
+  // Optional: visually make CREATE ACCOUNT the big primary CTA
+  // e.g. signupBtn?.classList.add("lp-btn-primary");
+}
+
 function setBusy(busy) {
   if (!loginBtn) return;
   loginBtn.disabled = busy;
@@ -39,6 +64,8 @@ function prettyError(err) {
 
 // Authentication State
 onAuthStateChanged(auth, (user) => {
+  setupInitialView(user);
+
   if (user) {
     if (signoutBtn) signoutBtn.style.display = "inline-block";
     if (msg) msg.textContent = `Logged in as ${user.email}`;
@@ -51,6 +78,13 @@ onAuthStateChanged(auth, (user) => {
 // Sign In
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  // ✅ If already signed in, just go straight to main
+  if (auth.currentUser) {
+    window.location.href = "/main.html";
+    return;
+  }
+
   setBusy(true);
   try {
     const email = (emailEl?.value || "").trim();
@@ -61,13 +95,22 @@ form?.addEventListener("submit", async (e) => {
 
     await signInWithEmailAndPassword(auth, email, pass);
     if (msg) msg.textContent = "Signed in!";
-    // go to main after successful login
     window.location.href = "/main.html";
   } catch (err) {
     if (msg) msg.textContent = prettyError(err);
   } finally {
     setBusy(false);
   }
+});
+
+showLoginToggle?.addEventListener("click", () => {
+  localStorage.setItem(FIRST_VISIT_KEY, "true");
+
+  if (emailEl) emailEl.style.display = "";
+  if (passwordEl) passwordEl.style.display = "";
+  if (loginBtn) loginBtn.style.display = "";
+
+  if (showLoginToggle) showLoginToggle.style.display = "none";
 });
 
 // Create Account (Sprint 2 added to go to new page here)

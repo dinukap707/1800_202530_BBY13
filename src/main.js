@@ -1,4 +1,12 @@
-import { auth, db, collection, query, onSnapshot, orderBy, getDocs } from "./firebase.js"; 
+import {
+  auth,
+  db,
+  collection,
+  query,
+  onSnapshot,
+  orderBy,
+  getDocs,
+} from "./firebase.js";
 
 const POSTS_COLLECTION = "posts";
 
@@ -46,84 +54,89 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  postsContainer.innerHTML = '<p style="text-align: center; color: #555;">Loading posts...</p>';
+  postsContainer.innerHTML =
+    '<p style="text-align: center; color: #555;">Loading posts...</p>';
 
   try {
-      const postsQuery = query(
-        collection(db, POSTS_COLLECTION),
-        orderBy("timestamp", "desc")
-      );
+    const postsQuery = query(
+      collection(db, POSTS_COLLECTION),
+      orderBy("createdAt", "desc")
+    );
 
-      onSnapshot(postsQuery, (snapshot) => {
-        const posts = snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
+    onSnapshot(postsQuery, (snapshot) => {
+      const posts = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
       if (posts.length === 0) {
-          postsContainer.innerHTML = '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
-          return;
+        postsContainer.innerHTML =
+          '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
+        return;
       }
 
-  // Clear the container
-  postsContainer.innerHTML = "";
+      // Clear the container
+      postsContainer.innerHTML = "";
 
-  // Loop through each post and create the HTML for it
-  posts.forEach((post, index) => {
-    // Create the main card element
-    const postCard = document.createElement("div");
-    postCard.className = "post-card";
+      // Loop through each post and create the HTML for it
+      posts.forEach((post, index) => {
+        // Create the main card element
+        const postCard = document.createElement("div");
+        postCard.className = "post-card";
 
-    // Assigns Post ID to recall for points
-    postCard.dataset.postId = post.id;
+        // Assigns Post ID to recall for points
+        postCard.dataset.postId = post.id;
 
-    // 1. Create the image
-    const imageElement = document.createElement("img");
-    imageElement.src = post.imageBase64; // This is the Base64 image data
-    imageElement.alt = post.item;
+        // 1. Create the image
+        const imageElement = document.createElement("img");
+        imageElement.src = post.imageBase64; // This is the Base64 image data
+        imageElement.alt = post.item;
 
-    // 2. Create the item name
-    const itemName = document.createElement("h3");
-    itemName.textContent = post.item || "Untitled Item";
+        // 2. Create the item name
+        const itemName = document.createElement("h3");
+        itemName.textContent = post.item || "Untitled Item";
 
-    // 3. Create the status text
-    const itemStatus = document.createElement("h2");
-    itemStatus.textContent = post.status || "No status";
+        // 3. Create the status text
+        const itemStatus = document.createElement("h2");
+        itemStatus.textContent = post.status || "No status";
 
-    // 4. Create the time text
-    const postTime = document.createElement("p");
-    let displayDate = post.timestamp && typeof post.timestamp.toDate === 'function' ? post.timestamp.toDate() : new Date();
-    postTime.textContent = `Posted ${timeAgo(displayDate)}`;
+        // 4. Create the time text
+        const postTime = document.createElement("p");
+        let displayDate =
+          post.createdAt && typeof post.createdAt.toDate === "function"
+            ? post.createdAt.toDate()
+            : new Date();
+        postTime.textContent = `Posted ${timeAgo(displayDate)}`;
 
-    // 5. Create the view button 
-    const detailsButton = document.createElement("button");
-    detailsButton.textContent = "View Details";
-    detailsButton.className = "details-button";
+        // 5. Create the view button
+        const detailsButton = document.createElement("button");
+        detailsButton.textContent = "View Details";
+        detailsButton.className = "details-button";
 
-    detailsButton.onclick = function () {
-      window.location.href = `details.html?postId=${post.id}`;
-    };
+        detailsButton.onclick = function () {
+          window.location.href = `details.html?postId=${post.id}`;
+        };
 
-    const footerDiv = document.createElement("div");
-    footerDiv.className = "post-footer";
-    footerDiv.appendChild(postTime);
-    footerDiv.appendChild(detailsButton);
+        const footerDiv = document.createElement("div");
+        footerDiv.className = "post-footer";
+        footerDiv.appendChild(postTime);
+        footerDiv.appendChild(detailsButton);
 
-    // Add all new elements to the card
-    postCard.appendChild(imageElement);
-    postCard.appendChild(itemName);
-    postCard.appendChild(itemStatus);
-    postCard.appendChild(footerDiv);
+        // Add all new elements to the card
+        postCard.appendChild(imageElement);
+        postCard.appendChild(itemName);
+        postCard.appendChild(itemStatus);
+        postCard.appendChild(footerDiv);
 
-    // Add the finished card to the page
-    postsContainer.appendChild(postCard);
-  });
-});
+        // Add the finished card to the page
+        postsContainer.appendChild(postCard);
+      });
+    });
   } catch (error) {
-        console.error("Error loading posts from Firebase:", error);
-        postsContainer.innerHTML =
-            '<p style="text-align: center; color: red;">Error loading posts from the database.</p>';
-    }
+    console.error("Error loading posts from Firebase:", error);
+    postsContainer.innerHTML =
+      '<p style="text-align: center; color: red;">Error loading posts from the database.</p>';
+  }
 });
 
 /**
