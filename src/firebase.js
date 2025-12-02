@@ -2,6 +2,7 @@
 import { initializeApp, getApps } from "firebase/app";
 import {
   getAuth,
+  onAuthStateChanged,
   setPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
@@ -14,7 +15,8 @@ import {
   onSnapshot,
   query,
   orderBy,
-  getDocs
+  getDocs,
+  where,
 } from "firebase/firestore";
 
 // ⬇️ Replace with your config from Firebase Console
@@ -32,4 +34,4 @@ setPersistence(auth, browserLocalPersistence);
 
 const db = getFirestore(app);
 
-export { app, auth, db, FieldValue, serverTimestamp, collection, addDoc, onSnapshot, query, orderBy, getDocs };
+export { app, auth, db, FieldValue, serverTimestamp, collection, addDoc, onSnapshot, query, orderBy, getDocs, where, onAuthStateChanged };
