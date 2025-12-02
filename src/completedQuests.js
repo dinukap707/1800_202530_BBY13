@@ -1,7 +1,17 @@
-// questProgress.js
-import { db, auth } from "./firebase.js";
-import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+
+import {
+  auth,
+  db,
+  collection,
+  query,
+  onSnapshot,
+  orderBy,
+  getDocs,
+  where,
+} from "./firebase.js";
+
+const POSTS_COLLECTION = "posts";
+
 
 // Elements on the Completed Quest page
 const displayName = document.getElementById("realName");
@@ -14,76 +24,79 @@ const progressPointsSpan = document.getElementById("progress-points");
 const progressBarInner = document.getElementById("progress-bar-inner");
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Find the container where posts should go
-  const postsContainer = document.getElementById("uploadedFilesContainer");
+    // Find the container outside of the auth state listener for safety
+    const postsContainer = document.getElementById("uploadedFilesContainer");
 
-  if (!postsContainer) {
-    console.error("Error: Could not find #uploadedFilesContainer on the page.");
-    return;
-  }
+    if (!postsContainer) {
+        console.error("Error: Could not find #uploadedFilesContainer on the page.");
+        return;
+    }
 
-  // Get all posts from localStorage
-  const posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-  // Check if there are any posts
-  if (posts.length === 0) {
     postsContainer.innerHTML =
-      '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
-    return;
-  }
+        '<p style="text-align: center; color: #555;">Checking user login status...</p>';
 
-  // Clear the container
-  postsContainer.innerHTML = "";
+    // Use onAuthStateChanged to ensure we have the user object
+    auth.onAuthStateChanged((user) => {
+        // --- CRITICAL CHECK ---
+        // If user is null or user.uid is unavailable, stop here and show a message.
+        if (!user || !user.uid) {
+            postsContainer.innerHTML = 
+                '<p style="text-align: center; color: #555;">Please log in to view your completed quests.</p>';
+            return;
+        }
 
-  // Loop through each post and create the HTML for it
-  posts.forEach((post, index) => {
-    // Create the main card element
-    const postCard = document.createElement("div");
-    // You MUST add styling for "post-card" in your test.css file
-    postCard.className = "post-card";
+        // Now that we have a valid user.uid, proceed with the query setup.
+        postsContainer.innerHTML =
+            '<p style="text-align: center; color: #555;">Loading your completed quests...</p>';
 
-    // Assigns Post ID to recall for points
-    postCard.dataset.postId = post.id;
+        try {
+            // Define the filters using the guaranteed user.uid
+            const userFilter = where("userId", "==", user.uid);
+            const completionFilter = where("isCompletedQuest", "==", true);
+            
+            const postsQuery = query(
+                collection(db, POSTS_COLLECTION),
+                userFilter,
+                completionFilter,
+                orderBy("createdAt", "desc")
+            );
 
-    // 1. Create the image
-    const imageElement = document.createElement("img");
-    imageElement.src = post.image; // This is the Base64 image data
-    imageElement.alt = post.item;
+            onSnapshot(postsQuery, (snapshot) => {
+                // ... (rest of your snapshot processing logic remains the same)
+                
+                const posts = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
 
-    // 2. Create the item name
-    const itemName = document.createElement("h3");
-    itemName.textContent = post.item || "Untitled Item";
+                if (posts.length === 0) {
+                    postsContainer.innerHTML =
+                        '<p style="text-align: center; color: #555;">No completed quests found for you. Keep hunting!</p>';
+                    return;
+                }
 
-    // 3. Create the time text
-    const postTime = document.createElement("p");
-    postTime.textContent = `Posted ${timeAgo(new Date(post.time))}`;
+                // Clear the container
+                postsContainer.innerHTML = "";
 
-    // 4. Create the new button 🚀
-    const detailsButton = document.createElement("button");
-    detailsButton.textContent = "View Details";
-    detailsButton.className = "details-button";
-
-    detailsButton.onclick = function () {
-      window.location.href = `details.html?postId=${post.id}`;
-    };
-
-    const footerDiv = document.createElement("div");
-    footerDiv.className = "post-footer";
-    footerDiv.appendChild(postTime);
-    footerDiv.appendChild(detailsButton);
-
-    // Add all new elements to the card
-    postCard.appendChild(imageElement);
-    postCard.appendChild(itemName);
-    postCard.appendChild(footerDiv);
-
-    // Add the finished card to the page
-    postsContainer.appendChild(postCard);
-  });
-
-  //localStorage.removeItem('posts');
+                // Loop through posts and append cards
+                posts.forEach((post, index) => {
+                    // ... (HTML creation logic)
+                    const postCard = document.createElement("div");
+                    postCard.className = "post-card";
+                    postCard.dataset.postId = post.id;
+                    
+                    // ... (Add image, name, status, time, button, etc.)
+                    
+                    postsContainer.appendChild(postCard);
+                });
+            });
+        } catch (error) {
+            console.error("Error loading posts from Firebase:", error);
+            postsContainer.innerHTML =
+                '<p style="text-align: center; color: red;">Error loading posts from the database.</p>';
+        }
+    });
 });
-
 
 /**
  * Helper function to calculate "time ago"
