@@ -29,20 +29,27 @@
           type="email"
           placeholder="Email"
           class="input-field"
-          required
         />
         <input
           id="password"
           type="password"
           placeholder="Password"
           class="input-field"
-          required
         />
         <button id="login-btn" class="lp-btn" type="submit">LOGIN</button>
         <button id="signup-btn" class="lp-btn" type="button">
           CREATE ACCOUNT
         </button>
       </form>
+
+      <button
+        id="show-login-toggle"
+        class="lp-btn"
+        type="button"
+        style="display: none"
+      >
+        Already have an account? Log in
+      </button>
 
       <p id="msg" aria-live="polite"></p>
       <button
