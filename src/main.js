@@ -86,12 +86,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     const itemName = document.createElement("h3");
     itemName.textContent = post.item || "Untitled Item";
 
-    // 3. Create the time text
+    // 3. Create the status text
+    const itemStatus = document.createElement("h2");
+    itemStatus.textContent = post.status || "No status";
+
+    // 4. Create the time text
     const postTime = document.createElement("p");
     let displayDate = post.timestamp && typeof post.timestamp.toDate === 'function' ? post.timestamp.toDate() : new Date();
     postTime.textContent = `Posted ${timeAgo(displayDate)}`;
 
-    // 4. Create the new button 🚀
+    // 5. Create the view button 
     const detailsButton = document.createElement("button");
     detailsButton.textContent = "View Details";
     detailsButton.className = "details-button";
@@ -108,6 +112,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Add all new elements to the card
     postCard.appendChild(imageElement);
     postCard.appendChild(itemName);
+    postCard.appendChild(itemStatus);
     postCard.appendChild(footerDiv);
 
     // Add the finished card to the page

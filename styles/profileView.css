@@ -1,254 +1,180 @@
-html,
 body {
-  height: 100%;
-  overflow-x: hidden;
+    background-color: #FFF000;
+    color: #212529;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-bottom: 70px;
+    min-height: 100vh;
 }
 
-gridlayout {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: auto;
-  min-height: 100vh;
+.page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-body {
-  height: 100%;
-  width: 100%;
-  background-color: #fff000;
-  margin: 0;
-  padding: 0;
-  font-family: "Archivo Narrow", system-ui, -apple-system, Segoe UI, Roboto,
-    Arial, sans-serif;
-}
-
-/*Nav CSS*/
 nav {
-  display: flex;
-  margin: 0;
-  padding: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .findItPhoto {
-  justify-content: flex-end;
-  margin: 0;
-  padding: 0;
-  height: auto;
-  width: 60%;
-  margin-left: 30%;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: 60%;
+    z-index: 1;
 }
 
-#backArrowbtn{
-  justify-content: flex-start;
-  border: none;
-  background-color: #fff000;
-  width: 20%;
-  height: 100%;
-  margin-top: 30px;
-  padding: 0;
+.top-bar {
+    border-bottom: none; 
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-#backArrow{
-  width: 100%;
+.header {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #212529;
+    transform: translateX(-15px);
 }
 
-/*Profile info*/
-section {
-  display: grid;
-  grid-row: 2;
-  margin-left: 2rem;
-  padding: 0;
-  width: 100%;
+.back-button-img {
+    filter: none;
+    width: 24px;
+    height: 24px;
 }
 
-.profilePhoto {
-  display: flex;
-  width: 15%;
-  height: auto;
-  display: block;
-  padding: 0;
-  justify-content: flex-start;
+.user-info-area {
+    padding: 10px 15px;
 }
 
-section h3 {
-  margin-left: 0;
-  margin-bottom: 0;
+.profile-icon-img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 5px;
 }
 
-section p {
-  margin: 0;
-  margin-top: 0;
+.user-name-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 2px;
 }
 
-
-
-/*QUEST LEVEL CARD*/
-.card {
-  font-family: "Inter", sans-serif;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #f3f4f6;
-  padding: 1rem;
-  margin: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+.user-id-text {
+    font-size: 1rem;
+    margin: 0;
+    color: #212529;
+    margin-bottom: 10px;
 }
 
-.title {
-  font-size: 1rem;
-  /* text-2xl */
-  font-weight: 600;
-  /* font-semibold */
-  color: #1f2937;
-  /* text-gray-800 */
-  margin-bottom: 1.5rem;
-  /* mb-6 */
-  text-align: center;
+.settings-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 10px 0;
+    cursor: pointer;
 }
 
-.segmented-control {
-  display: inline-flex;
-  border-radius: 0.75rem;
-  border: 1px solid #d1d5db;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: #ffffff;
+.settings-button span {
+    font-size: 1rem;
+    margin-left: 5px;
 }
 
-.radio-input {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  position: absolute;
-  opacity: 0;
-}
-
-.button-segment {
-  cursor: pointer;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 200ms ease-in-out;
-  color: #374151;
-  border-right: 1px solid #d1d5db;
-  white-space: nowrap;
-}
-
-.button-segment:last-of-type {
-  border-right: none;
-}
-
-.button-segment:hover {
-  background-color: #f3f4f6;
-}
-
-.radio-input:checked + .button-segment {
-  background-color: #8736aa;
-  /* Primary Indigo */
-  color: #ffffff;
-  z-index: 10;
-}
-
-/* Keep the selected background consistent on hover */
-.radio-input:checked + .button-segment:hover {
-  background-color: #8736aa;
-}
-
-
-/* ===== Profile cards common tweaks ===== */
-content {
-  display: block;
-  padding: 0 0 90px; /* room above the fixed footer */
+.settingPhoto {
+    width: 20px;
+    height: 20px;
 }
 
 .card {
-  max-width: 380px; /* keep cards nicely narrow, like a phone */
-  margin: 1rem auto;
+    background-color: #F3F4F6; 
+    width: 85%; 
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Simple row for "Active Quests" label + value */
-.card-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
+.contribution-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 10px;
 }
 
-.card-label {
-  font-weight: 600;
-  font-size: 0.95rem;
+.stats-list {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    text-align: left;
+    margin: 0;
 }
 
-.card-label-quest{
-  margin-top: 0;
-  text-align: left;
-  font-weight: 600;
-  font-size: 1rem;
+.stats-list p {
+    grid-column: 1;
+    padding-left: 8px;
+    margin: 2px 0;
+    font-size: 18px;
 }
 
-.card-value {
-  font-weight: 700;
-  color: #8736aa; /* same purple as your segmented control */
+.stats-list span {
+    grid-column: 2;
+    color: #800080;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+    padding-right: 5px;
 }
 
-/* Purple primary buttons (View Active Quests / View Progress) */
-.primary-btn {
-  width: 100%;
-  padding: 0.6rem 0.75rem;
-  border-radius: 0.4rem;
-  border: none;
-  background-color: #8736aa;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  transition: transform 0.15s ease, filter 0.15s ease;
+.active-quests-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 20px;
 }
 
-.primary-btn:hover {
-  filter: brightness(1.05);
-  transform: translateY(-1px);
+.active-quests-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0;
 }
 
-/* ===== Quest Level pill toggle ===== */
-.level-card {
-  margin-top: 0.5rem;
-  margin-bottom: 0;
+.active-quests-count {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #800080;
 }
 
-.level-toggle {
-  display: flex;
-  gap: 4px;
-  margin: 0.6rem 0 0.9rem;
+hr {
+    border: none;
+    border-top: 1px solid #212529;
+    margin: 20px 15px;
 }
 
-.level-pill {
-  flex: 1;
-  padding: 0.4rem 0.3rem;
-  border-radius: 0;
-  border: none;
-  background-color: #000000;
-  color: #ffffff;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.03em;
-  transition: background-color 0.15s ease, color 0.15s ease;
+.section-title {
+    font-size: 1.3rem;
+    margin: 20px 15px 10px;
+    color: #212529;
+    font-weight: bold;
 }
 
-/* Active level (purple, like the mock) */
-.level-pill--active {
-  background-color: #8736aa;
+.posts-grid {
+    color: #212529;
+    padding: 15px;
+    border: 1px dashed #212529;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    margin: 15px;
 }
-
-/* Optional hover effect */
-.level-pill:hover {
-  filter: brightness(1.1);
-}
-
-

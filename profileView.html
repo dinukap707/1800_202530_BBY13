@@ -1,47 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Find-it</title>
-    <meta name="comp1800 template" content="My 1800 App" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="stylesheet" href="./styles/profileView.css" />
-    <link rel="stylesheet" href="./styles/stickyFooter.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <script type="module" src="/src/profileview.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile View</title>
+    <link rel="stylesheet" href="/styles/details.css" />
+    <link rel="stylesheet" href="/styles/stickyFooter.css" />
+    <link rel="stylesheet" href="/styles/profileView.css" />
   </head>
-
   <body>
+    <header class="top-bar">
+      <button class="back-button" onclick="window.history.back()">
+        <img
+          src="/images/blackArrow.png"
+          alt="back button"
+          class="back-button-img"
+        />
+      </button>
+      <h2 class="header">User Profile</h2>
+    </header>
     <nav>
-            <button id="backArrowbtn" onclick="window.location.href = 'profile.html'"><img id="backArrow" src="./images/blackArrow.png"></button>
-
       <img src="./images/find_it.png" alt="Find-it" class="findItPhoto" />
     </nav>
-    <section>
-      <img src="./images/blackProfile.png" alt="Find-it" class="profilePhoto" />
-      <h3 id="realName"></h3>
-      <p id="userName"></p>
-      <p id="email">email</p>
-    </section>
-    <content>
 
-      <!-- Quest Level card -->
-      <div class="card level-card">
-        <p class="card-label-quest">Quest Level</p>
+    <div class="page profile-container">
+      <div class="user-info-area">
+        <img
+          src="/images/blackProfile.png"
+          alt="Profile Icon"
+          class="profile-icon-img"
+        />
 
-        <div class="level-toggle">
-          <button class="level-pill" data-level="rookie">ROOKIE</button>
-          <button class="level-pill level-pill--active" data-level="scout">
-            SCOUT
-          </button>
-          <button class="level-pill" data-level="ace">ACE</button>
+        <p id="realName" class="user-name-text">Loading Name...</p>
+        <p id="userName" class="user-id-text">@loading_username</p>
+
+        <button class="settings-button">
+          <img
+            src="/images/blackSettings.png"
+            alt="Settings"
+            class="settingPhoto"
+          />
+          <span>Settings</span>
+        </button>
+      </div>
+
+      <div class="card contentNOC">
+        <h4 class="contribution-title">Number of contribution:</h4>
+        <div id="numOfCon" class="stats-list">
+          <p>Quests Published</p>
+          <span id="qpCount">9</span>
+          <p>Contacts Made</p>
+          <span id="contactsCount">0</span>
+          <p>My Items Found</p>
+          <span id="foundItemsCount">0</span>
+          <p>Quests Completed</p>
+          <span id="qcCount">0</span>
         </div>
       </div>
-    </content>
+
+      <hr />
+      <h3 class="section-title">User's Recent Posts</h3>
+      <div id="recentPostsList" class="posts-grid">
+        <p>Posts area not yet implemented.</p>
+      </div>
+    </div>
+
+    <footer>
+      <button type="button" onclick="window.location.href = 'main.html'">
+        <img src="./images/yellowHome.png" alt="Home" />
+      </button>
+      <button type="button" onclick="window.location.href = 'upload.html'">
+        <label for="fileInput" class="floating-btn">
+          <img src="./images/yellowPlus.png" alt="Add" />
+        </label>
+      </button>
+      <button type="button" onclick="window.location.href='map.html'">
+        <img src="./images/yellowMap.png" alt="Map" />
+      </button>
+      <button type="button" onclick="window.location.href = 'profile.html'">
+        <img src="./images/yellowUser.png" alt="Profile" />
+      </button>
+    </footer>
+
+    <script type="module" src="/src/firebase.js"></script>
+    <script type="module" src="/src/profileview.js"></script>
   </body>
 </html>

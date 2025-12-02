@@ -12,14 +12,14 @@ const uploadBox = document.querySelector(".box");
 const addButton = document.querySelector(".add-button");
 const statusSelect = document.querySelector(".form-group.status select");
 const itemInput = document.querySelector(".form-group.item input");
-const descriptionInput = document.querySelector(".form-group.description input");
+const description = document.querySelector(".form-group.description textareanvm shou");
 const hashtagsInput = document.querySelector(".form-group.hashtags input");
 const locationInput = document.querySelector(".form-group.locations input");
 const clearBtn = document.getElementById("clearBtn");
 const submitBtn = document.getElementById("submitBtn");
 
-const MAX_IMAGE_WIDTH = 150; 
-const MAX_IMAGE_HEIGHT = 150;
+const MAX_IMAGE_WIDTH = 600; 
+const MAX_IMAGE_HEIGHT = 600;
 
 // This will store the image data as a Base64 string
 let uploadedImageBase64 = null;
@@ -63,7 +63,7 @@ function resizeImage(img, maxWidth, maxHeight) {
 
     // Get the Base64 data from the canvas (JPEG format, 70% quality)
     // Using JPEG is usually smaller than PNG
-    return canvas.toDataURL("image/jpeg", 0.7);
+    return canvas.toDataURL("image/jpeg", 0.9);
 }
 
 // 2. Add click listener to the '+' button
@@ -111,7 +111,7 @@ clearBtn.addEventListener("click", (e) => {
   // Clear all text inputs
   itemInput.value = "";
   statusSelect.value = "";
-  descriptionInput.value = "";
+  description.value = "";
   hashtagsInput.value = "";
   locationInput.value = "";
 
@@ -156,7 +156,7 @@ submitBtn.addEventListener("click", async (e) => {
             ownerUid: user.uid,
             item: itemInput.value.trim(),
             status: statusSelect.value,
-            description: descriptionInput.value.trim(),
+            description: description.value.trim(),
             hashtags: hashtagsInput.value.trim(),
             location: locationInput.value.trim(),
             

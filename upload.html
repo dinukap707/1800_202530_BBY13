@@ -8,7 +8,7 @@
   </head>
   <body>
     <button class="back-button" onclick="window.location.href = 'main.html'"> 
-      <img src="/images/blackArrow.png" alt="back button">
+      <img src="/images/blackArrow.png" alt="back button" class="back-button-img">
     </button>
     <h1>New Post</h1>
       <br />
@@ -44,11 +44,12 @@
         <div class="form-group description">
           <label>Description</label>
           <br>
-          <input
-            type="text"
+          <textarea
+            rows="3"
+            cols="26"
             class="form-control"
-            id="description"
-          />
+            id="description">
+        </textarea>
         </div>
         <br />
 
@@ -75,7 +76,7 @@
         <div class="clear form-group">
         <button
           type="button"
-          class="btn btn-lg btn-primary pull-right"
+          class="btn-lg btn-primary pull-right"
           id="clearBtn"
         >
           Clear
@@ -84,7 +85,7 @@
         <div class="submit form-group">
         <button
           type="button"
-          class="btn btn-lg btn-primary pull-right"
+          class="btn-lg btn-primary pull-right"
           id="submitBtn"
         >
           Post
@@ -97,3 +98,4 @@
    <script type="module" src="/src/locationData.js"></script>
   </body>
 </html>
+
