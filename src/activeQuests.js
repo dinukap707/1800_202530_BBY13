@@ -123,19 +123,21 @@ async function markQuestCompleted(postId, ownerUid, helperUid) {
             status: "Found & Returned",
             completedAt: new Date(),
         });
+
+        awardForQuestCompletion(ownerUid, finderUid);
         
         // --- 2. Update the OWNER's Stats ---
-        await updateDoc(doc(db, "users", ownerUid), {
-            activeQuests: increment(-1), 
-            questsCompleted: increment(1), 
-        });
+        // await updateDoc(doc(db, "users", ownerUid), {
+        //     currentActiveQuests: increment(-1), 
+        //     questsCompleted: increment(1), 
+        // });
 
-        // --- 3. Update the HELPER's Stats ---
-        await updateDoc(doc(db, "users", helperUid), {
-            activeQuests: increment(-1),
-            myItemsFound: increment(1), 
-            points: increment(10), 
-        });
+        // // --- 3. Update the HELPER's Stats ---
+        // await updateDoc(doc(db, "users", helperUid), {
+        //     currentActiveQuests: increment(-1),
+        //     myItemsFound: increment(1), 
+        //     points: increment(10), 
+        // });
 
         alert("Quest successfully marked as Completed!");
     } catch (error) {

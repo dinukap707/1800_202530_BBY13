@@ -47,7 +47,7 @@ async function fetchAndDisplayProfile(uid) {
 
       // Update general info
       updateElementText(realNameEl, userData.fullName || 'No Name Provided');
-      updateElementText(userNameEl, `@${userData.username || 'unknown'}`);
+      updateElementText(userNameEl, userData.username || 'unknown');
       updateElementText(emailEl, userData.email || 'N/A');
       
       // Update stats
