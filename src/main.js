@@ -82,22 +82,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     postsContainer.innerHTML =
         '<p style="text-align: center; color: #555;">Loading posts...</p>';
 
-    // === START OF CRITICAL CHANGE: Delay execution to wait for Firebase Auth ===
+    // The timeout is still used to ensure the posts load properly after Auth finishes.
     setTimeout(async () => {
-        // Get the current user ID after a short delay
+        // We still grab the currentUserId, but it's no longer used for filtering.
         const currentUserId = auth.currentUser ? auth.currentUser.uid : null;
 
-        if (!currentUserId) {
-            // If still null, alert the user and continue, knowing the filter won't work.
-            console.warn("Authentication did not complete in time. Cannot guarantee exclusion of own posts.");
-        }
-
         try {
-            // === Firestore Query: Filter for Pending/Unclaimed Quests Only ===
+            // === Firestore Query: Filter for Pending/Unclaimed Quests Only (INCLUDING your own) ===
             const postsQuery = query(
                 collection(db, POSTS_COLLECTION),
-                where("isActiveQuest", "==", false),     // Exclude currently claimed/active quests
-                where("isCompletedQuest", "==", false),   // Exclude completed quests
+                where("isActiveQuest", "==", false),     // Exclude currently claimed/active quests
+                where("isCompletedQuest", "==", false),   // Exclude completed quests
                 orderBy("createdAt", "desc")
             );
             // ===================================================================
@@ -109,15 +104,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                     ...doc.data(),
                 }));
 
-                // 2. Client-side Filter: Exclude own posts
-                if (currentUserId) {
-                    posts = posts.filter(post => post.ownerUid !== currentUserId);
-                }
-                // -------------------------------------------------------------
+                // 2. REMOVED: The client-side filter to exclude your posts is now gone.
 
                 if (posts.length === 0) {
                     postsContainer.innerHTML =
-                        '<p style="text-align: center; color: #555;">No pending quests from other users found. Check back later!</p>';
+                        '<p style="text-align: center; color: #555;">No pending quests found. Click the + button to create one!</p>';
                     return;
                 }
 

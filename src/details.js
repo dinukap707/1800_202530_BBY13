@@ -133,10 +133,17 @@ async function handleContact(post) {
     const docRef = doc(db, "users", ownerUid);
     const docSnap = await getDoc(docRef);
     const userData = docSnap.data();
+    const name = userData.fullName;
     const email = userData.email;
 
+    if (finderUid == ownerUid) {
+        alert("You can't contact yourself.");
+        window.location.href = "main.html";
+        return;
+    }
+
     if (post.status == "Lost") {
-        alert("Users email: " + email);
+        alert("Please help " + name + " find their lost item. Send them an email if you have any clues: " + email);
         window.location.href = "main.html";
         return;
     }
@@ -154,21 +161,20 @@ async function handleContact(post) {
         await updateDoc(doc(db, "users", finderUid), {
             points: increment(1),
             contactsMade: increment(1),
-            activeQuests: increment(1),
+            // activeQuests: increment(1),
         });
 
         // 3. OWNER ACTIVATES QUEST ON THEIR PAGE (Unchanged)
         if (ownerUid && ownerUid !== finderUid) {
             await updateDoc(doc(db, "users", ownerUid), {
-                activeQuests: increment(1),
+                // activeQuests: increment(1),
             });
 
             window.location.href = "main.html";
-
         }
 
 
-        alert("Contact started! Quest successfully activated and added to your profile. Users email is: " + email);
+        alert("We hope you Find-it. Contact and Quest successfully activated and added to your profile. Contact " + name + " at: " + email);
     } catch (error) {
         console.error("Error updating Firestore:", error);
         alert("Failed to start quest.");
