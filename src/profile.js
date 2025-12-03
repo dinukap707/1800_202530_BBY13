@@ -13,12 +13,16 @@ const myItemsSpan = document.getElementById("myitems-count");
 const qcSpan = document.getElementById("qc-count");
 const progressPointsSpan = document.getElementById("progress-points");
 const progressBarInner = document.getElementById("progress-bar-inner");
+const barPoints = document.getElementById("bar-points");
+const levelName = document.getElementById("level-name");
+
+
 
 // Compute level from points
 function getLevelFromPoints(points) {
-  if (points >= 100) return "ace";
-  if (points >= 50) return "scout";
-  return "rookie";
+  if (points >= 100) return "Ace";
+  if (points >= 50) return "Scout";
+  return "Rookie";
 }
 
 function updateLevelUI(levelKey) {
@@ -55,29 +59,12 @@ onAuthStateChanged(auth, (user) => {
     contactsSpan.textContent = "0";
     myItemsSpan.textContent = "0";
     qcSpan.textContent = "0";
+    barPoints.textContent = "0";
+    levelName.textContent = "Rookie"
     updateLevelUI("rookie");
     updateProgressBar(0);
   }
 });
-
-// Use an observer to get the current user's UID when the auth state changes
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     // User is signed in
-//     const uid = user.uid;
-//     console.log("Current user UID:", uid);
-
-//     // Now call a function to fetch their specific data using the UID
-//     fetchUserData(uid);
-//   } else {
-//     // User is signed out
-//     console.log("No user is signed in.");
-//     userNameElement.textContent = "Username";
-//     displayName.textContent = "Your Name";
-//     activeQuests.textContent = "0";
-//     // You might want to redirect them to a login page here
-//   }
-// });
 
 // Function to fetch data from Firestore using the user's UID
 async function fetchUserData(userId) {
@@ -102,6 +89,8 @@ async function fetchUserData(userId) {
       const contactsMade = userData.contactsMade || 0;
       const myItemsFound = userData.myItemsFound || 0;
 
+
+
       userNameElement.textContent = userName;
       displayName.textContent = fullName;
 
@@ -110,8 +99,11 @@ async function fetchUserData(userId) {
       myItemsSpan.textContent = myItemsFound;
       qcSpan.textContent = questsCompleted;
 
-      const activeCount = userData.activeQuests || 0;
-      activeQuests.textContent = activeCount.toString();
+      barPoints.textContent = points;
+      levelName.textContent = getLevelFromPoints(points)
+
+      // const activeCount = userData.currentActiveQuests || 0;
+      // activeQuests.textContent = activeCount.toString();
 
       updateLevelUI(levelKey);
       updateProgressBar(points);

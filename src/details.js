@@ -56,11 +56,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             ...postSnap.data(),
         };
 
-        // Ensure post.timestamp is converted to a Date object for timeAgo
-        let displayDate =
-            post.timestamp && typeof post.timestamp.toDate === "function"
-                ? post.timestamp.toDate()
-                : new Date();
+        // === START: NEW CODE TO CONVERT FIRESTORE TIMESTAMP TO DATE ===
+        let displayDate = new Date(); // Default to current time if createdAt is missing
+
+        // Check if createdAt exists and has the toDate function (meaning it's a Firestore Timestamp)
+        if (post.createdAt && typeof post.createdAt.toDate === "function") {
+            displayDate = post.createdAt.toDate();
+        }
+        // === END: NEW CODE ===
 
         // 4. Inject the HTML
         container.innerHTML = `
@@ -91,6 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (contactBtn) {
             // Pass the current post object which contains the ID
             contactBtn.addEventListener("click", () => handleContact(post));
+
         }
 
         // 6. Set up the PROFILE button listener (Unchanged)
@@ -126,6 +130,16 @@ async function handleContact(post) {
     const finderUid = user.uid;
     const ownerUid = post.ownerUid;
     const postId = post.id; // Get the ID of the post
+    const docRef = doc(db, "users", ownerUid);
+    const docSnap = await getDoc(docRef);
+    const userData = docSnap.data();
+    const email = userData.email;
+
+    if (post.status == "Lost") {
+        alert("Users email: " + email);
+        window.location.href = "main.html";
+        return;
+    }
 
     try {
         // --- START: NEW FUNCTIONALITY TO ACTIVATE QUEST ON POST DOCUMENT ---
@@ -148,10 +162,13 @@ async function handleContact(post) {
             await updateDoc(doc(db, "users", ownerUid), {
                 activeQuests: increment(1),
             });
+
+            window.location.href = "main.html";
+
         }
 
 
-        alert("Contact started! Quest successfully activated and added to your profile.");
+        alert("Contact started! Quest successfully activated and added to your profile. Users email is: " + email);
     } catch (error) {
         console.error("Error updating Firestore:", error);
         alert("Failed to start quest.");

@@ -6,12 +6,15 @@ import {
   onSnapshot,
   orderBy,
   getDocs,
+  where, // <<< IMPORTED: Needed for status filtering
 } from "./firebase.js";
 
 const POSTS_COLLECTION = "posts";
 
 const filterBtn = document.getElementById("filter-btn");
 const filterPopup = document.getElementById("filter-popup");
+
+// --- Filter UI Logic (Unchanged) ---
 
 filterBtn.addEventListener("click", () => {
   filterPopup.classList.toggle("hidden");
@@ -43,6 +46,28 @@ filterPopup.querySelectorAll("button").forEach((btn) => {
   });
 });
 
+// --- Time Ago Helper Function (Unchanged) ---
+
+function timeAgo(date) {
+  const seconds = Math.floor((new Date() - date) / 1000);
+  let interval = seconds / 31536000;
+  if (interval > 1) return Math.floor(interval) + " years ago";
+
+  interval = seconds / 2592000;
+  if (interval > 1) return Math.floor(interval) + " months ago";
+
+  interval = seconds / 86400;
+  if (interval > 1) return Math.floor(interval) + " days ago";
+
+  interval = seconds / 3600;
+  if (interval > 1) return Math.floor(interval) + " hours ago";
+
+  interval = seconds / 60;
+  if (interval > 1) return Math.floor(interval) + " minutes ago";
+
+  return Math.floor(seconds) + " seconds ago";
+}
+
 // THE STUFF BELOW IS STRICTLY FOR UPLOADING PHOTOS
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -57,21 +82,39 @@ document.addEventListener("DOMContentLoaded", async () => {
   postsContainer.innerHTML =
     '<p style="text-align: center; color: #555;">Loading posts...</p>';
 
+  // Get the current user ID immediately (Note: May be null initially)
+  const currentUserId = auth.currentUser ? auth.currentUser.uid : null;
+  if (!currentUserId) {
+    console.warn("User ID not available immediately; own posts may be included initially.");
+  }
+
+
   try {
+    // === Firestore Query: Filter for Pending/Unclaimed Quests Only ===
     const postsQuery = query(
       collection(db, POSTS_COLLECTION),
+      where("isActiveQuest", "==", false),     // Exclude currently claimed/active quests
+      where("isCompletedQuest", "==", false),   // Exclude completed quests
       orderBy("createdAt", "desc")
     );
+    // ===================================================================
 
     onSnapshot(postsQuery, (snapshot) => {
-      const posts = snapshot.docs.map((doc) => ({
+      // 1. Map all posts from the snapshot
+      let posts = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
 
+      // 2. Client-side Filter: Exclude own posts (as required for != in Firebase queries)
+      if (currentUserId) {
+        posts = posts.filter(post => post.ownerUid !== currentUserId);
+      }
+      // -------------------------------------------------------------
+
       if (posts.length === 0) {
         postsContainer.innerHTML =
-          '<p style="text-align: center; color: #555;">No posts found. Click the + button to create one!</p>';
+          '<p style="text-align: center; color: #555;">No pending quests from other users found. Check back later!</p>';
         return;
       }
 
@@ -91,13 +134,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const imageElement = document.createElement("img");
         imageElement.src = post.imageBase64; // This is the Base64 image data
         imageElement.alt = post.item;
-        imageElement.style.cursor = "pointer"; // Add visual cue that it's clickable
+        imageElement.style.cursor = "pointer"; // Add visual cue that it's clickable
 
-        // === NEW LOGIC: Make the image clickable to view details ===
-        imageElement.onclick = function () {
-          window.location.href = `details.html?postId=${post.id}`;
-        };
-        // ==========================================================
+        // === Make the image clickable to view details ===
+        imageElement.onclick = function () {
+          window.location.href = `details.html?postId=${post.id}`;
+        };
+        // ==========================================================
 
         // 2. Create the item name
         const itemName = document.createElement("h3");
@@ -145,28 +188,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       '<p style="text-align: center; color: red;">Error loading posts from the database.</p>';
   }
 });
-
-/**
- * Helper function to calculate "time ago"
- * e.g., "5 minutes ago"
- */
-function timeAgo(date) {
-  const seconds = Math.floor((new Date() - date) / 1000);
-  let interval = seconds / 31536000;
-  if (interval > 1) return Math.floor(interval) + " years ago";
-
-  interval = seconds / 2592000;
-  if (interval > 1) return Math.floor(interval) + " months ago";
-
-  interval = seconds / 86400;
-  if (interval > 1) return Math.floor(interval) + " days ago";
-
-  interval = seconds / 3600;
-  if (interval > 1) return Math.floor(interval) + " hours ago";
-
-  interval = seconds / 60;
-  if (interval > 1) return Math.floor(interval) + " minutes ago";
-
-  return Math.floor(seconds) + " seconds ago";
-}
 // THE STUFF ABOVE IS STRICTLY FOR UPLOADING PHOTOS

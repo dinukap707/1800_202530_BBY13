@@ -24,6 +24,7 @@ export async function ensureUserStats(user) {
         myItemsFound: 0,
         questsCompleted: 0,
         activeQuests: 0,
+        currentActiveQuests: 0,
       },
       { merge: true }
     );
@@ -36,7 +37,6 @@ export async function awardForNewPost(uid) {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     points: increment(1),
-    questsPublished: increment(1),
   });
 }
 
@@ -47,6 +47,7 @@ export async function awardForContact(uid) {
   await updateDoc(userRef, {
     points: increment(1),
     contactsMade: increment(1),
+    currentActiveQuests: increment(1),
   });
 }
 
@@ -63,8 +64,8 @@ export async function awardForQuestCompletion(ownerUid, finderUid) {
     updates.push(
       updateDoc(ownerRef, {
         points: increment(3),
-        questsCompleted: increment(1),
         myItemsFound: increment(1),
+        currentActiveQuests: increment(-1),
       })
     );
   }
@@ -75,6 +76,7 @@ export async function awardForQuestCompletion(ownerUid, finderUid) {
       updateDoc(finderRef, {
         points: increment(5),
         questsCompleted: increment(1),
+        currentActiveQuests: increment(-1),
       })
     );
   }
