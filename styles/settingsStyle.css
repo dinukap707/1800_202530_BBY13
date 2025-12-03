@@ -4,137 +4,138 @@
 } */
 
 gridlayout {
-    display: grid;
-    grid-template-rows: 10% 1fr;
+  display: grid;
+  grid-template-rows: 10% 1fr;
 }
 
 body {
-    height: 100%;
-    width: 100%;
-    background-color: #fff000;
-    margin: 0;
-    padding: 0;
-    font-family: "Archivo Narrow", system-ui, -apple-system, Segoe UI, Roboto,
-        Arial, sans-serif;
-    /* font-family: 'ourFont'; */
+  height: 100%;
+  width: 100%;
+  background-color: #fff000;
+  margin: 0;
+  padding: 0;
+  font-family: "Archivo Narrow", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+  /* font-family: 'ourFont'; */
 }
 
 /*Nav design*/
 nav {
-    align-items: center;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-nav>button {
-    position: absolute;
-    left: 0;
-    top: 1.7%;
-    border: 0;
-    margin: auto;
-    padding: 0;
-    background-color: #fff000;
+.settingsduck {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 80%;
+  justify-content: right;
 }
 
-nav>p {
-    position: relative;
-    text-align: center;
-    font-size: bold;
-    margin: 0;
-    padding: 0;
-    font-size: 100px;
+nav > button {
+  position: absolute;
+  left: 0;
+  top: 1.7%;
+  border: 0;
+  margin: auto;
+  padding: 0;
+  background-color: #fff000;
+}
+
+nav > p {
+  position: relative;
+  text-align: center;
+  font-size: bold;
+  margin: 0;
+  padding: 0;
+  font-size: 100px;
 }
 
 /*Image css*/
 
-
-
 /*Content design*/
-content>div {
-    border: solid;
-    border-radius: 10px;
-    margin: 20px;
-    padding: 10px;
-    justify-content: center;
+content > div {
+  border: solid;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+  justify-content: center;
 }
 
-content>div h3 {
-    font-size: 70px;
+content > div h3 {
+  font-size: 70px;
 }
 
-content>div div button {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    margin: 1%;
-    min-width: 97%;
-    justify-content: center;
-    border-radius: 8px;
-    font-size: 50px;
+content > div div button {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 1%;
+  min-width: 97%;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 50px;
 }
 
-content>div div button:hover{
-    background-color: #800080;
+content > div div button:hover {
+  background-color: #800080;
 }
 
 content button p {
-    display: flex;
-    justify-content: flex-start;
-    color: black;
-    order: 2;
-    flex: 1 1 70%;
-    margin: auto;
-    font-size: 50px;
+  display: flex;
+  justify-content: flex-start;
+  color: black;
+  order: 2;
+  flex: 1 1 70%;
+  margin: auto;
+  font-size: 50px;
 }
 
 content button span {
-    display: flex;
-    justify-content: flex-end;
-    order: 2;
-    flex: 0 0 auto;
-    max-width: 20%;
-    margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  order: 2;
+  flex: 0 0 auto;
+  max-width: 20%;
+  margin: auto;
 }
 
 content p {
-    font-size: 50px;
+  font-size: 50px;
 }
-
 
 /*Account settings design*/
 
-
-
-
 /*App settings design*/
-
 
 /*Game settings design*/
 
 /*Footer design*/
 footer {
-    width: 100%;
-    height: 1%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 1%;
+  margin: 0;
+  padding: 0;
 }
 
 footer button {
-    background-color: #000000;
-    color: #000000;
-    width: 80%;
-    height: auto;
-    padding: 0;
-    margin: 10%;
-    align-content: center;
+  background-color: #000000;
+  color: #000000;
+  width: 80%;
+  height: auto;
+  padding: 0;
+  margin: 10%;
+  align-content: center;
 }
 
 footer button p {
-    color: #fff000;
-    font-size: 50px;
+  color: #fff000;
+  font-size: 50px;
 }
 
-footer button:hover{
-    background-color: #800080;
+footer button:hover {
+  background-color: #800080;
 }

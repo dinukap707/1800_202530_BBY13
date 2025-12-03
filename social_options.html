@@ -3,35 +3,46 @@
   <head>
     <title>Find-it - Content & Socials Options</title>
     <link rel="stylesheet" href="./styles/settingOptionStyle.css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
     <nav>
       <button
         class="back-button"
-        onclick="window.location.href = 'settings.html'">
+        onclick="window.location.href = 'settings.html'"
+      >
         &larr;
       </button>
       <h2 class="header">Content & Socials</h2>
     </nav>
-    <hr/>
+    <hr />
 
     <content>
-    <p class="title">Direct Message Spam</p>  
-    <div class="accountsetting">
-        <label> <input type="radio" name="option" value="Filter All"> Filter All</label>
-        <hr/>
-        <label> <input type="radio" name="option" value="Filter from Non-friends"> Filter from Non-friends</label>
-        <hr/>
-        <label> <input type="radio" name="option" value="Filter None"> Filter None</label>
-    </div> 
+      <p class="title">Direct Message Spam</p>
+      <div class="accountsetting">
+        <label>
+          <input type="radio" name="option" value="Filter All" /> Filter
+          All</label
+        >
+        <hr />
+        <label>
+          <input type="radio" name="option" value="Filter from Non-friends" />
+          Filter from Non-friends</label
+        >
+        <hr />
+        <label>
+          <input type="radio" name="option" value="Filter None" /> Filter
+          None</label
+        >
+      </div>
 
-    <p class="title">Accounts you've Blocked or Ignored</p>  
-    <div class="accountsetting">
+      <p class="title">Accounts you've Blocked or Ignored</p>
+      <div class="accountsetting">
         <h3>Blocked Accounts</h3>
-        <hr/>
+        <hr />
         <h3>Ignored Accounts</h3>
-    </div> 
+      </div>
     </content>
     <script type="module" src="./src/main.js"></script>
   </body>

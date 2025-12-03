@@ -1,180 +1,181 @@
 body {
-    background-color: #FFF000;
-    color: #212529;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding-bottom: 70px;
-    min-height: 100vh;
+  background-color: #fff000;
+  color: #212529;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding-bottom: 70px;
+  min-height: 100vh;
 }
 
 .page {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 nav {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .findItPhoto {
-    margin: 0;
-    padding: 0;
-    height: auto;
-    width: 60%;
-    z-index: 1;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 60%;
+  z-index: 1;
 }
 
 .top-bar {
-    border-bottom: none; 
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  border-bottom: none;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .header {
-    flex-grow: 1;
-    text-align: center;
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #212529;
-    transform: translateX(-15px);
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #212529;
+  transform: translateX(-15px);
 }
 
 .back-button-img {
-    filter: none;
-    width: 24px;
-    height: 24px;
+  filter: none;
+  width: 24px;
+  height: 24px;
 }
 
 .user-info-area {
-    padding: 10px 15px;
+  padding: 10px 15px;
 }
 
 .profile-icon-img {
-    width: 35px;
-    height: 35px;
-    margin-bottom: 5px;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 5px;
 }
 
 .user-name-text {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 0 0 2px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 2px;
 }
 
 .user-id-text {
-    font-size: 1rem;
-    margin: 0;
-    color: #212529;
-    margin-bottom: 10px;
+  font-size: 1rem;
+  margin: 0;
+  color: #212529;
+  margin-bottom: 10px;
 }
 
 .settings-button {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 10px 0;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 10px 0;
+  cursor: pointer;
 }
 
 .settings-button span {
-    font-size: 1rem;
-    margin-left: 5px;
+  font-size: 1rem;
+  margin-left: 5px;
 }
 
 .settingPhoto {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .card {
-    background-color: #F3F4F6; 
-    width: 85%; 
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    margin-left: auto;
-    margin-right: auto;
+  background-color: #f3f4f6;
+  width: 85%;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contribution-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 10px;
 }
 
 .stats-list {
-    display: grid;
-    grid-template-columns: 75% 25%;
-    text-align: left;
-    margin: 0;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  text-align: left;
+  margin: 0;
 }
 
 .stats-list p {
-    grid-column: 1;
-    padding-left: 8px;
-    margin: 2px 0;
-    font-size: 18px;
+  grid-column: 1;
+  padding-left: 8px;
+  margin: 2px 0;
+  font-size: 18px;
 }
 
 .stats-list span {
-    grid-column: 2;
-    color: #800080;
-    font-size: 18px;
-    font-weight: 700;
-    text-align: right;
-    padding-right: 5px;
+  grid-column: 2;
+  color: #800080;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: right;
+  padding-right: 5px;
 }
 
 .active-quests-area {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 20px;
 }
 
 .active-quests-title {
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 .active-quests-count {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #800080;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #800080;
 }
 
 hr {
-    border: none;
-    border-top: 1px solid #212529;
-    margin: 20px 15px;
+  border: none;
+  border-top: 1px solid #212529;
+  margin: 20px 15px;
 }
 
 .section-title {
-    font-size: 1.3rem;
-    margin: 20px 15px 10px;
-    color: #212529;
-    font-weight: bold;
+  font-size: 1.3rem;
+  margin: 20px 15px 10px;
+  color: #212529;
+  font-weight: bold;
 }
 
 .posts-grid {
-    color: #212529;
-    padding: 15px;
-    border: 1px dashed #212529;
-    text-align: center;
-    border-radius: 8px;
-    background-color: #FFFFFF;
-    margin: 15px;
+  color: #212529;
+  padding: 15px;
+  border: 1px dashed #212529;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #ffffff;
+  margin: 15px;
 }

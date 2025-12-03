@@ -21,25 +21,19 @@ body {
     Arial, sans-serif;
 }
 
-
-
-
-
 /*Nav CSS*/
 nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 }
+
 .findItPhoto {
   margin: 0;
   padding: 0;
   height: auto;
   width: 60%;
 }
-
-
-
-
 
 /*Profile info*/
 section {
@@ -91,10 +85,6 @@ section button p {
   padding: 0;
 }
 
-
-
-
-
 /*CONTENT DESIGN ALL OVER*/
 .card {
   justify-content: center;
@@ -117,14 +107,13 @@ section button p {
   text-align: center;
 }
 
-
 /*LEVEL FILLER BAR*/
-#progress-card{
+#progress-card {
   align-items: center;
   height: auto;
 }
 
-#progress-bar-outer{
+#progress-bar-outer {
   background-color: #fff000;
   border-radius: 10px;
   align-items: center;
@@ -134,7 +123,7 @@ section button p {
   padding: 0;
 }
 
-#progress-bar-inner{
+#progress-bar-inner {
   background-color: #800080;
   border-radius: 10px;
   align-items: center;
@@ -143,7 +132,6 @@ section button p {
   margin: 0;
   padding: 0;
 }
-
 
 /* 
 .segmented-control {
@@ -195,12 +183,9 @@ section button p {
   background-color: #8736aa;
 } */
 
-
-
-
 /*NUMBER OF CONRIBUTIONS*/
-.contentNOC{
- display: flex;
+.contentNOC {
+  display: flex;
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -235,12 +220,10 @@ section button p {
   font-size: 18px;
 }
 
-
-
 /* ===== ACTIVE AND COMPLETED QUESTS BUTTONS ===== */
 content {
   display: block;
-  padding: 0 0 90px; 
+  padding: 0 0 90px;
 }
 
 .card-row {
@@ -254,7 +237,7 @@ content {
   font-weight: 600;
   font-size: 0.95rem;
 }
-.card-label-quest{
+.card-label-quest {
   margin-top: 0;
   text-align: left;
   font-weight: 600;
@@ -262,7 +245,7 @@ content {
 }
 .card-value {
   font-weight: 700;
-  color: #8736aa; 
+  color: #8736aa;
 }
 
 .primary-btn {
@@ -282,8 +265,6 @@ content {
   filter: brightness(1.05);
   transform: translateY(-1px);
 }
-
-
 
 /* ===== Quest Level pill toggle ===== */
 /* .level-card {
