@@ -37,6 +37,7 @@ export async function awardForNewPost(uid) {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     points: increment(1),
+    questsPublished: increment(1),
   });
 }
 
