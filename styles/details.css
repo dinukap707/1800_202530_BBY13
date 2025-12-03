@@ -43,7 +43,9 @@ body {
 /* --- Styles for details.html --- */
 .detailed-post-card {
     max-width: 400px;
-    margin: 20px auto;
+    max-width: 90%;
+    margin: auto;
+    padding: 0;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -57,7 +59,10 @@ body {
 }
 
 .detailed-content {
-    padding: 20px;
+    margin: 0;
+    padding-top: 0;
+    padding-left: 10px;
+    padding-bottom: 0;
 }
 
 .detailed-content h1 {
@@ -70,7 +75,7 @@ body {
     margin: 15px 0 5px;
     color: #333;
     border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
 }
 
 .detailed-content p {

@@ -127,13 +127,11 @@ async function markQuestCompleted(postId, ownerUid, helperUid) {
         
         // --- 2. Update the OWNER's Stats ---
         await updateDoc(doc(db, "users", ownerUid), {
-            currentActiveQuests: increment(-1), 
             questsCompleted: increment(5), 
         });
 
         // --- 3. Update the HELPER's Stats ---
         await updateDoc(doc(db, "users", helperUid), {
-            currentActiveQuests: increment(-1),
             myItemsFound: increment(1), 
             points: increment(3), 
         });

@@ -10,7 +10,7 @@ const emailEl = document.getElementById('email');
 
 // Stats (Level pills and related functions have been removed)
 // NOTE: Ensure your profileview.html file is updated to remove the level-pill elements as well.
-const activeQuestsEl = document.getElementById("activeQuests");
+const activeQuestsEl = document.getElementById("foundItemsCount");
 const qpCountEl = document.getElementById("qpCount");
 const contactsCountEl = document.getElementById("contactsCount");
 const qcCountEl = document.getElementById("qcCount");
@@ -52,7 +52,7 @@ async function fetchAndDisplayProfile(uid) {
       
       // Update stats
       // NOTE: Point and level logic is removed here.
-      updateElementText(activeQuestsEl, userData.activeQuests || 0);
+      updateElementText(activeQuestsEl, userData.myItemsFound || 0);
       updateElementText(qpCountEl, userData.questsPublished || 0);
       updateElementText(contactsCountEl, userData.contactsMade || 0);
       updateElementText(qcCountEl, userData.questsCompleted || 0);
