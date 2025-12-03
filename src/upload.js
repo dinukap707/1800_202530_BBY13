@@ -31,8 +31,8 @@ const MAX_IMAGE_HEIGHT = 600;
 // This will set default location IDS on the map to help simplify placing items on the map
 const CAMPUS_LOCATIONS = {
   NW1: {
-    lat: 49.251111,
-    lng: -122.988222,
+    lat: 49.25275510980522,
+    lng: -123.00337575113906,
     label: "NW1 – BCIT Burnaby Campus",
   },
   SW2: {
@@ -41,9 +41,14 @@ const CAMPUS_LOCATIONS = {
     label: "SW2 – BCIT Burnaby Campus",
   },
   SE12: {
-    lat: 49.249999,
-    lng: -122.987,
+    lat: 49.24991567402966,
+    lng: -123.0016059661734,
     label: "SE12 – BCIT Burnaby Campus",
+  },
+  SW5: {
+    lat: 49.249737742331575,
+    lng: -123.00264986388088,
+    label: "SW5 – BCIT Burnaby Campus",
   },
   // add more codes here as needed
 };

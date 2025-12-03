@@ -1,0 +1,14 @@
+.map-popup-button {
+  margin-top: 4px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #8736aa; /* your purple */
+  color: #ffffff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.map-popup-button:hover {
+  filter: brightness(1.1);
+}
