@@ -1,22 +1,20 @@
-// --- /src/profileview.js (Level Pills Removed) ---
+// Imports
 import { db, auth } from './firebase.js';
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 
-// --- Element Selectors ---
+//   Element Selectors  
 const realNameEl = document.getElementById('realName');
 const userNameEl = document.getElementById('userName');
 const emailEl = document.getElementById('email');
 
-// Stats (Level pills and related functions have been removed)
-// NOTE: Ensure your profileview.html file is updated to remove the level-pill elements as well.
+// Stats 
 const activeQuestsEl = document.getElementById("foundItemsCount");
 const qpCountEl = document.getElementById("qpCount");
 const contactsCountEl = document.getElementById("contactsCount");
 const qcCountEl = document.getElementById("qcCount");
 
-// --- Helper Functions ---
-
+//   Helper Functions  
 function updateElementText(element, text) {
     if (element) {
         element.textContent = text;
@@ -28,7 +26,7 @@ function getUidFromUrl() {
   return urlParams.get('uid'); 
 }
 
-// --- Function to fetch and display profile data ---
+//   Function to fetch and display profile data  
 async function fetchAndDisplayProfile(uid) {
   console.log(`Attempting to fetch data for UID: ${uid}`); 
 
@@ -51,7 +49,6 @@ async function fetchAndDisplayProfile(uid) {
       updateElementText(emailEl, userData.email || 'N/A');
       
       // Update stats
-      // NOTE: Point and level logic is removed here.
       updateElementText(activeQuestsEl, userData.myItemsFound || 0);
       updateElementText(qpCountEl, userData.questsPublished || 0);
       updateElementText(contactsCountEl, userData.contactsMade || 0);
@@ -69,7 +66,7 @@ async function fetchAndDisplayProfile(uid) {
   }
 }
 
-// --- Main Execution Logic ---
+//   Main Execution Logic  
 function initProfileView() {
     const externalUid = getUidFromUrl();
 
