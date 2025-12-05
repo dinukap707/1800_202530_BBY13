@@ -1,76 +1,167 @@
-# Elmo Hikes
+# Find It
 
 
 ## Overview
-Elmo Hikes is a client-side JavaScript web application that helps users discover and explore hiking trails. The app displays a curated list of hike trails, each with details such as name, location, difficulty, and an image. Users can browse the list and mark their favorite trails for easy access later.
+Find-It is a client-side JavaScript web application designed to help students locate and recover lost items on campus. Users can create posts for lost or found items, contact other users to arrange the retrieval of their items, view item details, view lost items on a real-time map, and track their personal app contribution history.
+The app integrates Firebase Authentication and Firestore for real-time data management, and uses Mapbox to display item locations interactively.
 
-Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user favorites.
-
+Developed for our COMP 1800 course, this project highlights user-centered design, teamwork, and production-level web development using Vite and modern JavaScript.
 ---
 
 
 ## Features
 
-- Browse a list of curated hiking trails with images and details
-- Mark and unmark trails as favorites
-- View a personalized list of favorite hikes
-- Responsive design for desktop and mobile
+- Create and publish lost or found item posts with images
+- Browse all active items and sort/filter results
+- Search for items by name, description, tags, or location
+- Track personal stats (quests completed, posts made, contacts, points, level)
+- Accept and complete quests to help return lost items
+- View item locations on an interactive Mapbox map
+- View detailed post pages with direct navigation from markers
+- Fully responsive interface optimized for mobile
 
 ---
 
 
 ## Technologies Used
-
-Example:
+  
 - **Frontend**: HTML, CSS, JavaScript
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Backend**: Firebase for hosting
-- **Database**: Firestore
+- **Build Tool**: Vite
+- **Backend & Hosting**: Firebase Hosting
+- **Database**: Firebase Firestore
+- **Auth**: Firebase Authentication
+- **Maps**: Mapbox
 
 ---
 
 
 ## Usage
 
-1. Open your browser and visit `http://localhost:3000`.
-2. Browse the list of hiking trails displayed on the main page.
-3. Click the heart icon (or similar) to mark a trail as a favorite.
-4. View your favorite hikes in the favorites section.
+1. Open your browser and visit `https://login-function-d3a97.web.app`.
+2. Create an account or log in using Firebase Authentication.
+3. Browse the main feed to view active lost-and-found items (posts).
+4. Create a new post using the "+" button and upload an item with an image and a description.
+5. Use filters or the search bar to narrow down displayed posts.
+6. Click an item to view its details, or open the Map to view its location.
+7. Accept a quest by contacting a user via post details to help return an item and earn contribution points.
+8. Track your stats, level, and completed quests on your Profile page.
 
 ---
+
 
 
 ## Project Structure
 
 ```
-elmo-hikes/
-├── src/
-│   ├── main.js
-├── styles/
-│   └── style.css
-├── public/
+find-it/
+├── font/
+│   ├── static
+|       ├── ArchivoNarrow-Bold.ttf
+|       ├── ArchivoNarrow-BoldItalic.ttf
+|       ├── ArchivoNarrow-Italic.ttf
+|       ├── ArchivoNarrow-Medium.ttf
+|       ├── ArchivoNarrow-MediumItalic.ttf
+|       ├── ArchivoNarrow-Regular.ttf
+|       ├── ArchivoNarrow-SemiBold.ttf
+|       ├── ArchivoNarrow-SemiBoldItalic.ttf
+│   ├── ArchivoNarrow-Italic-VariableFont_wght.ttf
+│   ├── ArchivoNarrow-VariableFont_wght.ttf
+│   ├── OFL.txt
+│   ├── README.txt
+|
 ├── images/
-├── index.html
-├── package.json
+│   ├── Mascot.png
+│   ├── blackArrow.png
+│   ├── blackFilter.png
+│   └── blackHome.png
+│   ├── blackMap.png
+│   ├── blackPlus.png
+│   ├── blackProfile.png
+│   └── blackSettings.png
+│   ├── blackUser.png
+│   ├── find_it.png
+│   ├── yellowArrow.png
+│   └── yellowFilter.png
+│   ├── yellowHome.png
+│   ├── yellowMap.png
+│   ├── yellowPlus.png
+│   └── yellowProfile.png
+│   ├── yellowSettings.png
+│   ├── yellowUser.png
+|
+├── src/
+│   ├── activeQuests.js
+│   ├── completedQuests.js
+│   ├── details.js
+│   ├── firebase.js
+│   ├── locationData.js
+│   ├── login.js
+│   ├── main.js
+│   ├── map.js
+│   ├── profile.js
+│   ├── profileView.js
+│   ├── signup.js
+│   ├── upload.js
+│   └── userStats.js
+│
+├── styles/
+│   ├── activeQuests.css
+│   ├── completedQuests.css
+│   ├── details.css
+│   ├── index.css
+|   ├── main.css
+│   ├── map.css
+│   ├── profileStyle.css
+│   ├── profileView.css
+|   ├── settingOptionStyle.css
+│   ├── settingsStyle.css
+│   ├── signup.css
+│   ├── stickyFooter.css
+|   ├── style.css
+│   └── upload.css
+│
+├── .env
+├── .gitignore
 ├── README.md
+├── account_options.html
+├── activeQuests.html
+├── completedQuests.html
+├── data_options.html
+├── details.html
+├── favicon.ico
+├── index.html 
+├── main.html
+├── map.html
+├── upload.html
+├── map.html
+├── package-lock.json
+├── package.json
+├── profile.html
+├── profileView.html
+├── settings.html
+├── signup.html
+├── social_options.html
+├── upload.html
+
 ```
 
 ---
 
 
 ## Contributors
-- Jorja Knaus - hi!
-- Devan - BCIT CST Student with a passion for gaming. Visual studio sucks. Loves solving Rubik's Cubes in over a minute.
-- Dinuka P - YOOOO, i like coding, playing the drums, and riding my motorcycle.
+- Jorja Knaus 
+- Devan Lam 
+- Dinuka Pinnalawaththage 
 
 ---
 
 
 ## Acknowledgments
 
-- Trail data and images are for demonstration purposes only.
-- Code snippets were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- Icons sourced from [FLATICON](https://www.flaticon.com/)
+- Fonts sourced from [Google Fonts](https://fonts.google.com/)
+- Images sourced from [Canva](https://www.canva.com/templates)
+- Partial Firebase/JavaScript sourced from COMP1800 Lectures
 
 ---
 
@@ -78,18 +169,18 @@ elmo-hikes/
 ## Limitations and Future Work
 ### Limitations
 
-- Limited trail details (e.g., no live trail conditions).
-- Accessibility features can be further improved.
+- Quest system could be expanded with more roles and rewards
+- Map pins currently use simple markers instead of custom graphics
 
 ### Future Work
 
-- Implement map view and trailhead directions.
-- Add filtering and sorting options (e.g., by difficulty, distance).
-- Create a dark mode for better usability in low-light conditions.
+- Add direct messaging or in-app chat for item return coordination
+- Add advanced Mapbox features (clustering, navigation routes, etc...)
+- Create a dark mode for better usability and user customization
 
 ---
 
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project was made for fun for our COMP1800 final project.
