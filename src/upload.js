@@ -50,7 +50,111 @@ const CAMPUS_LOCATIONS = {
     lng: -123.00264986388088,
     label: "SW5 – BCIT Burnaby Campus",
   },
-  // add more codes here as needed
+  SW9: {
+    lat: 49.24857386706732,
+    lng: -123.00277286976299,
+    label: "SW9 – BCIT Burnaby Campus",
+  },
+  SE16: {
+    lat: 49.248810060183445,
+    lng: -123.00104758185466,
+    label: "SE16 – BCIT Burnaby Campus",
+  },
+  SE14: {
+    lat: 49.249514440178004,
+    lng: -123.00076881078813,
+    label: "SE14 – BCIT Burnaby Campus",
+  },
+  SW3: {
+    lat: 49.25003478934726,
+    lng: -123.00265109072744,
+    label: "SW3 – BCIT Burnaby Campus",
+  },
+  SW1: {
+    lat: 49.25109603261354,
+    lng: -123.00262682280521,
+    label: "SW1 – BCIT Burnaby Campus",
+  },
+  NW4: {
+    lat: 49.25212418563052,
+    lng: -123.00326976780958,
+    label: "NW4 – BCIT Burnaby Campus",
+  },
+  NW6: {
+    lat: 49.25210241059102,
+    lng: -123.00245339561788,
+    label: "NW6 – BCIT Burnaby Campus",
+  },
+  NE20: {
+    lat: 49.252051491297664,
+    lng: -123.0015315081214,
+    label: "NE20 – BCIT Burnaby Campus",
+  },
+  NE18: {
+    lat: 49.252013040194235,
+    lng: -123.00069151867292,
+    label: "NE18 – BCIT Burnaby Campus",
+  },
+  NE16: {
+    lat: 49.2520364171085,
+    lng: -122.99994036276397,
+    label: "NE16 – BCIT Burnaby Campus",
+  },
+  SE1: {
+    lat: 49.25128025530573,
+    lng: -122.99907982934992,
+    label: "SE1 – BCIT Burnaby Campus",
+  },
+  SE6: {
+    lat: 49.25089568676916,
+    lng: -123.00039819908338,
+    label: "SE6 – BCIT Burnaby Campus",
+  },
+  SE4: {
+    lat: 49.25126941970805,
+    lng: -123.00022249451371,
+    label: "SE4 – BCIT Burnaby Campus",
+  },
+  NE28: {
+    lat: 49.25246384618371,
+    lng: -122.99990866575621,
+    label: "NE28 – BCIT Burnaby Campus",
+  },
+  NE24: {
+    lat: 49.25248648550547,
+    lng: -123.00110345977615,
+    label: "NE24 – BCIT Burnaby Campus",
+  },
+  NE5: {
+    lat: 49.25251728677917,
+    lng: -123.00234466790789,
+    label: "NE5 – BCIT Burnaby Campus",
+  },
+  NE2: {
+    lat: 49.25334784521614,
+    lng: -123.0015244657414,
+    label: "NE2 – BCIT Burnaby Campus",
+  },
+  NE4: {
+    lat: 49.25329347474829,
+    lng: -123.00067053457634,
+    label: "NE4 – BCIT Burnaby Campus",
+  },
+  NE6: {
+    lat: 49.253302428736994,
+    lng: -122.99979438528591,
+    label: "NE6 – BCIT Burnaby Campus",
+  },
+  NE8: {
+    lat: 49.25330138275326,
+    lng: -122.99923973369329,
+    label: "NE8 – BCIT Burnaby Campus",
+  },
+  NE10: {
+    lat: 49.253273576467045,
+    lng: -122.99846166518044,
+    label: "NE10 – BCIT Burnaby Campus",
+  },
 };
 
 // This helps check and relay data to the map based on location data points
@@ -306,7 +410,7 @@ submitBtn.addEventListener("click", async (e) => {
   } catch (error) {
     console.error("Error creating post in upload.js:", error);
     alert(
-      "There was a problem with the location/post. Try a campus code like NW1 or a full address."
+      "There was a problem with the location/post. Try a campus code like NW1."
     );
     submitBtn.disabled = false;
   }
